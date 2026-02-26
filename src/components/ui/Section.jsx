@@ -14,10 +14,7 @@ const Section = ({ children, sx = {}, ...props }) => {
         bgcolor: theme.palette.background.paper,
         color: theme.palette.text.primary,
         borderBottom: `1px solid ${theme.palette.divider}`,
-        backgroundImage:
-          theme.palette.mode === 'dark'
-            ? 'linear-gradient(180deg, rgba(15, 23, 42, 0.3), transparent 60%)'
-            : 'linear-gradient(180deg, rgba(248, 250, 252, 0.7), transparent 60%)',
+        backgroundImage: 'none',
         transition: 'background 0.3s, color 0.3s, border-color 0.3s',
         ...sx,
       }}

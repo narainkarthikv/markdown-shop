@@ -71,6 +71,11 @@ npm run preview
 - **Semantic Release** - Automated releases
 - **Web Vitals** - Optional perf reporting in dev
 
+## 🎨 Wisdom Fox Design System
+
+- This project follows the Wisdom Fox design system in [design-system.md](./design-system.md).
+- Ensure UI changes support both light and dark modes with visible focus states.
+
 <p align="center">
   <img src="https://skillicons.dev/icons?i=react,vite,materialui,javascript" alt="Tech Stack" />
 </p>

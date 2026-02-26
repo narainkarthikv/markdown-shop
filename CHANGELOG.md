@@ -1,0 +1,53 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- Initial README-SHOP application foundation.
+- Icons and badges components, including icon/badge data sources.
+- README templates support with drawer and template expansion.
+- Output enhancements such as auto-populated icons and badges.
+- GitHub README components including SVG graphics and trophy-related sections.
+- Dark mode support.
+- Landing/home page sections and ongoing UI feature additions.
+- Devcontainer and release workflow files.
+- Community and OSS docs (issue templates, PR template, contribution/community files).
+
+### Changed
+
+- Bundler/tooling migration from CRA-style setup to Vite + React architecture.
+- Significant project refactors into modular components and feature-based structure.
+- Repeated UI/UX improvements across home, templates, output, and component pages.
+- Templates grid/cards/search interactions refined for responsiveness and usability.
+- Codebase modernization and readability refactors across multiple releases.
+- Design system alignment for Wisdom Fox conventions (semantic tokens, light/dark parity, shared theme usage).
+
+### Fixed
+
+- Workflow and runner interaction fixes.
+- Runtime and Vite/deployment script fixes.
+- Template behavior/function fixes and bug removals in components.
+- Responsiveness corrections across layouts.
+- ESLint/prettier and code-quality cleanup fixes.
+- SEO and metadata adjustments.
+- Multiple stability and regression fixes after major refactors.
+
+### Documentation
+
+- README updates across releases (setup, structure, contributor guidance, and feature updates).
+- PR template and issue template improvements.
+- Release/changelog/community metadata updates.
+
+### Refactored
+
+- Large-scale structural refactors for modularity and maintainability.
+- Home page and core feature files repeatedly reorganized for clarity.
+- Theme and UI consistency refactors for long-term maintainability.
+
+[Unreleased]: https://github.com/narainkarthikv/readme-shop/compare/1618fbf...HEAD

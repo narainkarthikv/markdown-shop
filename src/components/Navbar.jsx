@@ -34,9 +34,7 @@ const Navbar = () => {
         borderRadius: 0,
         backdropFilter: 'blur(12px)',
         backgroundColor:
-          theme.palette.mode === 'dark'
-            ? 'rgba(18, 18, 20, 0.95)'
-            : 'rgba(255, 255, 255, 0.95)',
+          theme.customTokens?.surfaceOverlay || theme.palette.background.paper,
         borderBottom: `1px solid ${theme.palette.divider}`,
         boxShadow: 'none',
       }}>

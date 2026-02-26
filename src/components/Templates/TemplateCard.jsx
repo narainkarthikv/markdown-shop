@@ -299,7 +299,7 @@ const TemplateCard = ({
               zIndex: 2,
               bgcolor: 'success.main',
               color: 'success.contrastText',
-              borderRadius: '50%',
+              borderRadius: 1,
               p: 0.5,
               display: 'flex',
               alignItems: 'center',
