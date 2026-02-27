@@ -1,64 +1,33 @@
 /**
- * Design Tokens - Modern Semantic Color System
- * Inspired by Vercel, Linear, and GitHub 2025 design systems
- * Ensures WCAG AA contrast in both light and dark modes
+ * Design Tokens - Wisdom Fox semantic system
+ * Synced with design-system.md for light/dark parity and accessibility.
  */
-
-// Base palette - neutral grays
-const neutral = {
-  0: '#FFFFFF',
-  50: '#FAFAFA',
-  100: '#F5F5F5',
-  200: '#E5E5E5',
-  300: '#D4D4D4',
-  400: '#A3A3A3',
-  500: '#737373',
-  600: '#525252',
-  700: '#404040',
-  800: '#262626',
-  900: '#171717',
-  950: '#0A0A0A',
-};
-
-// Brand colors - developer-focused blue with subtle accent
-const brand = {
-  50: '#EFF6FF',
-  100: '#DBEAFE',
-  200: '#BFDBFE',
-  300: '#93C5FD',
-  400: '#60A5FA',
-  500: '#3B82F6', // Primary brand color
-  600: '#2563EB',
-  700: '#1D4ED8',
-  800: '#1E40AF',
-  900: '#1E3A8A',
-};
 
 // Semantic colors
 const semantic = {
   success: {
-    light: '#10B981',
-    main: '#059669',
-    dark: '#047857',
-    bg: '#D1FAE5',
+    light: '#22C55E',
+    main: '#22C55E',
+    dark: '#22C55E',
+    bg: 'rgba(34, 197, 94, 0.12)',
   },
   warning: {
     light: '#F59E0B',
-    main: '#D97706',
-    dark: '#B45309',
-    bg: '#FEF3C7',
+    main: '#F59E0B',
+    dark: '#F59E0B',
+    bg: 'rgba(245, 158, 11, 0.12)',
   },
   error: {
     light: '#EF4444',
-    main: '#DC2626',
-    dark: '#B91C1C',
-    bg: '#FEE2E2',
+    main: '#EF4444',
+    dark: '#EF4444',
+    bg: 'rgba(239, 68, 68, 0.12)',
   },
   info: {
     light: '#3B82F6',
-    main: '#2563EB',
-    dark: '#1D4ED8',
-    bg: '#DBEAFE',
+    main: '#3B82F6',
+    dark: '#3B82F6',
+    bg: 'rgba(59, 130, 246, 0.12)',
   },
 };
 
@@ -68,35 +37,38 @@ const semantic = {
  */
 export const lightTokens = {
   // Backgrounds
-  background: neutral[50], // Main app background
-  surface: neutral[0], // Card/panel background
-  surfaceElevated: neutral[0], // Elevated cards (modals, popovers)
-  surfaceHover: neutral[100], // Hover state for interactive surfaces
-  surfaceActive: neutral[200], // Active/pressed state
+  background: '#FFFFFF', // background.primary
+  backgroundSecondary: '#F5F5F5', // background.secondary
+  surface: '#FFFFFF', // surface.primary
+  surfaceElevated: '#F5F5F5', // surface.secondary
+  surfaceOverlay: 'rgba(0, 0, 0, 0.5)',
+  surfaceHover: '#F5F5F5',
+  surfaceActive: '#F0F0F0',
 
   // Text
-  textPrimary: neutral[900], // Primary text - high contrast
-  textSecondary: neutral[600], // Secondary text, labels
-  textTertiary: neutral[500], // Placeholder, disabled text
-  textInverse: neutral[0], // Text on dark backgrounds
+  textPrimary: '#1A1A1A', // text.primary
+  textSecondary: '#6B7280', // text.secondary
+  textTertiary: '#9CA3AF', // text.muted
+  textInverse: '#FFFFFF', // text.inverse
 
   // Borders
-  border: neutral[200], // Default border
-  borderSubtle: neutral[100], // Very subtle divider
-  borderStrong: neutral[300], // Emphasized border
-  borderFocus: brand[500], // Focus ring
+  border: '#E5E7EB', // border.primary
+  borderSubtle: '#F0F0F0', // border.subtle
+  borderStrong: '#D1D5DB',
+  borderFocus: '#3B82F6',
 
   // Interactive elements
-  primary: brand[600],
-  primaryHover: brand[700],
-  primaryActive: brand[800],
-  primarySubtle: brand[50],
-  primaryMuted: brand[100],
+  primary: '#3B82F6', // interactive.default
+  primaryHover: '#2563EB', // interactive.hover
+  primaryActive: '#1D4ED8', // interactive.active
+  primarySubtle: 'rgba(59, 130, 246, 0.1)',
+  primaryMuted: 'rgba(59, 130, 246, 0.2)',
+  interactiveDisabled: '#D1D5DB',
 
   // Accent (for highlights, badges)
-  accent: brand[500],
-  accentMuted: brand[100],
-  accentStrong: brand[700],
+  accent: '#3B82F6',
+  accentMuted: 'rgba(59, 130, 246, 0.15)',
+  accentStrong: '#2563EB',
 
   // Semantic
   success: semantic.success.main,
@@ -123,35 +95,38 @@ export const lightTokens = {
  */
 export const darkTokens = {
   // Backgrounds
-  background: neutral[950], // Main app background
-  surface: neutral[900], // Card/panel background
-  surfaceElevated: neutral[800], // Elevated cards
-  surfaceHover: neutral[800], // Hover state
-  surfaceActive: neutral[700], // Active state
+  background: '#0B1118', // background.primary
+  backgroundSecondary: '#121B26', // background.secondary
+  surface: '#121B26', // surface.primary
+  surfaceElevated: '#0F1822', // surface.secondary
+  surfaceOverlay: 'rgba(2, 10, 18, 0.65)',
+  surfaceHover: '#1E2C3C',
+  surfaceActive: '#1F2C3B',
 
   // Text
-  textPrimary: neutral[50], // Primary text - high contrast
-  textSecondary: neutral[400], // Secondary text, labels
-  textTertiary: neutral[500], // Placeholder, disabled
-  textInverse: neutral[900], // Text on light backgrounds
+  textPrimary: '#EAF2F6', // text.primary
+  textSecondary: '#9FB0C3', // text.secondary
+  textTertiary: '#7C8CA0', // text.muted
+  textInverse: '#0B1118', // text.inverse
 
   // Borders
-  border: neutral[800], // Default border
-  borderSubtle: neutral[850] || 'rgba(255, 255, 255, 0.05)', // Very subtle
-  borderStrong: neutral[700], // Emphasized
-  borderFocus: brand[400], // Focus ring
+  border: '#1E2C3C', // border.primary
+  borderSubtle: '#0F1822', // border.subtle
+  borderStrong: '#1F2C3B',
+  borderFocus: '#3B82F6',
 
   // Interactive elements
-  primary: brand[400],
-  primaryHover: brand[300],
-  primaryActive: brand[200],
+  primary: '#3B82F6', // interactive.default
+  primaryHover: '#2563EB', // interactive.hover
+  primaryActive: '#1E4FBF', // interactive.active
   primarySubtle: 'rgba(59, 130, 246, 0.1)',
   primaryMuted: 'rgba(59, 130, 246, 0.2)',
+  interactiveDisabled: '#1F2C3B',
 
   // Accent
-  accent: brand[400],
+  accent: '#3B82F6',
   accentMuted: 'rgba(59, 130, 246, 0.15)',
-  accentStrong: brand[300],
+  accentStrong: '#2563EB',
 
   // Semantic
   success: semantic.success.light,
@@ -178,9 +153,9 @@ export const darkTokens = {
 export const typography = {
   // Font families
   fontFamily: {
-    sans: "'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif",
+    sans: "'Sora', ui-sans-serif, system-ui, sans-serif",
     mono: "'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace",
-    display: "'Sora', -apple-system, BlinkMacSystemFont, sans-serif",
+    display: "'Sora', ui-sans-serif, system-ui, sans-serif",
   },
 
   // Font sizes (rem-based for accessibility)
@@ -193,11 +168,12 @@ export const typography = {
     '2xl': '1.5rem', // 24px
     '3xl': '1.875rem', // 30px
     '4xl': '2.25rem', // 36px
-    '5xl': '3rem', // 48px
+    '5xl': '2.5rem', // 40px
   },
 
   // Font weights
   fontWeight: {
+    light: 300,
     normal: 400,
     medium: 500,
     semibold: 600,
@@ -208,7 +184,7 @@ export const typography = {
   lineHeight: {
     tight: 1.25,
     normal: 1.5,
-    relaxed: 1.75,
+    relaxed: 1.625,
   },
 
   // Letter spacing

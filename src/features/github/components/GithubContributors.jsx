@@ -6,19 +6,32 @@ import {
   IconButton,
   Box,
 } from '@mui/material';
+import { useMemo } from 'react';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
+import { getGithubRepo, getGithubUser } from '../utils/githubUser';
 
-const REPO = 'narainkarthikv/readme-shop';
+const REPO_NAME = 'readme-shop';
 
-const CONTRIBUTORS_MD = `<img src="https://contrib.rocks/image?repo=${REPO}" alt="Contributors" style="width:100%;max-width:600px;border-radius:8px;" />`;
+const buildContributorsMarkdown = (repo) =>
+  `<img src="https://contrib.rocks/image?repo=${repo}" alt="Contributors" style="width:100%;max-width:600px;border-radius:8px;" />`;
 
 const GithubContributors = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const repo = useMemo(
+    () => getGithubRepo(resolvedUserName, REPO_NAME),
+    [resolvedUserName]
+  );
+  const contributorsMarkdown = useMemo(
+    () => buildContributorsMarkdown(repo),
+    [repo]
+  );
 
-  const handleClick = () => embedMarkdown(CONTRIBUTORS_MD);
+  const handleClick = () => embedMarkdown(contributorsMarkdown);
 
   return (
     <CardContainer
@@ -51,7 +64,7 @@ const GithubContributors = () => {
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 1 }}>
         <Box
           component='img'
-          src={`https://contrib.rocks/image?repo=${REPO}`}
+          src={`https://contrib.rocks/image?repo=${repo}`}
           alt='Repository contributors'
           sx={{ width: '100%', maxWidth: 500, borderRadius: 1 }}
         />
@@ -80,7 +93,7 @@ const GithubContributors = () => {
             size='small'
             onClick={(e) => {
               e.stopPropagation();
-              window.open(`https://github.com/${REPO}`, '_blank', 'noopener');
+              window.open(`https://github.com/${repo}`, '_blank', 'noopener');
             }}
             aria-label='Open repository'>
             <OpenInNewIcon fontSize='small' />

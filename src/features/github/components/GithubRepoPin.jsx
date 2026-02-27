@@ -7,24 +7,37 @@ import {
   IconButton,
   Chip,
 } from '@mui/material';
+import { useMemo } from 'react';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
+import { getGithubUser } from '../utils/githubUser';
 
-const USER = 'narainkarthikv';
+const REPO_NAME = 'readme-shop';
 
-const REPO_PINS_MARKDOWN = `<a href="https://github.com/${USER}/readme-shop">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=readme-shop&theme=tokyonight&hide_border=true" alt="Repo Pin" />
+const buildRepoPinMarkdown = (userName) =>
+  `<a href="https://github.com/${userName}/${REPO_NAME}">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=${userName}&repo=${REPO_NAME}&theme=tokyonight&hide_border=true" alt="Repo Pin" />
 </a>`;
 
 const GithubRepoPin = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const repoPinMarkdown = useMemo(
+    () => buildRepoPinMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleClick = () => embedMarkdown(REPO_PINS_MARKDOWN);
+  const handleClick = () => embedMarkdown(repoPinMarkdown);
 
   const openInNewTab = () => {
-    window.open(`https://github.com/${USER}/readme-shop`, '_blank', 'noopener');
+    window.open(
+      `https://github.com/${resolvedUserName}/${REPO_NAME}`,
+      '_blank',
+      'noopener'
+    );
   };
 
   return (
@@ -63,13 +76,13 @@ const GithubRepoPin = () => {
           mb: 1,
         }}>
         <a
-          href={`https://github.com/${USER}/readme-shop`}
+          href={`https://github.com/${resolvedUserName}/${REPO_NAME}`}
           target='_blank'
           rel='noopener noreferrer'
           onClick={(e) => e.preventDefault()}>
           <Box
             component='img'
-            src={`https://github-readme-stats.vercel.app/api/pin/?username=${USER}&repo=readme-shop&theme=tokyonight&hide_border=true`}
+            src={`https://github-readme-stats.vercel.app/api/pin/?username=${resolvedUserName}&repo=${REPO_NAME}&theme=tokyonight&hide_border=true`}
             alt='Repository pin card'
             sx={{
               width: '100%',

@@ -27,6 +27,13 @@ Thank you for your interest in contributing! 🚀
 - Follow the existing code style and structure.
 - Use clear, descriptive commit messages.
 
+## Design System Requirements
+
+- Follow [design-system.md](design-system.md) for all UI changes.
+- Reuse semantic tokens from [src/theme/tokens.js](src/theme/tokens.js).
+- Keep [src/theme/theme.js](src/theme/theme.js) as the single source for active MUI theme behavior.
+- Validate light/dark parity and keyboard-visible focus before submitting.
+
 ## Reporting Issues
 
 - Use the [issue templates](.github/ISSUE_TEMPLATE) for bugs or feature requests.

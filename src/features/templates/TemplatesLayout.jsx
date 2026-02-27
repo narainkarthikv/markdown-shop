@@ -4,7 +4,7 @@ import ModernSection from '@/components/ui/ModernSection';
 import TemplatesGrid from '@/components/Templates/TemplatesGrid';
 
 /**
- * TemplatesLayout - Modern 2025+ Design
+ * TemplatesLayout - Modern 2026+ Design
  * Features:
  * - Clean containerized layout matching Components page
  * - Proper spacing and responsive design

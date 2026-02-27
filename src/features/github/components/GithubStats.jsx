@@ -1,21 +1,30 @@
+import { useMemo } from 'react';
 import { Box, Typography, Stack, IconButton, Tooltip } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import { getGithubUser } from '../utils/githubUser';
 
-const STATS_MARKDOWN = [
-  `<img src="https://github-readme-stats.vercel.app/api?username=narainkarthikv&theme=tokyonight&hide_border=true" alt="GitHub Stats" style="width:100%;max-width:400px;margin-right:8px;border-radius:8px;" />`,
-  `<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=narainkarthikv&layout=compact&theme=tokyonight&count_private=true&hide_border=true" alt="Top Languages" style="width:100%;max-width:300px;border-radius:8px;" />`,
-].join('\n');
+const buildStatsMarkdown = (userName) =>
+  [
+    `<img src="https://github-readme-stats.vercel.app/api?username=${userName}&theme=tokyonight&hide_border=true" alt="GitHub Stats" style="width:100%;max-width:400px;margin-right:8px;border-radius:8px;" />`,
+    `<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${userName}&layout=compact&theme=tokyonight&count_private=true&hide_border=true" alt="Top Languages" style="width:100%;max-width:300px;border-radius:8px;" />`,
+  ].join('\n');
 
 const GithubStats = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const statsMarkdown = useMemo(
+    () => buildStatsMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleInsert = () => embedMarkdown(STATS_MARKDOWN);
+  const handleInsert = () => embedMarkdown(statsMarkdown);
 
   const openInNewTab = () => {
-    window.open('https://github.com/narainkarthikv', '_blank', 'noopener');
+    window.open(`https://github.com/${resolvedUserName}`, '_blank', 'noopener');
   };
 
   return (
@@ -57,7 +66,7 @@ const GithubStats = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <DualActionButton
-            content={STATS_MARKDOWN}
+            content={statsMarkdown}
             onInsert={handleInsert}
             contentType='markdown'
             size='small'
@@ -90,8 +99,8 @@ const GithubStats = () => {
         sx={{ mb: 2 }}>
         <Box
           component='img'
-          src='https://github-readme-stats.vercel.app/api?username=narainkarthikv&theme=tokyonight&hide_border=true'
-          alt='GitHub contribution stats for narainkarthikv'
+          src={`https://github-readme-stats.vercel.app/api?username=${resolvedUserName}&theme=tokyonight&hide_border=true`}
+          alt={`GitHub contribution stats for ${resolvedUserName}`}
           sx={{
             width: '100%',
             maxWidth: { xs: 420, sm: 350 },
@@ -103,8 +112,8 @@ const GithubStats = () => {
 
         <Box
           component='img'
-          src='https://github-readme-stats.vercel.app/api/top-langs/?username=narainkarthikv&layout=compact&theme=tokyonight&count_private=true&hide_border=true'
-          alt='Top languages used by narainkarthikv'
+          src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${resolvedUserName}&layout=compact&theme=tokyonight&count_private=true&hide_border=true`}
+          alt={`Top languages used by ${resolvedUserName}`}
           sx={{
             width: '100%',
             maxWidth: { xs: 420, sm: 280 },

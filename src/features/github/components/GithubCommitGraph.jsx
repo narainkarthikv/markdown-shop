@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   Box,
   Typography,
@@ -10,18 +11,24 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
+import { getGithubUser } from '../utils/githubUser';
 
-const USER = 'narainkarthikv';
-
-const COMMITS_MARKDOWN = `<img src="https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&count_private=true&theme=tokyonight&hide_border=true&include_all_commits=true" alt="GitHub Commits" />`;
+const buildCommitsMarkdown = (userName) =>
+  `<img src="https://github-readme-stats.vercel.app/api?username=${userName}&show_icons=true&count_private=true&theme=tokyonight&hide_border=true&include_all_commits=true" alt="GitHub Commits" />`;
 
 const GithubCommitGraph = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const commitsMarkdown = useMemo(
+    () => buildCommitsMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleClick = () => embedMarkdown(COMMITS_MARKDOWN);
+  const handleClick = () => embedMarkdown(commitsMarkdown);
 
   const openInNewTab = () => {
-    window.open(`https://github.com/${USER}`, '_blank', 'noopener');
+    window.open(`https://github.com/${resolvedUserName}`, '_blank', 'noopener');
   };
 
   return (
@@ -54,7 +61,7 @@ const GithubCommitGraph = () => {
 
       <Box
         component='img'
-        src={`https://github-readme-stats.vercel.app/api?username=${USER}&show_icons=true&count_private=true&theme=tokyonight&hide_border=true&include_all_commits=true`}
+        src={`https://github-readme-stats.vercel.app/api?username=${resolvedUserName}&show_icons=true&count_private=true&theme=tokyonight&hide_border=true&include_all_commits=true`}
         alt='GitHub commit statistics'
         sx={{
           width: '100%',

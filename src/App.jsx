@@ -34,30 +34,38 @@ const TemplatesPage = lazy(
 /**
  * SEO Component with helmet for metadata
  */
-const SEO = memo(({ title, description, keywords, isHome = false }) => (
-  <Helmet>
-    <title>{title || 'README Shop'}</title>
-    <meta
-      name='description'
-      content={
-        description ||
-        'Create stunning, professional README files for your projects with our easy-to-use tools and templates.'
-      }
-    />
-    <meta
-      name='keywords'
-      content={
-        keywords ||
-        'readme-shop, README generator, markdown, templates, open source, documentation'
-      }
-    />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <meta name='theme-color' content='#2563eb' />
-    {isHome && (
-      <link rel='canonical' href='https://readmeshopwf.netlify.app/' />
-    )}
-  </Helmet>
-));
+const SEO = memo(
+  ({
+    title,
+    description,
+    keywords,
+    isHome = false,
+    themeColor = '#3B82F6',
+  }) => (
+    <Helmet>
+      <title>{title || 'README Shop'}</title>
+      <meta
+        name='description'
+        content={
+          description ||
+          'Create stunning, professional README files for your projects with our easy-to-use tools and templates.'
+        }
+      />
+      <meta
+        name='keywords'
+        content={
+          keywords ||
+          'readme-shop, README generator, markdown, templates, open source, documentation'
+        }
+      />
+      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      <meta name='theme-color' content={themeColor} />
+      {isHome && (
+        <link rel='canonical' href='https://readmeshopwf.netlify.app/' />
+      )}
+    </Helmet>
+  )
+);
 
 SEO.displayName = 'SEO';
 
@@ -66,6 +74,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   keywords: PropTypes.string,
   isHome: PropTypes.bool,
+  themeColor: PropTypes.string,
 };
 
 /**
@@ -84,13 +93,10 @@ const AppLayout = memo(({ children }) => {
         minHeight: '100vh',
         bgcolor: theme.palette.background.default,
         color: theme.palette.text.primary,
-        backgroundImage:
-          theme.palette.mode === 'dark'
-            ? 'radial-gradient(1200px 600px at 10% -10%, rgba(37, 99, 235, 0.18), transparent 60%), radial-gradient(900px 500px at 90% -20%, rgba(59, 130, 246, 0.12), transparent 60%)'
-            : 'radial-gradient(1200px 600px at 10% -10%, rgba(37, 99, 235, 0.12), transparent 60%), radial-gradient(900px 500px at 90% -20%, rgba(59, 130, 246, 0.08), transparent 60%)',
+        backgroundImage: 'none',
         transition: 'background-color 0.3s ease, color 0.3s ease',
       }}>
-      <SEO isHome={isHome} />
+      <SEO isHome={isHome} themeColor={theme.palette.primary.main} />
 
       {/* Only show Navbar on non-home routes */}
       {!isHome && <Navbar />}

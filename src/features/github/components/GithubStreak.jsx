@@ -1,18 +1,27 @@
+import { useMemo } from 'react';
 import { Box, Typography, Stack, Tooltip, IconButton } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import { getGithubUser } from '../utils/githubUser';
 
-const STREAK_MARKDOWN = `<img src="https://github-readme-streak-stats.herokuapp.com/?user=narainkarthikv&theme=tokyonight&hide_border=true" alt="GitHub Streak Stats" style="width:100%;max-width:500px;border-radius:8px;" />`;
+const buildStreakMarkdown = (userName) =>
+  `<img src="https://github-readme-streak-stats.herokuapp.com/?user=${userName}&theme=tokyonight&hide_border=true" alt="GitHub Streak Stats" style="width:100%;max-width:500px;border-radius:8px;" />`;
 
 const GithubStreak = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const streakMarkdown = useMemo(
+    () => buildStreakMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleInsert = () => embedMarkdown(STREAK_MARKDOWN);
+  const handleInsert = () => embedMarkdown(streakMarkdown);
 
   const openInNewTab = () => {
-    window.open('https://github.com/narainkarthikv', '_blank', 'noopener');
+    window.open(`https://github.com/${resolvedUserName}`, '_blank', 'noopener');
   };
 
   return (
@@ -54,7 +63,7 @@ const GithubStreak = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <DualActionButton
-            content={STREAK_MARKDOWN}
+            content={streakMarkdown}
             onInsert={handleInsert}
             contentType='markdown'
             size='small'
@@ -80,8 +89,8 @@ const GithubStreak = () => {
 
       <Box
         component='img'
-        src='https://github-readme-streak-stats.herokuapp.com/?user=narainkarthikv&theme=tokyonight&hide_border=true'
-        alt='GitHub contribution streak for narainkarthikv'
+        src={`https://github-readme-streak-stats.herokuapp.com/?user=${resolvedUserName}&theme=tokyonight&hide_border=true`}
+        alt={`GitHub contribution streak for ${resolvedUserName}`}
         sx={{
           width: '100%',
           maxWidth: 500,

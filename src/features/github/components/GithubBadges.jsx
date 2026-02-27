@@ -1,21 +1,28 @@
+import { useMemo } from 'react';
 import { Typography, Stack, IconButton, Box, Tooltip } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import { getGithubUser } from '../utils/githubUser';
 
-const USER = 'narainkarthikv';
-
-const BADGES_MD = [
-  `![GitHub stars](https://img.shields.io/github/stars/${USER}?style=for-the-badge&logo=github)`,
-  `![GitHub forks](https://img.shields.io/github/forks/${USER}/readme-shop?style=for-the-badge&logo=github)`,
-  `![Issues](https://img.shields.io/github/issues/${USER}/readme-shop?style=for-the-badge&logo=github)`,
-].join(' ');
+const buildBadgesMarkdown = (userName) =>
+  [
+    `![GitHub stars](https://img.shields.io/github/stars/${userName}?style=for-the-badge&logo=github)`,
+    `![GitHub forks](https://img.shields.io/github/forks/${userName}/readme-shop?style=for-the-badge&logo=github)`,
+    `![Issues](https://img.shields.io/github/issues/${userName}/readme-shop?style=for-the-badge&logo=github)`,
+  ].join(' ');
 
 const GithubBadges = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const badgesMarkdown = useMemo(
+    () => buildBadgesMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleInsert = () => embedMarkdown(BADGES_MD);
+  const handleInsert = () => embedMarkdown(badgesMarkdown);
 
   return (
     <CardContainer
@@ -56,7 +63,7 @@ const GithubBadges = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <DualActionButton
-            content={BADGES_MD}
+            content={badgesMarkdown}
             onInsert={handleInsert}
             contentType='markdown'
             size='small'
@@ -91,19 +98,19 @@ const GithubBadges = () => {
         sx={{ mb: 2 }}>
         <Box
           component='img'
-          src={`https://img.shields.io/github/stars/${USER}?style=for-the-badge&logo=github`}
+          src={`https://img.shields.io/github/stars/${resolvedUserName}?style=for-the-badge&logo=github`}
           alt='GitHub stars badge'
           sx={{ height: 28 }}
         />
         <Box
           component='img'
-          src={`https://img.shields.io/github/forks/${USER}/readme-shop?style=for-the-badge&logo=github`}
+          src={`https://img.shields.io/github/forks/${resolvedUserName}/readme-shop?style=for-the-badge&logo=github`}
           alt='GitHub forks badge'
           sx={{ height: 28 }}
         />
         <Box
           component='img'
-          src={`https://img.shields.io/github/issues/${USER}/readme-shop?style=for-the-badge&logo=github`}
+          src={`https://img.shields.io/github/issues/${resolvedUserName}/readme-shop?style=for-the-badge&logo=github`}
           alt='GitHub issues badge'
           sx={{ height: 28 }}
         />

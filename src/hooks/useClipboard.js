@@ -2,7 +2,7 @@ import { useState, useCallback, useRef } from 'react';
 import { copyToClipboard as copyUtil, logger } from '@utils/index';
 
 /**
- * Enhanced Clipboard Hook - 2025+ UX Pattern
+ * Enhanced Clipboard Hook - 2026+ UX Pattern
  * Provides comprehensive clipboard operations with loading, success, and error states
  * Supports multiple content types: text, markdown, SVG, URLs
  *

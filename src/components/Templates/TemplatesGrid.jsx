@@ -22,7 +22,7 @@ import { NoSearchResults } from '../ui/EmptyState';
 import { useTemplates } from '../../hooks/useTemplates';
 
 /**
- * TemplatesGrid - Modern 2025+ Design
+ * TemplatesGrid - Modern 2026+ Design
  * Features:
  * - Responsive grid/list view toggle
  * - Smart filtering sidebar

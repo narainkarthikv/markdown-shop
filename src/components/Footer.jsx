@@ -32,7 +32,7 @@ const footerLinks = [
       },
       {
         label: 'Wisdom Fox',
-        href: 'https://github.com/Wisdom-Fox',
+        href: 'https://github.com/narainkarthikv',
       },
     ],
   },
@@ -66,21 +66,27 @@ const Footer = React.memo(() => (
       borderTop: `1px solid ${theme.palette.divider}`,
       bgcolor: theme.palette.background.paper,
       color: theme.palette.text.secondary,
-      mt: 6,
+      mt: { xs: 6, md: 8 },
     })}>
-    <Box sx={{ maxWidth: 1200, mx: 'auto', px: 2, py: { xs: 4, md: 6 } }}>
-      <Grid container spacing={4}>
+    <Box
+      sx={{
+        maxWidth: 1200,
+        mx: 'auto',
+        px: { xs: 2, md: 3 },
+        py: { xs: 5, md: 7 },
+      }}>
+      <Grid container spacing={{ xs: 4, md: 5 }}>
         <Grid item xs={12} md={4}>
           <Typography
             variant='h6'
             sx={{ fontWeight: 700, color: 'text.primary' }}>
             README Shop
           </Typography>
-          <Typography variant='body2' sx={{ mt: 1.5, color: 'text.secondary' }}>
+          <Typography variant='body2' sx={{ mt: 2, color: 'text.secondary' }}>
             A fast README builder for open-source maintainers and makers. Curate
             templates, badges, icons, and stats in one clean workflow.
           </Typography>
-          <Typography variant='caption' sx={{ display: 'block', mt: 2 }}>
+          <Typography variant='caption' sx={{ display: 'block', mt: 2.5 }}>
             Built by the Wisdom Fox community.
           </Typography>
         </Grid>
@@ -91,7 +97,7 @@ const Footer = React.memo(() => (
               sx={{ letterSpacing: '0.2em', color: 'text.secondary' }}>
               {group.title}
             </Typography>
-            <Stack spacing={1} sx={{ mt: 1 }}>
+            <Stack spacing={1.25} sx={{ mt: 1.5 }}>
               {group.links.map((link) =>
                 link.internal ? (
                   <MuiLink
@@ -118,9 +124,26 @@ const Footer = React.memo(() => (
           </Grid>
         ))}
       </Grid>
-      <Typography variant='caption' sx={{ display: 'block', mt: 5 }}>
-        © 2026 README Shop. Crafted with care for open source.
-      </Typography>
+      <Box
+        sx={{
+          borderTop: '1px solid',
+          borderColor: 'divider',
+          mt: { xs: 4, md: 5 },
+        }}>
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={1.5}
+          justifyContent='space-between'
+          alignItems={{ sm: 'center' }}
+          sx={{ pt: { xs: 3, md: 3.5 } }}>
+          <Typography variant='caption'>
+            © 2026 README Shop. Crafted with care for open source.
+          </Typography>
+          <Typography variant='caption'>
+            Have feedback? Open an issue or drop a PR.
+          </Typography>
+        </Stack>
+      </Box>
     </Box>
   </Box>
 ));

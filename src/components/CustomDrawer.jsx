@@ -123,7 +123,7 @@ const CustomDrawer = ({ open, onClose, currentPath }) => {
         {/* Footer */}
         <Box sx={{ mt: 'auto', p: 2, textAlign: 'center' }}>
           <Typography variant='caption' color='text.secondary'>
-            README Shop © 2025
+            README Shop © 2026
           </Typography>
         </Box>
       </Box>

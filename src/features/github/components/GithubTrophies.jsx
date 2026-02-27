@@ -1,14 +1,24 @@
+import { useMemo } from 'react';
 import { Box, Typography, IconButton, Tooltip } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import { getGithubUser } from '../utils/githubUser';
 
-const TROPHY_MARKDOWN = `<img src="https://github-profile-trophy.vercel.app/?username=narainkarthikv&theme=tokyonight&no-frame=true&margin-w=4" alt="GitHub Trophies" style="width:100%;max-width:100%;border-radius:8px;" />`;
+const buildTrophyMarkdown = (userName) =>
+  `<img src="https://github-profile-trophy.vercel.app/?username=${userName}&theme=tokyonight&no-frame=true&margin-w=4" alt="GitHub Trophies" style="width:100%;max-width:100%;border-radius:8px;" />`;
 
 const GithubTrophies = () => {
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const trophyMarkdown = useMemo(
+    () => buildTrophyMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
+
   const openInNewTab = () => {
-    window.open('https://github.com/narainkarthikv', '_blank', 'noopener');
+    window.open(`https://github.com/${resolvedUserName}`, '_blank', 'noopener');
   };
 
   return (
@@ -35,7 +45,7 @@ const GithubTrophies = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <DualActionButton
-            content={TROPHY_MARKDOWN}
+            content={trophyMarkdown}
             contentType='markdown'
             variant='compact'
             size='small'
@@ -53,8 +63,8 @@ const GithubTrophies = () => {
 
       <Box
         component='img'
-        src='https://github-profile-trophy.vercel.app/?username=narainkarthikv&theme=tokyonight&no-frame=true&margin-w=4'
-        alt='GitHub trophies for narainkarthikv'
+        src={`https://github-profile-trophy.vercel.app/?username=${resolvedUserName}&theme=tokyonight&no-frame=true&margin-w=4`}
+        alt={`GitHub trophies for ${resolvedUserName}`}
         sx={{
           width: '100%',
           maxWidth: '100%',

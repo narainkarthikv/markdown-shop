@@ -4,7 +4,7 @@ import GithubTrophies from './components/GithubTrophies';
 import GithubBadges from './components/GithubBadges';
 import GithubContributors from './components/GithubContributors';
 import GithubStreak from './components/GithubStreak';
-import GithubActivityGraph from './components/GithubActivityGraph';
+import { GithubActivityGraph } from './components/GithubActivityGraph';
 import ProfileViewsCounter from './components/ProfileViewsCounter';
 import GithubMetrics from './components/GithubMetrics';
 import GithubSnakeContribution from './components/GithubSnakeContribution';

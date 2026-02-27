@@ -24,12 +24,22 @@ const MarkdownPreview = ({ markdown }) => {
         flexDirection: 'column',
         p: 2,
         minHeight: 0,
-        maxWidth: '50%',
+        minWidth: 0,
         position: 'relative',
         overflow: 'hidden',
         '& img': {
           maxWidth: '100%',
           height: 'auto',
+        },
+        '& pre': {
+          overflowX: 'auto',
+          maxWidth: '100%',
+          padding: '12px',
+          borderRadius: 8,
+          backgroundColor: 'rgba(0, 0, 0, 0.04)',
+        },
+        '& code': {
+          wordBreak: 'break-word',
         },
       }}>
       <Typography variant='h6' sx={{ mb: 1 }}>
@@ -42,7 +52,10 @@ const MarkdownPreview = ({ markdown }) => {
           fontSize: 16,
           flex: 1,
           overflowY: 'auto',
+          overflowX: 'hidden',
           paddingRight: '8px',
+          wordBreak: 'break-word',
+          overflowWrap: 'anywhere',
         }}
         dangerouslySetInnerHTML={createMarkup()}
       />

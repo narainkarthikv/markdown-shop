@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   Box,
   Typography,
@@ -10,17 +11,24 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
+import { getGithubUser } from '../utils/githubUser';
 
-const SNAKE_MARKDOWN = `<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/narainkarthikv/narainkarthikv/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/narainkarthikv/narainkarthikv/output/github-contribution-grid-snake.svg">
-  <img alt="GitHub contribution grid snake animation" src="https://raw.githubusercontent.com/narainkarthikv/narainkarthikv/output/github-contribution-grid-snake.svg">
+const buildSnakeMarkdown = (userName) => `<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/${userName}/${userName}/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/${userName}/${userName}/output/github-contribution-grid-snake.svg">
+  <img alt="GitHub contribution grid snake animation" src="https://raw.githubusercontent.com/${userName}/${userName}/output/github-contribution-grid-snake.svg">
 </picture>`;
 
 const GithubSnakeContribution = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const snakeMarkdown = useMemo(
+    () => buildSnakeMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleClick = () => embedMarkdown(SNAKE_MARKDOWN);
+  const handleClick = () => embedMarkdown(snakeMarkdown);
 
   const openInNewTab = () => {
     window.open('https://github.com/Platane/snk', '_blank', 'noopener');
@@ -67,8 +75,8 @@ const GithubSnakeContribution = () => {
           border: (theme) => `1px solid ${theme.palette.divider}`,
         }}>
         <img
-          src='https://raw.githubusercontent.com/narainkarthikv/narainkarthikv/output/github-contribution-grid-snake.svg'
-          alt='GitHub snake contribution animation for narainkarthikv'
+          src={`https://raw.githubusercontent.com/${resolvedUserName}/${resolvedUserName}/output/github-contribution-grid-snake.svg`}
+          alt={`GitHub snake contribution animation for ${resolvedUserName}`}
           style={{
             width: '100%',
             maxWidth: 800,

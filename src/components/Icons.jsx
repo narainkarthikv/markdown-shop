@@ -126,7 +126,7 @@ const IconItem = memo(({ icon, isSelected, onClick }) => {
 IconItem.displayName = 'IconItem';
 
 /**
- * Modern Icons Component - 2025+ Design
+ * Modern Icons Component - 2026+ Design
  * Features:
  * - Clean, searchable grid layout
  * - Selected icons preview with dual-action buttons

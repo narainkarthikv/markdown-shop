@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import {
   Box,
   Typography,
@@ -10,13 +11,21 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
+import { getGithubUser } from '../utils/githubUser';
 
-const METRICS_MARKDOWN = `<img src="https://metrics.lecoq.io/narainkarthikv?template=classic&config.timezone=America%2FNew_York" alt="GitHub Metrics" style="width:100%;border-radius:8px;" />`;
+const buildMetricsMarkdown = (userName) =>
+  `<img src="https://metrics.lecoq.io/${userName}?template=classic&config.timezone=America%2FNew_York" alt="GitHub Metrics" style="width:100%;border-radius:8px;" />`;
 
 const GithubMetrics = () => {
   const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const metricsMarkdown = useMemo(
+    () => buildMetricsMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
 
-  const handleClick = () => embedMarkdown(METRICS_MARKDOWN);
+  const handleClick = () => embedMarkdown(metricsMarkdown);
 
   const openInNewTab = () => {
     window.open('https://github.com/lowlighter/metrics', '_blank', 'noopener');
@@ -52,8 +61,8 @@ const GithubMetrics = () => {
 
       <Box
         component='img'
-        src='https://metrics.lecoq.io/narainkarthikv?template=classic&config.timezone=America%2FNew_York'
-        alt='Detailed GitHub metrics for narainkarthikv'
+        src={`https://metrics.lecoq.io/${resolvedUserName}?template=classic&config.timezone=America%2FNew_York`}
+        alt={`Detailed GitHub metrics for ${resolvedUserName}`}
         sx={{
           width: '100%',
           maxWidth: 600,

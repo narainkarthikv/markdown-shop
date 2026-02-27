@@ -48,7 +48,7 @@ README-SHOP is a modern React 18 + Vite application for building and customizing
 ## UI/UX Guidelines
 
 - Maintain a clean, modern, and responsive layout.
-- Use MUI components and theme tokens from `src/theme/theme.js` for consistency.
+- Use MUI components and semantic tokens from `src/theme/tokens.js` and theme behavior from `src/theme/theme.js` for consistency.
 - Prefer subtle motion via Framer Motion; avoid heavy or distracting animations.
 - Respect accessibility: semantic HTML, focus states, keyboard navigation, and ARIA where needed.
 - Keep interactions snappy and predictable; ensure components work in light and dark themes.
@@ -78,8 +78,15 @@ README-SHOP is a modern React 18 + Vite application for building and customizing
 - For feature-specific UI, place under `src/features/<feature>/components/`.
 - Update routes via `src/routes/index.js` if new pages are introduced.
 
+# Design System & UI Guidelines
+
+Refer to `design-system.md` for detailed design tokens, color palette, typography, and component patterns. When implementing UI components, always reference the design system for consistency. 
+
+---
+
 ## Expectations for Copilot
 
 - Be precise, minimal, and consistent with the current code style.
 - Do not introduce new libraries without a clear benefit.
+- Treat `design-system.md` as the Wisdom Fox source of truth for UI decisions.
 - If requirements are unclear, ask a concise question before implementing.

@@ -32,7 +32,7 @@ const CtaSection = () => {
           <Grid container spacing={3} alignItems='center'>
             <Grid item xs={12} md={7}>
               <Typography variant='h3' sx={{ fontWeight: 700, mb: 1.5 }}>
-                Ready to ship a README that feels premium?
+                Ready to ship a README that feels polished?
               </Typography>
               <Typography
                 variant='body1'

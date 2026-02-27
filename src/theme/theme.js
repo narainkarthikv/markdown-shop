@@ -4,6 +4,7 @@ import {
   lightTokens,
   darkTokens,
   typography as designTypography,
+  borderRadius,
   animation,
 } from './tokens';
 
@@ -91,10 +92,32 @@ const buildShadows = (tokens) => [
  * Common component overrides with enhanced modern styling
  */
 const getComponentOverrides = (mode, tokens) => ({
+  MuiCssBaseline: {
+    styleOverrides: {
+      body: {
+        scrollbarWidth: 'thin',
+        scrollbarColor: `${tokens.border} ${tokens.background}`,
+        '&::-webkit-scrollbar': {
+          width: '8px',
+          height: '8px',
+        },
+        '&::-webkit-scrollbar-track': {
+          background: tokens.background,
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: tokens.border,
+          borderRadius: borderRadius.sm,
+          '&:hover': {
+            background: tokens.borderStrong,
+          },
+        },
+      },
+    },
+  },
   MuiButton: {
     styleOverrides: {
       root: {
-        borderRadius: 10,
+        borderRadius: borderRadius.sm,
         padding: '8px 20px',
         fontSize: '0.9rem',
         fontWeight: designTypography.fontWeight.semibold,
@@ -124,7 +147,7 @@ const getComponentOverrides = (mode, tokens) => ({
   MuiCard: {
     styleOverrides: {
       root: {
-        borderRadius: 14,
+        borderRadius: borderRadius.md,
         boxShadow: 'none',
         border: `1px solid ${tokens.borderSubtle}`,
         transition: `transform ${animation.duration.base} ${animation.easing.out}, box-shadow ${animation.duration.base} ${animation.easing.out}, border-color ${animation.duration.base} ${animation.easing.out}`,
@@ -138,7 +161,7 @@ const getComponentOverrides = (mode, tokens) => ({
     styleOverrides: {
       root: {
         '& .MuiOutlinedInput-root': {
-          borderRadius: 10,
+          borderRadius: borderRadius.md,
           transition: `border-color ${animation.duration.base} ${animation.easing.out}, box-shadow ${animation.duration.base} ${animation.easing.out}`,
           '&:hover .MuiOutlinedInput-notchedOutline': {
             borderWidth: 2,
@@ -150,10 +173,33 @@ const getComponentOverrides = (mode, tokens) => ({
       },
     },
   },
+  MuiInputBase: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.md,
+      },
+    },
+  },
+  MuiOutlinedInput: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.md,
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderColor: tokens.border,
+        },
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+          borderColor: tokens.borderStrong,
+        },
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          borderColor: tokens.borderFocus,
+        },
+      },
+    },
+  },
   MuiPaper: {
     styleOverrides: {
       root: {
-        borderRadius: 12,
+        borderRadius: borderRadius.lg,
         transition: `box-shadow ${animation.duration.base} ${animation.easing.out}`,
       },
       elevation0: {
@@ -170,8 +216,107 @@ const getComponentOverrides = (mode, tokens) => ({
   MuiIconButton: {
     styleOverrides: {
       root: {
-        borderRadius: 10,
+        borderRadius: borderRadius.sm,
         transition: `transform ${animation.duration.fast} ${animation.easing.out}, background-color ${animation.duration.fast} ${animation.easing.out}`,
+      },
+    },
+  },
+  MuiButtonGroup: {
+    styleOverrides: {
+      grouped: {
+        borderRadius: borderRadius.sm,
+      },
+    },
+  },
+  MuiChip: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.sm,
+      },
+    },
+  },
+  MuiAlert: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.md,
+        border: `1px solid ${tokens.border}`,
+      },
+    },
+  },
+  MuiTooltip: {
+    styleOverrides: {
+      tooltip: {
+        borderRadius: borderRadius.sm,
+        backgroundColor:
+          mode === 'dark' ? tokens.surfaceElevated : tokens.textPrimary,
+        color: mode === 'dark' ? tokens.textPrimary : tokens.textInverse,
+      },
+      arrow: {
+        color: mode === 'dark' ? tokens.surfaceElevated : tokens.textPrimary,
+      },
+    },
+  },
+  MuiDialog: {
+    styleOverrides: {
+      paper: {
+        borderRadius: borderRadius.lg,
+        border: `1px solid ${tokens.borderSubtle}`,
+      },
+    },
+  },
+  MuiMenu: {
+    styleOverrides: {
+      paper: {
+        borderRadius: borderRadius.md,
+        border: `1px solid ${tokens.borderSubtle}`,
+      },
+    },
+  },
+  MuiMenuItem: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.sm,
+        margin: '2px 6px',
+      },
+    },
+  },
+  MuiTabs: {
+    styleOverrides: {
+      indicator: {
+        backgroundColor: tokens.primary,
+        height: 2,
+      },
+    },
+  },
+  MuiTab: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.sm,
+        textTransform: 'none',
+      },
+    },
+  },
+  MuiToggleButton: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.sm,
+      },
+    },
+  },
+  MuiFab: {
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.md,
+      },
+    },
+  },
+  MuiAvatar: {
+    defaultProps: {
+      variant: 'rounded',
+    },
+    styleOverrides: {
+      root: {
+        borderRadius: borderRadius.sm,
       },
     },
   },
@@ -180,10 +325,7 @@ const getComponentOverrides = (mode, tokens) => ({
       root: {
         borderRadius: 0,
         backdropFilter: 'blur(12px)',
-        backgroundColor:
-          mode === THEME_OPTIONS.DARK
-            ? 'rgba(15, 23, 42, 0.9)'
-            : 'rgba(255, 255, 255, 0.9)',
+        backgroundColor: tokens.surfaceOverlay,
         borderBottom: `1px solid ${tokens.borderSubtle}`,
         boxShadow: 'none',
       },
@@ -232,10 +374,8 @@ const buildPalette = (tokens, mode) => ({
     hover: tokens.primarySubtle,
     selected: tokens.primaryMuted,
     focus: tokens.primaryMuted,
-    disabled:
-      mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(17, 24, 39, 0.3)',
-    disabledBackground:
-      mode === 'dark' ? 'rgba(255, 255, 255, 0.12)' : 'rgba(17, 24, 39, 0.08)',
+    disabled: tokens.textTertiary,
+    disabledBackground: tokens.interactiveDisabled,
   },
   success: {
     main: tokens.success,
@@ -258,7 +398,7 @@ const lightTheme = {
   typography: baseTypography,
   palette: buildPalette(lightTokens, 'light'),
   shape: {
-    borderRadius: 12,
+    borderRadius: 8,
   },
   shadows: buildShadows(lightTokens),
 };
@@ -270,7 +410,7 @@ const darkTheme = {
   typography: baseTypography,
   palette: buildPalette(darkTokens, 'dark'),
   shape: {
-    borderRadius: 12,
+    borderRadius: 8,
   },
   shadows: buildShadows(darkTokens),
 };
@@ -305,5 +445,6 @@ export const getTheme = (mode = THEME_OPTIONS.DEFAULT) => {
       },
     },
     components: getComponentOverrides(mode, tokens),
+    customTokens: tokens,
   });
 };

@@ -1,12 +1,21 @@
+import { useMemo } from 'react';
 import { Box, Typography } from '@mui/material';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import useMarkdownStore from '@/features/markdown/store/markdownStore';
+import { getGithubUser } from '../utils/githubUser';
 
-const USER = 'narainkarthikv';
-
-const FOLLOWERS_MARKDOWN = `<img src="https://img.shields.io/github/followers/${USER}?label=Followers&style=social" alt="GitHub Followers" />`;
+const buildFollowersMarkdown = (userName) =>
+  `<img src="https://img.shields.io/github/followers/${userName}?label=Followers&style=social" alt="GitHub Followers" />`;
 
 const GithubFollowers = () => {
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const followersMarkdown = useMemo(
+    () => buildFollowersMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
+
   return (
     <CardContainer
       sx={{
@@ -30,7 +39,7 @@ const GithubFollowers = () => {
         </Typography>
 
         <DualActionButton
-          content={FOLLOWERS_MARKDOWN}
+          content={followersMarkdown}
           contentType='markdown'
           variant='compact'
           size='small'
@@ -45,7 +54,7 @@ const GithubFollowers = () => {
           py: 2,
         }}>
         <img
-          src={`https://img.shields.io/github/followers/${USER}?label=Followers&style=social`}
+          src={`https://img.shields.io/github/followers/${resolvedUserName}?label=Followers&style=social`}
           alt='GitHub followers badge'
           style={{ height: 24 }}
         />

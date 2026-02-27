@@ -9,6 +9,10 @@ const useMarkdownStore = create((set) => ({
   setMarkdown: (markdown) => set({ markdown }),
   setUserName: (userName) => set({ userName }),
   setTheme: (theme) => set({ theme }),
+  insertSection: (content) =>
+    set((state) => ({
+      markdown: state.markdown ? `${state.markdown}\n\n${content}` : content,
+    })),
   embedMarkdown: (content) =>
     set((state) => ({
       markdown: state.markdown ? `${state.markdown}\n${content}` : content,

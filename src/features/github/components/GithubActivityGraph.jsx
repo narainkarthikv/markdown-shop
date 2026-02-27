@@ -1,13 +1,24 @@
+import { useMemo } from 'react';
 import { Box, Typography, IconButton, Tooltip } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import useMarkdownStore from '@/features/markdown/store/markdownStore';
+import { getGithubUser } from '../utils/githubUser';
 
-const ACTIVITY_MARKDOWN = `<img src="https://github-readme-activity-graph.vercel.app/graph?username=narainkarthikv&theme=tokyo-night&hide_border=true" alt="GitHub Activity Graph" style="width:100%;border-radius:8px;" />`;
+const buildActivityMarkdown = (userName) =>
+  `<img src="https://github-readme-activity-graph.vercel.app/graph?username=${userName}&theme=tokyo-night&hide_border=true" alt="GitHub Activity Graph" style="width:100%;border-radius:8px;" />`;
 
-const GithubActivityGraph = () => {
+export const GithubActivityGraph = () => {
+  const userName = useMarkdownStore((state) => state.userName);
+  const resolvedUserName = getGithubUser(userName);
+  const activityMarkdown = useMemo(
+    () => buildActivityMarkdown(resolvedUserName),
+    [resolvedUserName]
+  );
+
   const openInNewTab = () => {
-    window.open('https://github.com/narainkarthikv', '_blank', 'noopener');
+    window.open(`https://github.com/${resolvedUserName}`, '_blank', 'noopener');
   };
 
   return (
@@ -34,7 +45,7 @@ const GithubActivityGraph = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <DualActionButton
-            content={ACTIVITY_MARKDOWN}
+            content={activityMarkdown}
             contentType='markdown'
             variant='compact'
             size='small'
@@ -52,8 +63,8 @@ const GithubActivityGraph = () => {
 
       <Box
         component='img'
-        src='https://github-readme-activity-graph.vercel.app/graph?username=narainkarthikv&theme=tokyo-night&hide_border=true'
-        alt='GitHub activity graph for narainkarthikv'
+        src={`https://github-readme-activity-graph.vercel.app/graph?username=${resolvedUserName}&theme=tokyo-night&hide_border=true`}
+        alt={`GitHub activity graph for ${resolvedUserName}`}
         sx={{
           width: '100%',
           borderRadius: 1,

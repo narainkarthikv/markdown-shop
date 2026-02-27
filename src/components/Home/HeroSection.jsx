@@ -110,9 +110,9 @@ const HeroSection = () => {
                     maxWidth: 520,
                     mb: 3,
                   }}>
-                  README Shop blends templates, badges, icons, and GitHub stats
-                  into a single workflow so your project ships with clarity and
-                  confidence.
+                  Structure your README with confidence. Build clean,
+                  ready-to-publish documentation using guided templates and live
+                  previews.
                 </Typography>
               </motion.div>
 

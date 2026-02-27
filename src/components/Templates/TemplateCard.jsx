@@ -205,7 +205,7 @@ TemplatePreview.propTypes = {
 };
 
 /**
- * TemplateCard - Modern 2025+ Design
+ * TemplateCard - Modern 2026+ Design
  * Features:
  * - Clean card layout with hover effects
  * - Unified button styling matching DualActionButton from Components section
@@ -299,7 +299,7 @@ const TemplateCard = ({
               zIndex: 2,
               bgcolor: 'success.main',
               color: 'success.contrastText',
-              borderRadius: '50%',
+              borderRadius: 1,
               p: 0.5,
               display: 'flex',
               alignItems: 'center',
