@@ -75,7 +75,7 @@ const Footer = React.memo(() => (
         px: { xs: 2, md: 3 },
         py: { xs: 5, md: 7 },
       }}>
-      <Grid container spacing={{ xs: 4, md: 5 }}>
+      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="space-between">
         <Grid item xs={12} md={4}>
           <Typography
             variant='h6'
