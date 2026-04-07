@@ -42,7 +42,7 @@ export const API_ENDPOINTS = {
 export const THEME_OPTIONS = {
   LIGHT: 'light',
   DARK: 'dark',
-  DEFAULT: 'light',
+  DEFAULT: 'dark',
 };
 
 /**

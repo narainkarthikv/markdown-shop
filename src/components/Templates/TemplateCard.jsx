@@ -14,7 +14,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
   IconButton,
   Divider,
 } from '@mui/material';
@@ -378,10 +377,14 @@ const TemplateCard = ({
         onClose={handlePreviewClose}
         maxWidth='md'
         fullWidth
+        scroll='paper'
         PaperProps={{
           sx: {
             borderRadius: 2,
+            position: 'fixed',
             maxHeight: '85vh',
+            display: 'flex',
+            overflow: 'hidden',
           },
         }}>
         <DialogTitle
@@ -408,20 +411,38 @@ const TemplateCard = ({
               />
             )}
           </Box>
-          <IconButton
-            onClick={handlePreviewClose}
-            size='small'
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { bgcolor: alpha(theme.palette.text.secondary, 0.1) },
-            }}>
-            <CloseIcon />
-          </IconButton>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <ButtonGroup variant='contained' size='small'>
+              <Button
+                onClick={handleCopy}
+                startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
+                color={copied ? 'success' : 'primary'}
+                sx={{ borderRadius: '6px 0 0 6px' }}>
+                {copied ? 'Copied' : 'Copy'}
+              </Button>
+              <Button
+                onClick={handleUse}
+                startIcon={<AddIcon />}
+                color='primary'
+                sx={{ borderRadius: '0 6px 6px 0' }}>
+                Use Template
+              </Button>
+            </ButtonGroup>
+            <IconButton
+              onClick={handlePreviewClose}
+              size='small'
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { bgcolor: alpha(theme.palette.text.secondary, 0.1) },
+              }}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
         </DialogTitle>
 
         <Divider />
 
-        <DialogContent sx={{ pt: 3 }}>
+        <DialogContent sx={{ pt: 3, overflowY: 'auto' }}>
           <Typography
             variant='body2'
             color='text.secondary'
@@ -463,33 +484,6 @@ const TemplateCard = ({
           </Paper>
         </DialogContent>
 
-        <Divider />
-
-        <DialogActions sx={{ p: 2.5, gap: 1 }}>
-          <Button
-            onClick={handlePreviewClose}
-            variant='outlined'
-            color='inherit'
-            sx={{ borderRadius: 1.5 }}>
-            Close
-          </Button>
-          <ButtonGroup variant='contained' size='medium'>
-            <Button
-              onClick={handleCopy}
-              startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
-              color={copied ? 'success' : 'primary'}
-              sx={{ borderRadius: '6px 0 0 6px' }}>
-              {copied ? 'Copied' : 'Copy'}
-            </Button>
-            <Button
-              onClick={handleUse}
-              startIcon={<AddIcon />}
-              color='primary'
-              sx={{ borderRadius: '0 6px 6px 0' }}>
-              Use Template
-            </Button>
-          </ButtonGroup>
-        </DialogActions>
       </Dialog>
     </>
   );
