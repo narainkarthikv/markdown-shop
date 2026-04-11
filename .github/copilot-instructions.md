@@ -1,10 +1,10 @@
 # GitHub Copilot Instructions
 
-Use this file as the source of truth for working in the README-SHOP codebase. Prefer the repository contents over external assumptions.
+Use this file as the source of truth for working in the Markdown Shop codebase. Prefer the repository contents over external assumptions.
 
 ## Project Summary
 
-README-SHOP is a modern React 18 + Vite application for building and customizing GitHub README files. The app provides templates, icons, GitHub stats components, a markdown editor with live preview, and export/embed options. Styling is primarily Material UI (MUI) with Emotion, with motion effects via Framer Motion.
+Markdown Shop is a modern React 18 + Vite application for building and customizing GitHub README files. The app provides templates, icons, GitHub stats components, a markdown editor with live preview, and export/embed options. Styling is primarily Material UI (MUI) with Emotion, with motion effects via Framer Motion.
 
 ## Tech Stack
 

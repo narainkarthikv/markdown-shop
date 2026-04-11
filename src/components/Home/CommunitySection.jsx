@@ -49,7 +49,7 @@ const CommunitySection = () => {
               mx: 'auto',
               mb: 3,
             }}>
-            README Shop is built by the Wisdom Fox community. If this project
+            Markdown Shop is built by the Wisdom Fox community. If this project
             helps your work, consider supporting ongoing development and open
             tooling for creators.
           </Typography>
@@ -68,7 +68,7 @@ const CommunitySection = () => {
             <Button
               variant='outlined'
               color='primary'
-              href='https://github.com/narainkarthikv/readme-shop'
+              href='https://github.com/narainkarthikv/markdown-shop'
               target='_blank'
               rel='noreferrer'>
               Star on GitHub

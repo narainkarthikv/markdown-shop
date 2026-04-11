@@ -1,6 +1,6 @@
 # Contributors
 
-- [Wisdom Fox](https://github.com/narainkarthikv) **Creator of README-SHOP**
+- [Wisdom Fox](https://github.com/narainkarthikv) **Creator of Markdown Shop**
 
 ## Open Source Contributors
 

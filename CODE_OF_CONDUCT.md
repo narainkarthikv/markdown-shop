@@ -24,7 +24,7 @@ Examples of unacceptable behavior:
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders via:
 
-- https://github.com/narainkarthikv/readme-shop/issues/new?template=other_request.md
+- https://github.com/narainkarthikv/markdown-shop/issues/new?template=other_request.md
 
 ---
 

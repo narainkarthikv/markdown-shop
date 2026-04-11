@@ -3,7 +3,7 @@ export const STORAGE_KEYS = {
 };
 
 export const GITHUB_URLS = {
-  REPOSITORY: 'https://github.com/narainkarthikv/readme-shop',
+  REPOSITORY: 'https://github.com/narainkarthikv/markdown-shop',
   COMMUNITY: 'https://github.com/narainkarthikv',
 };
 

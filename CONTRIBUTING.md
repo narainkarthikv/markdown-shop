@@ -1,4 +1,4 @@
-# Contributing to README-SHOP
+# Contributing to Markdown Shop
 
 Thank you for your interest in contributing! 🚀
 

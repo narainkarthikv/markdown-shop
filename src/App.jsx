@@ -43,7 +43,7 @@ const SEO = memo(
     themeColor = '#3B82F6',
   }) => (
     <Helmet>
-      <title>{title || 'README Shop'}</title>
+      <title>{title || 'Markdown Shop'}</title>
       <meta
         name='description'
         content={
@@ -55,13 +55,13 @@ const SEO = memo(
         name='keywords'
         content={
           keywords ||
-          'readme-shop, README generator, markdown, templates, open source, documentation'
+          'markdown shop, README generator, markdown, templates, open source, documentation'
         }
       />
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <meta name='theme-color' content={themeColor} />
       {isHome && (
-        <link rel='canonical' href='https://readmeshopwf.netlify.app/' />
+        <link rel='canonical' href='https://markdownshop.netlify.app/' />
       )}
     </Helmet>
   )

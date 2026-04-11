@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, alpha, useTheme } from '@mui/material';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 
-const SVG_BANNER_MARKDOWN = `<a href="https://github.com/narainkarthikv/svg-banners" target="_blank"><img src="https://svg-banners.vercel.app/api?type=luminance&text1=README%20SHOP&width=1000&height=200" alt="SVG Banner" style="width:100%;max-width:600px;border-radius:8px;" /></a>`;
+const SVG_BANNER_MARKDOWN = `<a href="https://github.com/narainkarthikv/svg-banners" target="_blank"><img src="https://svg-banners.vercel.app/api?type=luminance&text1=Markdown%20Shop&width=1000&height=200" alt="SVG Banner" style="width:100%;max-width:600px;border-radius:8px;" /></a>`;
 
 const SvgBanners = React.memo(() => {
   const theme = useTheme();
@@ -74,8 +74,8 @@ const SvgBanners = React.memo(() => {
           rel='noopener noreferrer'
           onClick={(e) => e.preventDefault()}>
           <img
-            src='https://svg-banners.vercel.app/api?type=luminance&text1=README%20SHOP&width=1000&height=200'
-            alt='SVG Banner - README SHOP'
+            src='https://svg-banners.vercel.app/api?type=luminance&text1=Markdown%20Shop&width=1000&height=200'
+            alt='SVG Banner - MARKDOWN SHOP'
             style={{
               width: '100%',
               maxWidth: 500,

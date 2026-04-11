@@ -52,7 +52,7 @@ const TrustSection = () => {
           mx: 'auto',
           mb: 5,
         }}>
-        README Shop respects your work: no lock-in, no noisy marketing, just
+        Markdown Shop respects your work: no lock-in, no noisy marketing, just
         clean documentation that earns confidence.
       </Typography>
 
