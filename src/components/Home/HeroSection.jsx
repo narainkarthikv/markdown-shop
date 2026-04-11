@@ -184,7 +184,7 @@ const HeroSection = () => {
                   <Typography
                     variant='overline'
                     sx={{ letterSpacing: '0.2em' }}>
-                    README SHOP
+                    MARKDOWN SHOP
                   </Typography>
                   <Typography
                     variant='h4'

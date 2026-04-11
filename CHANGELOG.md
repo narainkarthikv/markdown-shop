@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial README-SHOP application foundation.
+- Initial Markdown Shop application foundation.
 - Icons and badges components, including icon/badge data sources.
 - README templates support with drawer and template expansion.
 - Output enhancements such as auto-populated icons and badges.
@@ -50,4 +50,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home page and core feature files repeatedly reorganized for clarity.
 - Theme and UI consistency refactors for long-term maintainability.
 
-[Unreleased]: https://github.com/narainkarthikv/readme-shop/compare/1618fbf...HEAD
+[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/1618fbf...HEAD

@@ -30,8 +30,8 @@ const InfoSection = () => {
   const theme = useTheme();
 
   return (
-    <Section aria-label='Why README Shop'>
-      <SectionTitle>Why README Shop</SectionTitle>
+    <Section aria-label='Why Markdown Shop'>
+      <SectionTitle>Why Markdown Shop</SectionTitle>
       <Typography
         variant='body1'
         sx={{

@@ -1,14 +1,14 @@
-# README-SHOP
+# Markdown Shop
 
-[![License](https://img.shields.io/github/license/narainkarthikv/readme-shop)](./LICENSE)
-[![Version](https://img.shields.io/github/package-json/v/narainkarthikv/readme-shop)](./package.json)
-[![Last Commit](https://img.shields.io/github/last-commit/narainkarthikv/readme-shop)](https://github.com/narainkarthikv/readme-shop/commits/develop)
-[![GitHub issues](https://img.shields.io/github/issues/narainkarthikv/readme-shop)](https://github.com/narainkarthikv/readme-shop/issues)
-[![GitHub stars](https://img.shields.io/github/stars/narainkarthikv/readme-shop)](https://github.com/narainkarthikv/readme-shop/stargazers)
+[![License](https://img.shields.io/github/license/narainkarthikv/markdown-shop)](./LICENSE)
+[![Version](https://img.shields.io/github/package-json/v/narainkarthikv/markdown-shop)](./package.json)
+[![Last Commit](https://img.shields.io/github/last-commit/narainkarthikv/markdown-shop)](https://github.com/narainkarthikv/markdown-shop/commits/develop)
+[![GitHub issues](https://img.shields.io/github/issues/narainkarthikv/markdown-shop)](https://github.com/narainkarthikv/markdown-shop/issues)
+[![GitHub stars](https://img.shields.io/github/stars/narainkarthikv/markdown-shop)](https://github.com/narainkarthikv/markdown-shop/stargazers)
 
 **Structure your README with confidence. Build clean, ready-to-publish documentation using guided templates and live previews.**
 
-README-SHOP is a React 18 + Vite web app that helps you assemble professional README files using templates, badges, GitHub stats components, and a live markdown editor. The output is sanitized and ready to copy or embed.
+Markdown Shop is a React 18 + Vite web app that helps you assemble professional README files using templates, badges, GitHub stats components, and a live markdown editor. The output is sanitized and ready to copy or embed.
 
 ## ✨ Features
 
@@ -31,8 +31,8 @@ README-SHOP is a React 18 + Vite web app that helps you assemble professional RE
 
 ````bash
 # Clone the repository
-git clone https://github.com/narainkarthikv/readme-shop.git
-cd readme-shop
+git clone https://github.com/narainkarthikv/markdown-shop.git
+cd markdown-shop
 
 # Install dependencies
 npm install
@@ -83,7 +83,7 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-readme-shop/
+markdown-shop/
 ├── public/
 ├── src/
 │   ├── assets/data/       # Templates and icon catalogs
@@ -103,7 +103,7 @@ readme-shop/
 
 ## 🔑 Environment Variables
 
-README-SHOP does not require any environment variables for local development.
+Markdown Shop does not require any environment variables for local development.
 
 ## 🧪 Development
 
@@ -147,8 +147,8 @@ This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for
 
 ## 🔗 Links
 
-- **Live Demo**: https://readmeshopwf.netlify.app/
-- **Repository**: https://github.com/narainkarthikv/readme-shop
+- **Live Demo**: https://markdownshop.netlify.app/
+- **Repository**: https://github.com/narainkarthikv/markdown-shop
 
 ### Contribution workflow (detailed)
 
@@ -188,13 +188,13 @@ This project is licensed under the **MIT License**. See [LICENSE](./LICENSE) for
 
 ## 👥 Contributors
 
-Thanks to everyone who has helped make README-SHOP awesome! 💪
+Thanks to everyone who has helped make Markdown Shop awesome! 💪
 
-<a href="https://github.com/narainkarthikv/readme-shop/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=narainkarthikv/readme-shop" />
+<a href="https://github.com/narainkarthikv/markdown-shop/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=narainkarthikv/markdown-shop" />
 </a>
 
-See the [Contributors Page](https://github.com/narainkarthikv/readme-shop/blob/main/Contributors.md) for the full list.
+See the [Contributors Page](https://github.com/narainkarthikv/markdown-shop/blob/main/Contributors.md) for the full list.
 
 ### How to Add Yourself
 
@@ -204,12 +204,12 @@ When your PR is merged, add yourself to the `Contributors.md` file following the
 
 ## Support
 
-If you find README-SHOP helpful:
+If you find Markdown Shop helpful:
 
 - ⭐ **Star the repository** on GitHub
-- 🐛 **Report bugs** through [Issues](https://github.com/narainkarthikv/readme-shop/issues)
-- 💡 **Suggest features** in [Discussions](https://github.com/narainkarthikv/readme-shop/discussions)
-- 📢 **Share** README-SHOP with your network
+- 🐛 **Report bugs** through [Issues](https://github.com/narainkarthikv/markdown-shop/issues)
+- 💡 **Suggest features** in [Discussions](https://github.com/narainkarthikv/markdown-shop/discussions)
+- 📢 **Share** Markdown Shop with your network
 - 💬 **Participate** in community discussions
 
 ### Special Thanks
@@ -234,10 +234,11 @@ See the [LICENSE](./LICENSE) file for full details.
 
 ## 🔗 Quick Links
 
-- **Website:** [readme-shop.vercel.app](https://readme-shop.vercel.app/)
-- **GitHub Repository:** [narainkarthikv/readme-shop](https://github.com/narainkarthikv/readme-shop)
-- **Issues:** [Report a bug or request a feature](https://github.com/narainkarthikv/readme-shop/issues)
-- **Discussions:** [Join the community](https://github.com/narainkarthikv/readme-shop/discussions)
+- **Production:** [markdownshop.netlify.app](https://markdownshop.netlify.app/)
+- **Development:** [markdownshop-dev.vercel.app](https://markdownshop-dev.vercel.app/)
+- **GitHub Repository:** [narainkarthikv/markdown-shop](https://github.com/narainkarthikv/markdown-shop)
+- **Issues:** [Report a bug or request a feature](https://github.com/narainkarthikv/markdown-shop/issues)
+- **Discussions:** [Join the community](https://github.com/narainkarthikv/markdown-shop/discussions)
 - **Contributing Guide:** [CONTRIBUTING.md](./CONTRIBUTING.md)
 - **Code of Conduct:** [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
 - **Security Policy:** [SECURITY.md](./SECURITY.md)
@@ -257,7 +258,7 @@ See the [LICENSE](./LICENSE) file for full details.
 
 ## 💡 Final Thoughts
 
-We're building **README-SHOP** as a community-driven tool to help developers create professional, engaging GitHub README files with ease. Your code, ideas, and feedback make it stronger every day.
+We're building **Markdown Shop** as a community-driven tool to help developers create professional, engaging GitHub README files with ease. Your code, ideas, and feedback make it stronger every day.
 
 Whether you're fixing a typo, improving performance, adding a new template, or building amazing features — **every contribution matters!** 🏗️💚
 

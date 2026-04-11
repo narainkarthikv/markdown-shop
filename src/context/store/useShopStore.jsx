@@ -6,7 +6,7 @@ const initialState = {
   badgeSearchTerm: '',
   selectedBadges: [],
   iconSearchTerm: '',
-  themeMode: 'light',
+  themeMode: 'dark',
   loading: false,
   error: null,
 };

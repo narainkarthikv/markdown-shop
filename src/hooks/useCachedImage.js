@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const CACHE_NAME = 'readme-shop-image-cache-v1';
+const CACHE_NAME = 'markdown-shop-image-cache-v1';
 
 const fetchCachedImage = async (url) => {
   if (!('caches' in window)) {

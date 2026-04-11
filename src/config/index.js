@@ -14,16 +14,16 @@ export const ENV = {
  * Storage Keys
  */
 export const STORAGE_KEYS = {
-  THEME_MODE: 'readme-shop-theme-mode',
-  USER_PREFERENCES: 'readme-shop-preferences',
-  STORE: 'readme-shop-store',
+  THEME_MODE: 'markdown-shop-theme-mode',
+  USER_PREFERENCES: 'markdown-shop-preferences',
+  STORE: 'markdown-shop-store',
 };
 
 /**
  * External URLs
  */
 export const GITHUB_URLS = {
-  REPOSITORY: 'https://github.com/narainkarthikv/readme-shop',
+  REPOSITORY: 'https://github.com/narainkarthikv/markdown-shop',
   COMMUNITY: 'https://github.com/narainkarthikv',
 };
 
@@ -42,7 +42,7 @@ export const API_ENDPOINTS = {
 export const THEME_OPTIONS = {
   LIGHT: 'light',
   DARK: 'dark',
-  DEFAULT: 'light',
+  DEFAULT: 'dark',
 };
 
 /**
