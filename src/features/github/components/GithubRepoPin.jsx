@@ -14,7 +14,7 @@ import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
 import { getGithubUser } from '../utils/githubUser';
 
-const REPO_NAME = 'readme-shop';
+const REPO_NAME = 'markdown-shop';
 
 const buildRepoPinMarkdown = (userName) =>
   `<a href="https://github.com/${userName}/${REPO_NAME}">

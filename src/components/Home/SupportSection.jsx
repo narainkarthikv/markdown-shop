@@ -38,7 +38,7 @@ const SupportSection = () => {
               letterSpacing: '0.32em',
               color: theme.palette.text.secondary,
             }}>
-            README SHOP COMMUNITY
+            MARKDOWN SHOP COMMUNITY
           </Typography>
           <Typography variant='h3' sx={{ fontWeight: 700, mt: 1, mb: 1.5 }}>
             Support open-source README craftsmanship
@@ -51,7 +51,7 @@ const SupportSection = () => {
               mx: 'auto',
               mb: 3,
             }}>
-            README Shop is maintained by the Wisdom Fox community. If this
+            Markdown Shop is maintained by the Wisdom Fox community. If this
             project saves you time, consider supporting the next release and
             sustainable open tooling for creators.
           </Typography>
@@ -71,7 +71,7 @@ const SupportSection = () => {
             <Button
               variant='contained'
               color='primary'
-              href='https://github.com/narainkarthikv/readme-shop'
+              href='https://github.com/narainkarthikv/markdown-shop'
               target='_blank'
               rel='noreferrer'
               sx={{ px: 3.5, borderRadius: 999 }}>
@@ -85,7 +85,7 @@ const SupportSection = () => {
               mt: 2,
               color: theme.palette.text.secondary,
             }}>
-            Donations are optional. README Shop will always be free and open
+            Donations are optional. Markdown Shop will always be free and open
             source.
           </Typography>
         </Box>

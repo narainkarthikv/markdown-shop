@@ -50,9 +50,9 @@ const ThanksSection = () => {
               mb: 3,
               mx: 'auto',
             }}>
-            README Shop stands on the shoulders of incredible open-source work.
-            We are grateful to the projects and communities that make this
-            possible.
+            Markdown Shop stands on the shoulders of incredible open-source
+            work. We are grateful to the projects and communities that make
+            this possible.
           </Typography>
           <Box sx={{ maxWidth: 900, mx: 'auto', textAlign: 'left' }}>
             <Stack spacing={2}>
@@ -123,7 +123,7 @@ const ThanksSection = () => {
               maxWidth: 720,
               mx: 'auto',
             }}>
-            README Shop is maintained by the Wisdom Fox community. If the
+            Markdown Shop is maintained by the Wisdom Fox community. If the
             project saves you time, consider fueling the next release with a
             small pledge or a coffee.
           </Typography>
@@ -160,7 +160,7 @@ const ThanksSection = () => {
               mt: 2,
               color: theme.palette.text.secondary,
             }}>
-            Donations are optional. README Shop will always be free and open
+            Donations are optional. Markdown Shop will always be free and open
             source.
           </Typography>
         </Paper>

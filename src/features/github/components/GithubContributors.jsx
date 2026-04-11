@@ -13,7 +13,7 @@ import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';
 import { getGithubRepo, getGithubUser } from '../utils/githubUser';
 
-const REPO_NAME = 'readme-shop';
+const REPO_NAME = 'markdown-shop';
 
 const buildContributorsMarkdown = (repo) =>
   `<img src="https://contrib.rocks/image?repo=${repo}" alt="Contributors" style="width:100%;max-width:600px;border-radius:8px;" />`;

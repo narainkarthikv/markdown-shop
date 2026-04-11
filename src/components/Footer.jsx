@@ -11,7 +11,7 @@ const footerLinks = [
       { label: 'Components', to: '/components', internal: true },
       {
         label: 'GitHub repo',
-        href: 'https://github.com/narainkarthikv/readme-shop',
+        href: 'https://github.com/narainkarthikv/markdown-shop',
       },
     ],
   },
@@ -20,15 +20,15 @@ const footerLinks = [
     links: [
       {
         label: 'Contributing',
-        href: 'https://github.com/narainkarthikv/readme-shop/blob/develop/CONTRIBUTING.md',
+        href: 'https://github.com/narainkarthikv/markdown-shop/blob/develop/CONTRIBUTING.md',
       },
       {
         label: 'Code of conduct',
-        href: 'https://github.com/narainkarthikv/readme-shop/blob/develop/CODE_OF_CONDUCT.md',
+        href: 'https://github.com/narainkarthikv/markdown-shop/blob/develop/CODE_OF_CONDUCT.md',
       },
       {
         label: 'Issues & roadmap',
-        href: 'https://github.com/narainkarthikv/readme-shop/issues',
+        href: 'https://github.com/narainkarthikv/markdown-shop/issues',
       },
       {
         label: 'Wisdom Fox',
@@ -41,19 +41,19 @@ const footerLinks = [
     links: [
       {
         label: 'MIT License',
-        href: 'https://github.com/narainkarthikv/readme-shop/blob/develop/LICENSE',
+        href: 'https://github.com/narainkarthikv/markdown-shop/blob/develop/LICENSE',
       },
       {
         label: 'Security policy',
-        href: 'https://github.com/narainkarthikv/readme-shop/security/policy',
+        href: 'https://github.com/narainkarthikv/markdown-shop/security/policy',
       },
       {
         label: 'Release notes',
-        href: 'https://github.com/narainkarthikv/readme-shop/releases',
+        href: 'https://github.com/narainkarthikv/markdown-shop/releases',
       },
       {
         label: 'Documentation',
-        href: 'https://github.com/narainkarthikv/readme-shop#readme',
+        href: 'https://github.com/narainkarthikv/markdown-shop#readme',
       },
     ],
   },
@@ -75,12 +75,12 @@ const Footer = React.memo(() => (
         px: { xs: 2, md: 3 },
         py: { xs: 5, md: 7 },
       }}>
-      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="space-between">
+      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent='space-between'>
         <Grid item xs={12} md={4}>
           <Typography
             variant='h6'
             sx={{ fontWeight: 700, color: 'text.primary' }}>
-            README Shop
+            Markdown Shop
           </Typography>
           <Typography variant='body2' sx={{ mt: 2, color: 'text.secondary' }}>
             A fast README builder for open-source maintainers and makers. Curate
@@ -137,7 +137,7 @@ const Footer = React.memo(() => (
           alignItems={{ sm: 'center' }}
           sx={{ pt: { xs: 3, md: 3.5 } }}>
           <Typography variant='caption'>
-            © 2026 README Shop. Crafted with care for open source.
+            © 2026 Markdown Shop. Crafted with care for open source.
           </Typography>
           <Typography variant='caption'>
             Have feedback? Open an issue or drop a PR.

@@ -79,7 +79,7 @@ const Navbar = () => {
               opacity: 0.8,
             },
           }}>
-          README SHOP
+          MARKDOWN SHOP
         </Typography>
 
         {/* Right side: Action icons */}

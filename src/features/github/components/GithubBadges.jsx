@@ -9,8 +9,8 @@ import { getGithubUser } from '../utils/githubUser';
 const buildBadgesMarkdown = (userName) =>
   [
     `![GitHub stars](https://img.shields.io/github/stars/${userName}?style=for-the-badge&logo=github)`,
-    `![GitHub forks](https://img.shields.io/github/forks/${userName}/readme-shop?style=for-the-badge&logo=github)`,
-    `![Issues](https://img.shields.io/github/issues/${userName}/readme-shop?style=for-the-badge&logo=github)`,
+    `![GitHub forks](https://img.shields.io/github/forks/${userName}/markdown-shop?style=for-the-badge&logo=github)`,
+    `![Issues](https://img.shields.io/github/issues/${userName}/markdown-shop?style=for-the-badge&logo=github)`,
   ].join(' ');
 
 const GithubBadges = () => {
@@ -104,13 +104,13 @@ const GithubBadges = () => {
         />
         <Box
           component='img'
-          src={`https://img.shields.io/github/forks/${resolvedUserName}/readme-shop?style=for-the-badge&logo=github`}
+          src={`https://img.shields.io/github/forks/${resolvedUserName}/markdown-shop?style=for-the-badge&logo=github`}
           alt='GitHub forks badge'
           sx={{ height: 28 }}
         />
         <Box
           component='img'
-          src={`https://img.shields.io/github/issues/${resolvedUserName}/readme-shop?style=for-the-badge&logo=github`}
+          src={`https://img.shields.io/github/issues/${resolvedUserName}/markdown-shop?style=for-the-badge&logo=github`}
           alt='GitHub issues badge'
           sx={{ height: 28 }}
         />

@@ -1,5 +1,5 @@
 {
-  "name": "Readme Shop Development",
+  "name": "Markdown Shop Development",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},

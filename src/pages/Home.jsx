@@ -33,25 +33,25 @@ const Home = React.memo(() => {
       }}
       aria-label='Landing Page Main Content'>
       <Helmet>
-        <title>README Shop</title>
+        <title>Markdown Shop</title>
         <meta
           name='description'
-          content='README Shop helps you create beautiful, SEO-optimized README files for your open-source projects. Try our templates, badges, and icons!'
+          content='Markdown Shop helps you create beautiful, SEO-optimized README files for your open-source projects. Try our templates, badges, and icons!'
         />
         <meta
           name='keywords'
-          content='readme-shop, README generator, open-source, badges, icons, SEO, templates'
+          content='markdown shop, README generator, open-source, badges, icons, SEO, templates'
         />
         <meta
           property='og:title'
-          content='README Shop - Create Beautiful README Files'
+          content='Markdown Shop - Create Beautiful README Files'
         />
         <meta
           property='og:description'
           content='Create beautiful, SEO-optimized README files for your open-source projects.'
         />
         <meta property='og:type' content='website' />
-        <meta property='og:url' content='https://readme-shop.com' />
+        <meta property='og:url' content='https://markdownshop.netlify.app' />
         <meta property='og:image' content='/public/favicon.svg' />
       </Helmet>
 

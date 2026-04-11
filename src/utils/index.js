@@ -9,21 +9,21 @@ export const logger = {
   log: (...args) => {
     if (ENV.isDevelopment) {
       // eslint-disable-next-line no-console
-      console.log('[README-SHOP]', ...args);
+      console.log('[Markdown Shop]', ...args);
     }
   },
   warn: (...args) => {
     if (ENV.isDevelopment) {
-      console.warn('[README-SHOP WARNING]', ...args);
+      console.warn('[Markdown Shop WARNING]', ...args);
     }
   },
   error: (...args) => {
-    console.error('[README-SHOP ERROR]', ...args);
+    console.error('[Markdown Shop ERROR]', ...args);
   },
   info: (...args) => {
     if (ENV.isDevelopment) {
       // eslint-disable-next-line no-console
-      console.info('[README-SHOP INFO]', ...args);
+      console.info('[Markdown Shop INFO]', ...args);
     }
   },
 };
