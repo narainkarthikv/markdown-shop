@@ -144,13 +144,13 @@ const ThanksSection = () => {
             </Button>
             <Button
               component={Link}
-              href='https://patreon.com/user?u=72747187'
+              href='https://www.buymeacoffee.com/narainkarthikv'
               target='_blank'
               rel='noreferrer'
               variant='contained'
               color='primary'
               sx={{ px: 3, borderRadius: 3 }}>
-              Support on Patreon
+              Support on Buy Me a Coffee
             </Button>
           </Stack>
           <Typography
