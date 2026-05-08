@@ -12,17 +12,19 @@ import SectionTitle from './components/SectionTitle';
 
 const steps = [
   {
-    title: 'Start with a layout',
-    description: 'Pick a template built for your project type and audience.',
-  },
-  {
-    title: 'Add your story',
+    title: 'Start with a template or prompt',
     description:
-      'Drop in badges, icons, screenshots, and stats to build credibility.',
+      'Choose Markdown Templates or AI prompts built for docs, and workflow notes.',
   },
   {
-    title: 'Export clean Markdown',
-    description: 'Copy, export, and publish to GitHub with zero cleanup.',
+    title: 'Personalize the page',
+    description:
+      'Add badges, icons, stats, and rich sections with live preview feedback.',
+  },
+  {
+    title: 'Publish with confidence',
+    description:
+      'Export clean Markdown, copy it instantly, and ship polished project docs.',
   },
 ];
 

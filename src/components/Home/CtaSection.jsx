@@ -60,7 +60,7 @@ const CtaSection = () => {
                   variant='outlined'
                   color='primary'
                   sx={{ px: 3.5, borderRadius: 3 }}>
-                  View Templates
+                  View Markdown Templates
                 </Button>
               </Stack>
             </Grid>

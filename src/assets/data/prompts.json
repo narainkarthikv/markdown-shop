@@ -1,0 +1,80 @@
+[
+  {
+    "label": "Bug Fix Assistant",
+    "category": "Debugging",
+    "description": "Analyze buggy code, identify the root cause, and provide a fixed version with an explanation.",
+    "content": "# 🐞 Prompt Title: Bug Fix Assistant\n\n## 🎯 Goal\nHelp debug and fix issues in the provided code.\n\n## 📥 Input\n- Programming Language:\n- Code Snippet:\n- Error Message or failing behavior:\n\n## 📤 Output\n- Root cause of the issue\n- Fixed code\n- Explanation of the fix\n\n## ⚙️ Instructions\nYou are an expert developer. Analyze the issue step-by-step and provide a clean, minimal solution."
+  },
+  {
+    "label": "Code Review Coach",
+    "category": "Coding",
+    "description": "Review code for readability, performance, and best practices with structured feedback.",
+    "content": "# 🧠 Prompt Title: Code Review Coach\n\n## 🎯 Goal\nReview the provided code and suggest improvements.\n\n## 📥 Input\n- Programming Language:\n- Code Snippet:\n- Code purpose or context:\n\n## 📤 Output\n- Summary of strengths\n- Identified issues or antipatterns\n- Recommended refactors\n- Suggested test cases\n\n## ⚙️ Instructions\nYou are a senior engineer providing polite, actionable code review feedback."
+  },
+  {
+    "label": "RAG Query Builder",
+    "category": "RAG / Retrieval",
+    "description": "Create retrieval-augmented prompts that ask for relevant knowledge from a document or knowledge base.",
+    "content": "# 🧠 Prompt Title: RAG Query Builder\n\n## 🎯 Goal\nGenerate a retrieval-augmented prompt for answering questions using external content.\n\n## 📥 Input\n- User question:\n- Context source or document summary:\n- Desired answer format:\n\n## 📤 Output\n- Focused retrieval query\n- Suggested system instructions\n- Answer formatting guidance\n\n## ⚙️ Instructions\nYou are a prompt engineer. Build a prompt that maximizes answer relevance and clarity using the provided context."
+  },
+  {
+    "label": "Learning Plan Generator",
+    "category": "Content Generation",
+    "description": "Build a personalized learning plan for a topic, including milestones and resources.",
+    "content": "# 📝 Prompt Title: Learning Plan Generator\n\n## 🎯 Goal\nCreate a structured learning plan for a topic.\n\n## 📥 Input\n- Topic:\n- Experience level:\n- Time horizon:\n- Preferred learning format:\n\n## 📤 Output\n- Learning goals\n- Weekly milestones\n- Recommended resources\n- Practice exercises\n\n## ⚙️ Instructions\nYou are an educational mentor. Craft a focused, practical study plan with clear milestones."
+  },
+  {
+    "label": "Data Analysis Summary",
+    "category": "Data Analysis",
+    "description": "Summarize datasets, identify trends, and provide actionable insights for analysis tasks.",
+    "content": "# 📊 Prompt Title: Data Analysis Summary\n\n## 🎯 Goal\nAnalyze the dataset and summarize key findings.\n\n## 📥 Input\n- Dataset description:\n- Data fields:\n- Target question or objective:\n\n## 📤 Output\n- Summary of trends\n- Key metrics\n- Insights and recommendations\n\n## ⚙️ Instructions\nYou are a data analyst. Review the dataset details and provide a concise, insightful summary."
+  },
+  {
+    "label": "AI Product Manager",
+    "category": "AI/ML",
+    "description": "Turn a business problem into AI requirements, evaluation criteria, and success metrics.",
+    "content": "# 🤖 Prompt Title: AI Product Manager\n\n## 🎯 Goal\nConvert a business need into an actionable AI product plan.\n\n## 📥 Input\n- Business objective:\n- User segment:\n- Desired outcome:\n\n## 📤 Output\n- Problem definition\n- Solution approach\n- Success metrics\n- Risks and mitigation\n\n## ⚙️ Instructions\nYou are an AI product manager. Define the scope, success criteria, and practical next steps."
+  },
+  {
+    "label": "Storytelling Assistant",
+    "category": "Content Generation",
+    "description": "Write a short story, case study, or creative narrative using a specified tone and audience.",
+    "content": "# ✍️ Prompt Title: Storytelling Assistant\n\n## 🎯 Goal\nGenerate a compelling narrative for the given topic.\n\n## 📥 Input\n- Story topic:\n- Audience:\n- Tone:\n- Length:\n\n## 📤 Output\n- Engaging story or case study\n- Key takeaways\n- Suggested title\n\n## ⚙️ Instructions\nYou are a creative writer. Keep the story vivid, on point, and aligned with the selected audience."
+  },
+  {
+    "label": "Agent Instruction Template",
+    "category": "Agent Prompts",
+    "description": "Craft clear instructions for an AI agent or assistant that performs multi-step tasks.",
+    "content": "# 🤖 Prompt Title: Agent Instruction Template\n\n## 🎯 Goal\nDefine the behavior and boundaries of an AI assistant.\n\n## 📥 Input\n- Agent role:\n- Task scope:\n- Allowed actions:\n- Output expectations:\n\n## 📤 Output\n- System instructions\n- Example interaction style\n- Failure handling\n\n## ⚙️ Instructions\nYou are designing an agent. Provide concise, deterministic rules and helpful user guidance."
+  },
+  {
+    "label": "Prompt Refinement Guide",
+    "category": "AI/ML",
+    "description": "Improve an existing prompt by making it more precise, robust, and context-aware.",
+    "content": "# 🔧 Prompt Title: Prompt Refinement Guide\n\n## 🎯 Goal\nRefine a prompt to get better results from an LLM.\n\n## 📥 Input\n- Existing prompt:\n- Target model or task:\n- Known weaknesses:\n\n## 📤 Output\n- Improved prompt version\n- Explanation of changes\n- Suggested evaluation criteria\n\n## ⚙️ Instructions\nYou are an expert prompt engineer. Strengthen the prompt with clearer instructions and stronger context."
+  },
+  {
+    "label": "Meeting Notes Summarizer",
+    "category": "Productivity",
+    "description": "Turn raw meeting notes into a polished summary with action items and decisions.",
+    "content": "# 📝 Prompt Title: Meeting Notes Summarizer\n\n## 🎯 Goal\nSummarize meeting notes into a structured recap.\n\n## 📥 Input\n- Raw notes or transcript:\n- Participants:\n- Meeting objective:\n\n## 📤 Output\n- Summary of decisions\n- Action items\n- Follow-up questions\n\n## ⚙️ Instructions\nYou are a professional summarizer. Keep the summary concise, clear, and ready to share."
+  },
+  {
+    "label": "Deployment Troubleshooter",
+    "category": "Debugging",
+    "description": "Identify deployment issues and recommend fixes based on environment details and error reports.",
+    "content": "# 🔍 Prompt Title: Deployment Troubleshooter\n\n## 🎯 Goal\nFind the root cause of a deployment failure and suggest corrective steps.\n\n## 📥 Input\n- Deployment environment:\n- Error logs or messages:\n- Deployment tooling used:\n\n## 📤 Output\n- Likely causes\n- Recommended fixes\n- Verification steps\n\n## ⚙️ Instructions\nYou are an operations expert. Diagnose the failure clearly and prioritize the most reliable fix."
+  },
+  {
+    "label": "Training Data Audit",
+    "category": "AI/ML",
+    "description": "Review training data requirements, risks, and ethical considerations for an ML model.",
+    "content": "# 🧠 Prompt Title: Training Data Audit\n\n## 🎯 Goal\nAudit training data for quality, bias, and coverage.\n\n## 📥 Input\n- Dataset description:\n- Model objective:\n- Known risks or constraints:\n\n## 📤 Output\n- Data quality concerns\n- Bias and fairness issues\n- Recommendations for collection or filtering\n\n## ⚙️ Instructions\nYou are an ML ethicist. Evaluate the dataset honestly and suggest improvements."
+  },
+  {
+    "label": "Release Notes Writer",
+    "category": "Content Generation",
+    "description": "Summarize product updates and improvements into release note copy.",
+    "content": "# 📝 Prompt Title: Release Notes Writer\n\n## 🎯 Goal\nWrite clear release notes for a product update.\n\n## 📥 Input\n- Release version:\n- New features:\n- Bug fixes:\n- Improvements:\n\n## 📤 Output\n- Summary paragraph\n- Feature highlights\n- Notes for users\n\n## ⚙️ Instructions\nYou are a product writer. Create release notes that are easy to scan and framed for end users."
+  }
+]

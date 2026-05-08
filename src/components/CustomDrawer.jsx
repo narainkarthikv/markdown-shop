@@ -19,7 +19,8 @@ import { Link } from 'react-router-dom';
 const navigationItems = [
   { label: 'Home', icon: <HomeIcon />, path: '/' },
   { label: 'Github Components', icon: <FaObjectGroup />, path: '/components' },
-  { label: 'Templates', icon: <MenuBookIcon />, path: '/templates' },
+  { label: 'Markdown Templates', icon: <MenuBookIcon />, path: '/templates' },
+  { label: 'Prompt Gallery', icon: <MenuBookIcon />, path: '/prompts' },
 ];
 
 const CustomDrawer = ({ open, onClose, currentPath }) => {

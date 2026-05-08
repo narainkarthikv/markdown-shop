@@ -30,6 +30,9 @@ const Output = lazy(
 const TemplatesPage = lazy(
   () => import(/* webpackChunkName: "templates" */ './pages/TemplatesPage')
 );
+const PromptsPage = lazy(
+  () => import(/* webpackChunkName: "prompts" */ './pages/PromptsPage')
+);
 
 /**
  * SEO Component with helmet for metadata
@@ -204,6 +207,22 @@ const App = () => {
                     transition={pageTransition}>
                     <AppLayout>
                       <TemplatesPage />
+                    </AppLayout>
+                  </motion.div>
+                }
+              />
+              <Route
+                path={ROUTES.PROMPTS}
+                element={
+                  <motion.div
+                    key='prompts'
+                    initial='initial'
+                    animate='in'
+                    exit='out'
+                    variants={pageTransitionVariants}
+                    transition={pageTransition}>
+                    <AppLayout>
+                      <PromptsPage />
                     </AppLayout>
                   </motion.div>
                 }

@@ -13,10 +13,10 @@ const infoItems = [
       'Turn complex work into a README that is easy to skim and simple to trust.',
   },
   {
-    icon: 'Modular blocks',
-    title: 'Build with reusable pieces',
+    icon: 'Prompt-ready',
+    title: 'Use AI prompt templates',
     description:
-      'Mix templates, badges, icons, and stats without rebuilding your structure.',
+      'Jump-start your writing with structured prompts built for debugging, and documentation.',
   },
   {
     icon: 'Export ready',
@@ -41,9 +41,8 @@ const InfoSection = () => {
           mx: 'auto',
           mb: 5,
         }}>
-        Give your open-source work a professional, trustworthy home. Build a
-        README that invites contributors and makes your project feel ready for
-        the spotlight.
+        Turn README writing into a polished SaaS workflow. Use Markdown Templates,
+        AI prompts, badges, and stats to move from idea to launch without friction.
       </Typography>
 
       <Grid container spacing={3}>
@@ -89,10 +88,10 @@ const InfoSection = () => {
         </Button>
         <Button
           component={Link}
-          to='/components'
+          to='/prompts'
           variant='outlined'
           color='primary'>
-          Explore Components
+          Explore Prompt Gallery
         </Button>
       </Stack>
     </Section>
