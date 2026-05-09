@@ -14,15 +14,15 @@ const features = [
     icon: '01',
   },
   {
-    title: 'Badges that matter',
+    title: 'Prompt Gallery',
     description:
-      'Highlight releases, license, CI status, and community trust signals.',
+      'Reusable AI prompts for debugging, content, and product workflows.',
     icon: '02',
   },
   {
-    title: 'Icons + skill stack',
+    title: 'Badges that matter',
     description:
-      'Add recognizable tech logos and skill rows with clean spacing.',
+      'Highlight releases, license, CI status, and community trust signals.',
     icon: '03',
   },
   {

@@ -1,17 +1,10 @@
-import { Box, Container, Paper, useTheme, alpha } from '@mui/material';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Box, Container, Paper, useTheme } from '@mui/material';
 import ModernSection from '@/components/ui/ModernSection';
-import TemplatesGrid from '@/components/Templates/TemplatesGrid';
+import PromptGrid from './components/PromptGrid';
 
-/**
- * TemplatesLayout - Modern 2026+ Design
- * Features:
- * - Clean containerized layout matching Components page
- * - Proper spacing and responsive design
- * - Modern visual hierarchy
- * - Optimized for user experience
- */
-const TemplatesLayout = ({ children }) => {
+const PromptLayout = ({ children }) => {
   const theme = useTheme();
 
   return (
@@ -27,10 +20,9 @@ const TemplatesLayout = ({ children }) => {
           py: { xs: 3, md: 4 },
           px: { xs: 2, md: 3 },
         }}>
-        {/* Modern Section Wrapper */}
         <ModernSection
-          title='Markdown Templates'
-          description='Choose from professionally crafted templates to kickstart your project documentation'
+          title='AI Prompt Gallery'
+          description='Browse reusable structured prompt templates for coding, debugging, content generation, and AI workflows.'
           variant='default'
           sx={{ mb: 2 }}>
           <Paper
@@ -41,7 +33,7 @@ const TemplatesLayout = ({ children }) => {
               bgcolor: 'background.paper',
               border: `1px solid ${theme.customTokens?.borderSubtle || theme.palette.divider}`,
             }}>
-            <TemplatesGrid />
+            <PromptGrid />
           </Paper>
         </ModernSection>
 
@@ -51,8 +43,8 @@ const TemplatesLayout = ({ children }) => {
   );
 };
 
-TemplatesLayout.propTypes = {
+PromptLayout.propTypes = {
   children: PropTypes.node,
 };
 
-export default TemplatesLayout;
+export default PromptLayout;

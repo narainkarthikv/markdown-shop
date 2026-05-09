@@ -64,6 +64,7 @@ export const ROUTES = {
   COMPONENTS: '/components',
   SHOP: '/shop',
   TEMPLATES: '/templates',
+  PROMPTS: '/prompts',
   OUTPUT: '/output',
   NOT_FOUND: '*',
 };

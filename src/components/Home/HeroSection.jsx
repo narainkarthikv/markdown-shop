@@ -18,15 +18,15 @@ import {
 } from './animations';
 
 const heroStats = [
-  { label: 'Templates', value: '40+' },
-  { label: 'Badges', value: '120+' },
+  { label: 'Markdown Templates', value: '40+' },
+  { label: 'Prompt Gallery', value: '12+' },
   { label: 'Icons', value: '300+' },
 ];
 
 const highlights = [
-  'Templates tuned for apps and libraries',
-  'Badges, stats, and icons in one flow',
-  'Export clean Markdown in minutes',
+  'Choose from markdown templates and AI prompts',
+  'Build docs with badges, stats, and live preview',
+  'Export ready-to-publish markdown in seconds',
 ];
 
 const HeroSection = () => {
@@ -66,7 +66,7 @@ const HeroSection = () => {
             <Grid item xs={12} md={6}>
               <motion.div variants={textRevealVariants} custom={0}>
                 <Chip
-                  label='New: curated templates + stats'
+                  label='New: Prompt Gallery + Markdown Templates'
                   color='primary'
                   variant='outlined'
                   sx={{
@@ -110,9 +110,9 @@ const HeroSection = () => {
                     maxWidth: 520,
                     mb: 3,
                   }}>
-                  Structure your README with confidence. Build clean,
-                  ready-to-publish documentation using guided templates and live
-                  previews.
+                  Structure your README the SaaS way. Build clean,
+                  ready-to-publish documentation using Markdown Templates,
+                  AI prompts, and live preview.
                 </Typography>
               </motion.div>
 
@@ -134,7 +134,7 @@ const HeroSection = () => {
                     color='primary'
                     size='large'
                     sx={{ px: 3.5, borderRadius: 3 }}>
-                    Browse Templates
+                    Browse Markdown Templates
                   </Button>
                 </Stack>
               </motion.div>
@@ -189,13 +189,13 @@ const HeroSection = () => {
                   <Typography
                     variant='h4'
                     sx={{ fontWeight: 700, mt: 1, mb: 1 }}>
-                    A modern README, ready to ship
+                    Your documentation workflow, built like a SaaS app
                   </Typography>
                   <Typography
                     variant='body2'
                     sx={{ color: theme.palette.text.secondary, mb: 3 }}>
-                    See how your README looks with badges, stats, and a clear
-                    structure.
+                    Preview Markdown live, apply reusable templates and prompts,
+                    and ship docs with confidence.
                   </Typography>
                   <Stack spacing={1.5} sx={{ mb: 3 }}>
                     {highlights.map((item) => (

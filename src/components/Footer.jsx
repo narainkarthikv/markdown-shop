@@ -7,7 +7,8 @@ const footerLinks = [
     title: 'Project',
     links: [
       { label: 'Open app', to: '/shop', internal: true },
-      { label: 'Templates', to: '/templates', internal: true },
+      { label: 'Markdown Templates', to: '/templates', internal: true },
+      { label: 'Prompt Gallery', to: '/prompts', internal: true },
       { label: 'Components', to: '/components', internal: true },
       {
         label: 'GitHub repo',
