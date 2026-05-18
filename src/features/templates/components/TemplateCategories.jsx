@@ -10,10 +10,14 @@ const TemplateCategories = ({
   <Box
     sx={{
       display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
       flexWrap: 'wrap',
       gap: 1,
       mb: 3,
-      justifyContent: 'center',
+      '&::-webkit-scrollbar': { display: 'none' },
+      msOverflowStyle: 'none',
+      scrollbarWidth: 'none',
     }}>
     {categories.map(({ value, label }) => (
       <Chip

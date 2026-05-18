@@ -16,7 +16,7 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import SearchIcon from '@mui/icons-material/Search';
 import PromptCard from './PromptCard';
-import TemplateCategories from '@/features/templates/components/TemplateCategories';
+import TemplateCategories from '@/components/Templates/TemplateCategories';
 import SearchField from '@/components/ui/SearchField';
 import { NoSearchResults } from '@/components/ui/EmptyState';
 import { usePrompts } from '@/hooks/usePrompts';
