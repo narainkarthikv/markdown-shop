@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Box, Button, Link, Paper, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Section from './components/Section';
@@ -51,8 +50,8 @@ const ThanksSection = () => {
               mx: 'auto',
             }}>
             Markdown Shop stands on the shoulders of incredible open-source
-            work. We are grateful to the projects and communities that make
-            this possible.
+            work. We are grateful to the projects and communities that make this
+            possible.
           </Typography>
           <Box sx={{ maxWidth: 900, mx: 'auto', textAlign: 'left' }}>
             <Stack spacing={2}>

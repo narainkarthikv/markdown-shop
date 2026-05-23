@@ -99,7 +99,11 @@ const PromptCardHeader = React.memo(
                 aria-label={
                   copied ? 'Copied to clipboard' : 'Copy prompt to clipboard'
                 }>
-                {copied ? <CheckIcon fontSize='small' /> : <ContentCopyIcon fontSize='small' />}
+                {copied ? (
+                  <CheckIcon fontSize='small' />
+                ) : (
+                  <ContentCopyIcon fontSize='small' />
+                )}
               </Button>
             </Tooltip>
             <Tooltip title='Use prompt in editor' arrow>
@@ -193,7 +197,6 @@ const PromptCard = ({
   prompt,
   index,
   selectedIdx,
-  copiedIdx,
   onUsePrompt,
   onCopy,
   viewMode = 'grid',
@@ -407,7 +410,9 @@ const PromptCard = ({
               size='small'
               sx={{
                 color: 'text.secondary',
-                '&:hover': { bgcolor: alpha(theme.palette.text.secondary, 0.1) },
+                '&:hover': {
+                  bgcolor: alpha(theme.palette.text.secondary, 0.1),
+                },
               }}>
               <CloseIcon />
             </IconButton>
@@ -417,7 +422,10 @@ const PromptCard = ({
         <Divider />
 
         <DialogContent sx={{ pt: 3, overflowY: 'auto' }}>
-          <Typography variant='body2' color='text.secondary' sx={{ mb: 3, lineHeight: 1.7 }}>
+          <Typography
+            variant='body2'
+            color='text.secondary'
+            sx={{ mb: 3, lineHeight: 1.7 }}>
             {prompt.description}
           </Typography>
 
@@ -470,7 +478,6 @@ PromptCard.propTypes = {
   }).isRequired,
   selectedIdx: PropTypes.number,
   index: PropTypes.number.isRequired,
-  copiedIdx: PropTypes.number,
   onUsePrompt: PropTypes.func.isRequired,
   onCopy: PropTypes.func.isRequired,
   viewMode: PropTypes.oneOf(['grid', 'list']),

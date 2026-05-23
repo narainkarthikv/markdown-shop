@@ -2,12 +2,11 @@ import { Box, Grid, Container } from '@mui/material';
 import GithubStats from './components/GithubStats';
 import GithubTrophies from './components/GithubTrophies';
 import GithubBadges from './components/GithubBadges';
-import GithubContributors from './components/GithubContributors';
+
 import GithubStreak from './components/GithubStreak';
 import { GithubActivityGraph } from './components/GithubActivityGraph';
 import ProfileViewsCounter from './components/ProfileViewsCounter';
-import GithubMetrics from './components/GithubMetrics';
-import GithubSnakeContribution from './components/GithubSnakeContribution';
+
 import GithubRepoPin from './components/GithubRepoPin';
 import GithubFollowers from './components/GithubFollowers';
 import GithubCommitGraph from './components/GithubCommitGraph';

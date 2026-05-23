@@ -216,7 +216,6 @@ const TemplateCard = ({
   template,
   index,
   selectedIdx,
-  copiedIdx,
   onUseTemplate,
   onCopy,
   viewMode = 'grid',
@@ -433,7 +432,9 @@ const TemplateCard = ({
               size='small'
               sx={{
                 color: 'text.secondary',
-                '&:hover': { bgcolor: alpha(theme.palette.text.secondary, 0.1) },
+                '&:hover': {
+                  bgcolor: alpha(theme.palette.text.secondary, 0.1),
+                },
               }}>
               <CloseIcon />
             </IconButton>
@@ -483,7 +484,6 @@ const TemplateCard = ({
             </Box>
           </Paper>
         </DialogContent>
-
       </Dialog>
     </>
   );
@@ -500,7 +500,6 @@ TemplateCard.propTypes = {
   }).isRequired,
   selectedIdx: PropTypes.number,
   index: PropTypes.number.isRequired,
-  copiedIdx: PropTypes.number,
   onUseTemplate: PropTypes.func.isRequired,
   onCopy: PropTypes.func.isRequired,
   viewMode: PropTypes.oneOf(['grid', 'list']),

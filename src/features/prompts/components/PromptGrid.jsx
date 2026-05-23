@@ -157,7 +157,11 @@ const PromptGrid = () => {
 
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems='stretch'>
             {prompts.map((prompt, idx) => (
-              <Grid item key={prompt.label} {...gridColumns} sx={{ display: 'flex' }}>
+              <Grid
+                item
+                key={prompt.label}
+                {...gridColumns}
+                sx={{ display: 'flex' }}>
                 <Fade in timeout={300 + idx * 50} style={{ width: '100%' }}>
                   <div style={{ width: '100%', display: 'flex' }}>
                     <PromptCard

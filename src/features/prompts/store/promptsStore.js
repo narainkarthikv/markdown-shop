@@ -26,7 +26,10 @@ const usePromptsStore = create((set, get) => ({
   },
   getCategories: () => {
     const { prompts } = get();
-    const categories = ['all', ...new Set(prompts.map((prompt) => prompt.category))];
+    const categories = [
+      'all',
+      ...new Set(prompts.map((prompt) => prompt.category)),
+    ];
     return categories.map((category) => ({
       value: category,
       label: category === 'all' ? 'All' : category,

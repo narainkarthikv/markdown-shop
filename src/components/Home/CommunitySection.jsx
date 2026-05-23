@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Box, Typography, Stack, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';

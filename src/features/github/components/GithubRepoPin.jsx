@@ -5,7 +5,6 @@ import {
   Button,
   Tooltip,
   IconButton,
-  Chip,
 } from '@mui/material';
 import { useMemo } from 'react';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';

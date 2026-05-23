@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-05-23
+
+### Fixed
+
+- Resolved blocking ESLint failures by removing stale `eslint-disable` directives and cleaning unused imports/variables.
+- Corrected syntax regressions in `TemplateCard` and `PromptCard` prop-type declarations.
+- Fixed Vite compression plugin configuration to use `brotliCompress`, removing build-time compression path errors.
+
+### Security
+
+- Patched vulnerable dependency tree via `npm audit fix`, including DOMPurify upgrade to `3.4.5`.
+- Reduced vulnerabilities from `22` (including `1 critical`) to `5` (no critical; remaining issues are in bundled `npm` under release tooling).
+
 ### Added
 
 - Initial Markdown Shop application foundation.
@@ -51,3 +64,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Theme and UI consistency refactors for long-term maintainability.
 
 [Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/1618fbf...HEAD
+[1.0.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.1
