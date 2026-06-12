@@ -79,14 +79,64 @@ const TemplateCardHeader = React.memo(
           )}
         </Box>
 
-        {/* Actions in top right - use shared TemplateActions component */}
-        <TemplateActions
-          onPreview={onPreview}
-          onCopy={onCopy}
-          onUse={onUse}
-          copied={copied}
-          isSelected={isSelected}
-        />
+        {/* Actions in top right - Matching Components section */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+            flexShrink: 0,
+          }}>
+          <Tooltip title='Preview template' arrow>
+            <IconButton
+              onClick={onPreview}
+              size='small'
+              sx={{
+                color: 'primary.main',
+                '&:hover': {
+                  bgcolor: alpha(theme.palette.primary.main, 0.1),
+                },
+              }}
+              aria-label='Preview template'>
+              <VisibilityIcon fontSize='small' />
+            </IconButton>
+          </Tooltip>
+          <ButtonGroup
+            size='small'
+            variant='contained'
+            sx={{
+              gap: 1,
+            }}>
+            <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
+              <Button
+                onClick={onCopy}
+                color={copied ? 'success' : 'primary'}
+                sx={{
+                  minWidth: 'auto',
+                  px: 1.5,
+                  py: 0.75,
+                }}
+                aria-label={
+                  copied ? 'Copied to clipboard' : 'Copy template to clipboard'
+                }>
+                {copied ? (
+                  <CheckIcon fontSize='small' />
+                ) : (
+                  <ContentCopyIcon fontSize='small' />
+                )}
+              </Button>
+            </Tooltip>
+            <Tooltip title='Insert into editor' arrow>
+              <Button
+                onClick={onUse}
+                color='primary'
+                sx={{ minWidth: 'auto', px: 1.5, py: 0.75 }}
+                aria-label='Use template in editor'>
+                <AddIcon fontSize='small' />
+              </Button>
+            </Tooltip>
+          </ButtonGroup>
+        </Box>
       </Box>
     );
   }
