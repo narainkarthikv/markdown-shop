@@ -79,7 +79,13 @@ const TemplateCardHeader = React.memo(
         </Box>
 
         {/* Actions in top right - Matching Components section */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+            flexShrink: 0,
+          }}>
           <Tooltip title='Preview template' arrow>
             <IconButton
               onClick={onPreview}
@@ -94,7 +100,12 @@ const TemplateCardHeader = React.memo(
               <VisibilityIcon fontSize='small' />
             </IconButton>
           </Tooltip>
-          <ButtonGroup size='small' variant='contained'>
+          <ButtonGroup
+            size='small'
+            variant='contained'
+            sx={{
+              gap: 1,
+            }}>
             <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
               <Button
                 onClick={onCopy}
@@ -102,6 +113,7 @@ const TemplateCardHeader = React.memo(
                 sx={{
                   minWidth: 'auto',
                   px: 1.5,
+                  py: 0.75,
                 }}
                 aria-label={
                   copied ? 'Copied to clipboard' : 'Copy template to clipboard'
@@ -117,7 +129,7 @@ const TemplateCardHeader = React.memo(
               <Button
                 onClick={onUse}
                 color='primary'
-                sx={{ minWidth: 'auto', px: 1.5 }}
+                sx={{ minWidth: 'auto', px: 1.5, py: 0.75 }}
                 aria-label='Use template in editor'>
                 <AddIcon fontSize='small' />
               </Button>
