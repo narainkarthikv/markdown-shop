@@ -23,6 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import TemplateActions from '@/components/ui/TemplateActions';
 import { useTheme } from '@mui/material/styles';
 import useClipboard from '@/hooks/useClipboard';
 
@@ -30,7 +31,7 @@ import useClipboard from '@/hooks/useClipboard';
  * TemplateCardHeader - Modern card header matching Components section pattern
  */
 const TemplateCardHeader = React.memo(
-  ({ template, category, onCopy, onUse, onPreview, copied }) => {
+  ({ template, category, onCopy, onUse, onPreview, copied, isSelected }) => {
     const theme = useTheme();
 
     return (
@@ -152,6 +153,7 @@ TemplateCardHeader.propTypes = {
   onUse: PropTypes.func.isRequired,
   onPreview: PropTypes.func.isRequired,
   copied: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 /**
@@ -334,6 +336,7 @@ const TemplateCard = ({
             onUse={handleUse}
             onPreview={handlePreviewOpen}
             copied={copied}
+            isSelected={isSelected}
           />
 
           <CardContent
