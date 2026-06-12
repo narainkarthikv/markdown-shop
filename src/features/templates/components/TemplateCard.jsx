@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
 import CardContainer from '@/components/ui/CardContainer';
-import TemplateActions from '@/components/ui/TemplateActions';
+import QuickActions from '@/components/ui/QuickActions';
 
 const TemplateCard = ({
   template,
@@ -34,7 +34,7 @@ const TemplateCard = ({
       </Typography>
 
       <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-        <TemplateActions
+        <QuickActions
           onPreview={undefined}
           onCopy={() => onCopy(template.content, index)}
           onUse={() => onUseTemplate(template.content, index)}

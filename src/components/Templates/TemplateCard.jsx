@@ -23,7 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import TemplateActions from '@/components/ui/TemplateActions';
+import QuickActions from '@/components/ui/QuickActions';
 import { useTheme } from '@mui/material/styles';
 import useClipboard from '@/hooks/useClipboard';
 
@@ -79,64 +79,14 @@ const TemplateCardHeader = React.memo(
           )}
         </Box>
 
-        {/* Actions in top right - Matching Components section */}
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1.5,
-            flexShrink: 0,
-          }}>
-          <Tooltip title='Preview template' arrow>
-            <IconButton
-              onClick={onPreview}
-              size='small'
-              sx={{
-                color: 'primary.main',
-                '&:hover': {
-                  bgcolor: alpha(theme.palette.primary.main, 0.1),
-                },
-              }}
-              aria-label='Preview template'>
-              <VisibilityIcon fontSize='small' />
-            </IconButton>
-          </Tooltip>
-          <ButtonGroup
-            size='small'
-            variant='contained'
-            sx={{
-              gap: 1,
-            }}>
-            <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
-              <Button
-                onClick={onCopy}
-                color={copied ? 'success' : 'primary'}
-                sx={{
-                  minWidth: 'auto',
-                  px: 1.5,
-                  py: 0.75,
-                }}
-                aria-label={
-                  copied ? 'Copied to clipboard' : 'Copy template to clipboard'
-                }>
-                {copied ? (
-                  <CheckIcon fontSize='small' />
-                ) : (
-                  <ContentCopyIcon fontSize='small' />
-                )}
-              </Button>
-            </Tooltip>
-            <Tooltip title='Insert into editor' arrow>
-              <Button
-                onClick={onUse}
-                color='primary'
-                sx={{ minWidth: 'auto', px: 1.5, py: 0.75 }}
-                aria-label='Use template in editor'>
-                <AddIcon fontSize='small' />
-              </Button>
-            </Tooltip>
-          </ButtonGroup>
-        </Box>
+        {/* Actions in top right - use shared QuickActions component */}
+        <QuickActions
+          onPreview={onPreview}
+          onCopy={onCopy}
+          onUse={onUse}
+          copied={copied}
+          isSelected={isSelected}
+        />
       </Box>
     );
   }
@@ -426,22 +376,13 @@ const TemplateCard = ({
             )}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <ButtonGroup variant='contained' size='small'>
-              <Button
-                onClick={handleCopy}
-                startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
-                color={copied ? 'success' : 'primary'}
-                sx={{ borderRadius: '6px 0 0 6px' }}>
-                {copied ? 'Copied' : 'Copy'}
-              </Button>
-              <Button
-                onClick={handleUse}
-                startIcon={<AddIcon />}
-                color='primary'
-                sx={{ borderRadius: '0 6px 6px 0' }}>
-                Use Template
-              </Button>
-            </ButtonGroup>
+            <QuickActions
+              onPreview={undefined}
+              onCopy={handleCopy}
+              onUse={handleUse}
+              copied={copied}
+              isSelected={isSelected}
+            />
             <IconButton
               onClick={handlePreviewClose}
               size='small'

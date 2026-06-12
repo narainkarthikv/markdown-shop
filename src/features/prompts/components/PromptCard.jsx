@@ -23,7 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import TemplateActions from '@/components/ui/TemplateActions';
+import QuickActions from '@/components/ui/QuickActions';
 import { useTheme } from '@mui/material/styles';
 import useClipboard from '@/hooks/useClipboard';
 
@@ -76,7 +76,7 @@ const PromptCardHeader = React.memo(
           )}
         </Box>
 
-        <TemplateActions
+        <QuickActions
           onPreview={onPreview}
           onCopy={onCopy}
           onUse={onUse}
@@ -357,22 +357,13 @@ const PromptCard = ({
             )}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <ButtonGroup variant='contained' size='small'>
-              <Button
-                onClick={handleCopy}
-                startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
-                color={copied ? 'success' : 'primary'}
-                sx={{ borderRadius: '6px 0 0 6px' }}>
-                {copied ? 'Copied' : 'Copy'}
-              </Button>
-              <Button
-                onClick={handleUse}
-                startIcon={<AddIcon />}
-                color='primary'
-                sx={{ borderRadius: '0 6px 6px 0' }}>
-                Use Prompt
-              </Button>
-            </ButtonGroup>
+            <QuickActions
+              onPreview={undefined}
+              onCopy={handleCopy}
+              onUse={handleUse}
+              copied={copied}
+              isSelected={isSelected}
+            />
             <IconButton
               onClick={handlePreviewClose}
               size='small'
