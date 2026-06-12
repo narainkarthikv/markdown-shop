@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Shared `TemplateActions` UI component to standardize action icons across Templates and Prompts.
+
+### Fixed
+
+- Reworked action spacing and alignment for `TemplateCard` and prompt gallery cards; fixed cramped action icons and selection state handling.
+- Resolved a `ReferenceError` by forwarding `isSelected` into card headers.
+
+## [1.0.2] - 2026-06-12
+
+### Fixed
+
+- Standardized quick-action icons (preview, copy, insert) across template and prompt cards to improve spacing, alignment and accessibility.
+
+### Changed
+
+- Extracted actions into a shared component (`src/components/ui/TemplateActions.jsx`) to reduce duplication and ensure consistent behavior.
+
 ## [1.0.1] - 2026-05-23
 
 ### Fixed
@@ -64,4 +83,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Theme and UI consistency refactors for long-term maintainability.
 
 [Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/1618fbf...HEAD
+[1.0.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.2
 [1.0.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.1

@@ -23,11 +23,12 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import TemplateActions from '@/components/ui/TemplateActions';
 import { useTheme } from '@mui/material/styles';
 import useClipboard from '@/hooks/useClipboard';
 
 const PromptCardHeader = React.memo(
-  ({ prompt, category, onCopy, onUse, onPreview, copied }) => {
+  ({ prompt, category, onCopy, onUse, onPreview, copied, isSelected }) => {
     const theme = useTheme();
 
     return (
@@ -75,48 +76,13 @@ const PromptCardHeader = React.memo(
           )}
         </Box>
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <Tooltip title='Preview prompt' arrow>
-            <IconButton
-              onClick={onPreview}
-              size='small'
-              sx={{
-                color: 'primary.main',
-                '&:hover': {
-                  bgcolor: alpha(theme.palette.primary.main, 0.1),
-                },
-              }}
-              aria-label='Preview prompt'>
-              <VisibilityIcon fontSize='small' />
-            </IconButton>
-          </Tooltip>
-          <ButtonGroup size='small' variant='contained'>
-            <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
-              <Button
-                onClick={onCopy}
-                color={copied ? 'success' : 'primary'}
-                sx={{ minWidth: 'auto', px: 1.5 }}
-                aria-label={
-                  copied ? 'Copied to clipboard' : 'Copy prompt to clipboard'
-                }>
-                {copied ? (
-                  <CheckIcon fontSize='small' />
-                ) : (
-                  <ContentCopyIcon fontSize='small' />
-                )}
-              </Button>
-            </Tooltip>
-            <Tooltip title='Use prompt in editor' arrow>
-              <Button
-                onClick={onUse}
-                color='primary'
-                sx={{ minWidth: 'auto', px: 1.5 }}
-                aria-label='Use prompt in editor'>
-                <AddIcon fontSize='small' />
-              </Button>
-            </Tooltip>
-          </ButtonGroup>
-        </Box>
+        <TemplateActions
+          onPreview={onPreview}
+          onCopy={onCopy}
+          onUse={onUse}
+          copied={copied}
+          isSelected={isSelected}
+        />
       </Box>
     );
   }
@@ -133,6 +99,7 @@ PromptCardHeader.propTypes = {
   onUse: PropTypes.func.isRequired,
   onPreview: PropTypes.func.isRequired,
   copied: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 const PromptPreview = React.memo(({ content, expanded = false }) => {
@@ -302,6 +269,7 @@ const PromptCard = ({
             onUse={handleUse}
             onPreview={handlePreviewOpen}
             copied={copied}
+            isSelected={isSelected}
           />
 
           <CardContent

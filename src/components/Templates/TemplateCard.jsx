@@ -23,6 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import TemplateActions from '@/components/ui/TemplateActions';
 import { useTheme } from '@mui/material/styles';
 import useClipboard from '@/hooks/useClipboard';
 
@@ -30,7 +31,7 @@ import useClipboard from '@/hooks/useClipboard';
  * TemplateCardHeader - Modern card header matching Components section pattern
  */
 const TemplateCardHeader = React.memo(
-  ({ template, category, onCopy, onUse, onPreview, copied }) => {
+  ({ template, category, onCopy, onUse, onPreview, copied, isSelected }) => {
     const theme = useTheme();
 
     return (
@@ -78,52 +79,14 @@ const TemplateCardHeader = React.memo(
           )}
         </Box>
 
-        {/* Actions in top right - Matching Components section */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <Tooltip title='Preview template' arrow>
-            <IconButton
-              onClick={onPreview}
-              size='small'
-              sx={{
-                color: 'primary.main',
-                '&:hover': {
-                  bgcolor: alpha(theme.palette.primary.main, 0.1),
-                },
-              }}
-              aria-label='Preview template'>
-              <VisibilityIcon fontSize='small' />
-            </IconButton>
-          </Tooltip>
-          <ButtonGroup size='small' variant='contained'>
-            <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
-              <Button
-                onClick={onCopy}
-                color={copied ? 'success' : 'primary'}
-                sx={{
-                  minWidth: 'auto',
-                  px: 1.5,
-                }}
-                aria-label={
-                  copied ? 'Copied to clipboard' : 'Copy template to clipboard'
-                }>
-                {copied ? (
-                  <CheckIcon fontSize='small' />
-                ) : (
-                  <ContentCopyIcon fontSize='small' />
-                )}
-              </Button>
-            </Tooltip>
-            <Tooltip title='Insert into editor' arrow>
-              <Button
-                onClick={onUse}
-                color='primary'
-                sx={{ minWidth: 'auto', px: 1.5 }}
-                aria-label='Use template in editor'>
-                <AddIcon fontSize='small' />
-              </Button>
-            </Tooltip>
-          </ButtonGroup>
-        </Box>
+        {/* Actions in top right - use shared TemplateActions component */}
+        <TemplateActions
+          onPreview={onPreview}
+          onCopy={onCopy}
+          onUse={onUse}
+          copied={copied}
+          isSelected={isSelected}
+        />
       </Box>
     );
   }
@@ -140,6 +103,7 @@ TemplateCardHeader.propTypes = {
   onUse: PropTypes.func.isRequired,
   onPreview: PropTypes.func.isRequired,
   copied: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 /**
@@ -322,6 +286,7 @@ const TemplateCard = ({
             onUse={handleUse}
             onPreview={handlePreviewOpen}
             copied={copied}
+            isSelected={isSelected}
           />
 
           <CardContent
