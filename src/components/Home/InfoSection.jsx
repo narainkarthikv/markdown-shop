@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import { Box, Button, Grid, Paper, Stack, Typography } from '@mui/material';
+import { Button, Grid, Paper, Stack, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import Section from './components/Section';
@@ -41,8 +40,9 @@ const InfoSection = () => {
           mx: 'auto',
           mb: 5,
         }}>
-        Turn README writing into a polished SaaS workflow. Use Markdown Templates,
-        AI prompts, badges, and stats to move from idea to launch without friction.
+        Turn README writing into a polished SaaS workflow. Use Markdown
+        Templates, AI prompts, badges, and stats to move from idea to launch
+        without friction.
       </Typography>
 
       <Grid container spacing={3}>

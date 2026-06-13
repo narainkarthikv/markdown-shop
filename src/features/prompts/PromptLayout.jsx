@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Container, Paper, useTheme } from '@mui/material';
 import ModernSection from '@/components/ui/ModernSection';

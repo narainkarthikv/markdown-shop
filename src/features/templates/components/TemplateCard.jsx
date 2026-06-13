@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Typography, Button, IconButton, Tooltip } from '@mui/material';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Box, Typography } from '@mui/material';
 import CardContainer from '@/components/ui/CardContainer';
+import QuickActions from '@/components/ui/QuickActions';
 
 const TemplateCard = ({
   template,
@@ -34,28 +33,14 @@ const TemplateCard = ({
         {template.description}
       </Typography>
 
-      <Box
-        sx={{
-          mt: 'auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-        <Button
-          variant={isSelected ? 'contained' : 'outlined'}
-          color='primary'
-          onClick={() => onUseTemplate(template.content, index)}
-          sx={{ minWidth: 100 }}>
-          {isSelected ? 'Added!' : 'Use'}
-        </Button>
-
-        <Tooltip title={isCopied ? 'Copied!' : 'Copy to clipboard'}>
-          <IconButton
-            onClick={() => onCopy(template.content, index)}
-            color={isCopied ? 'success' : 'default'}>
-            {isCopied ? <CheckCircleIcon /> : <ContentCopyIcon />}
-          </IconButton>
-        </Tooltip>
+      <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+        <QuickActions
+          onPreview={undefined}
+          onCopy={() => onCopy(template.content, index)}
+          onUse={() => onUseTemplate(template.content, index)}
+          copied={isCopied}
+          isSelected={isSelected}
+        />
       </Box>
     </CardContainer>
   );

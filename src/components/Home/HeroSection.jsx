@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {
   Box,
   Button,
@@ -111,8 +110,8 @@ const HeroSection = () => {
                     mb: 3,
                   }}>
                   Structure your README the SaaS way. Build clean,
-                  ready-to-publish documentation using Markdown Templates,
-                  AI prompts, and live preview.
+                  ready-to-publish documentation using Markdown Templates, AI
+                  prompts, and live preview.
                 </Typography>
               </motion.div>
 

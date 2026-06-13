@@ -44,7 +44,7 @@ const useCachedImage = (url, { enabled = true } = {}) => {
         if (isActive) {
           setCachedSrc(result.src || url);
         }
-      } catch (error) {
+      } catch {
         if (isActive) {
           setCachedSrc(url);
         }

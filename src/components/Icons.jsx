@@ -18,7 +18,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DualActionButton from './ui/DualActionButton.jsx';
-import { NoSearchResults, NoIconsSelected } from './ui/EmptyState';
+import { NoSearchResults } from './ui/EmptyState';
 import { IconGridSkeleton } from './ui/Skeletons';
 import ModernSection from './ui/ModernSection';
 

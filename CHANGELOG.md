@@ -9,6 +9,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Added
+
+- Shared `QuickActions` UI component to standardize action icons across Templates and Prompts.
+
+### Fixed
+
+### Changed
+
+- Reworked action spacing and alignment for `TemplateCard` and prompt gallery cards; fixed cramped action icons and selection state handling.
+
+### Fixed
+
+- Resolved a `ReferenceError` by forwarding `isSelected` into card headers.
+
+## [1.0.3] - 2026-06-12
+
+### Added
+
+- Extracted `QuickActions` component (`src/components/ui/QuickActions.jsx`) and replaced duplicated action groups across template and prompt cards.
+
+### Changed
+
+- Unified action UI for templates and prompts to use contained `ButtonGroup` with small icon buttons for Copy/Use and an IconButton for Preview.
+
+### Fixed
+
+- Removed duplicated `TemplateActions` implementation and repaired JSX/prop issues introduced during refactor.
+
+## [1.0.2] - 2026-06-12
+
+### Fixed
+
+- Standardized quick-action icons (preview, copy, insert) across template and prompt cards to improve spacing, alignment and accessibility.
+
+### Changed
+
+- Extracted actions into a shared component (`src/components/ui/TemplateActions.jsx`) to reduce duplication and ensure consistent behavior.
+
+## [1.0.1] - 2026-05-23
+
+### Fixed
+
+- Resolved blocking ESLint failures by removing stale `eslint-disable` directives and cleaning unused imports/variables.
+- Corrected syntax regressions in `TemplateCard` and `PromptCard` prop-type declarations.
+- Fixed Vite compression plugin configuration to use `brotliCompress`, removing build-time compression path errors.
+
+### Security
+
+- Patched vulnerable dependency tree via `npm audit fix`, including DOMPurify upgrade to `3.4.5`.
+- Reduced vulnerabilities from `22` (including `1 critical`) to `5` (no critical; remaining issues are in bundled `npm` under release tooling).
+
+### Added
+
 - Initial Markdown Shop application foundation.
 - Icons and badges components, including icon/badge data sources.
 - README templates support with drawer and template expansion.
@@ -51,3 +104,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Theme and UI consistency refactors for long-term maintainability.
 
 [Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/1618fbf...HEAD
+[1.0.3]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.3
+[1.0.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.2
+[1.0.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.1

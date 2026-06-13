@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Stack } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import SearchOffIcon from '@mui/icons-material/SearchOff';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';

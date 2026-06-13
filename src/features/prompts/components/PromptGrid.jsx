@@ -16,7 +16,7 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import SearchIcon from '@mui/icons-material/Search';
 import PromptCard from './PromptCard';
-import TemplateCategories from '@/features/templates/components/TemplateCategories';
+import TemplateCategories from '@/components/Templates/TemplateCategories';
 import SearchField from '@/components/ui/SearchField';
 import { NoSearchResults } from '@/components/ui/EmptyState';
 import { usePrompts } from '@/hooks/usePrompts';
@@ -157,7 +157,11 @@ const PromptGrid = () => {
 
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems='stretch'>
             {prompts.map((prompt, idx) => (
-              <Grid item key={prompt.label} {...gridColumns} sx={{ display: 'flex' }}>
+              <Grid
+                item
+                key={prompt.label}
+                {...gridColumns}
+                sx={{ display: 'flex' }}>
                 <Fade in timeout={300 + idx * 50} style={{ width: '100%' }}>
                   <div style={{ width: '100%', display: 'flex' }}>
                     <PromptCard

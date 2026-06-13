@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Box, Typography, Stack, Tooltip, IconButton } from '@mui/material';
+import { Box, Typography, Tooltip, IconButton } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import CardContainer from '@/components/ui/CardContainer';

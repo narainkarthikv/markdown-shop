@@ -1,4 +1,4 @@
-import { Box, Container, Paper, useTheme, alpha } from '@mui/material';
+import { Box, Container, Paper, useTheme } from '@mui/material';
 import PropTypes from 'prop-types';
 import ModernSection from '@/components/ui/ModernSection';
 import TemplatesGrid from '@/components/Templates/TemplatesGrid';
