@@ -8,9 +8,6 @@ import {
   Box,
   Chip,
   alpha,
-  ButtonGroup,
-  Button,
-  Tooltip,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -18,11 +15,7 @@ import {
   Divider,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import AddIcon from '@mui/icons-material/Add';
-import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import QuickActions from '@/components/ui/QuickActions';
 import { useTheme } from '@mui/material/styles';
 import useClipboard from '@/hooks/useClipboard';

@@ -33,7 +33,13 @@ const TemplateCard = ({
         {template.description}
       </Typography>
 
-      <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+      <Box
+        sx={{
+          mt: 'auto',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+        }}>
         <QuickActions
           onPreview={undefined}
           onCopy={() => onCopy(template.content, index)}

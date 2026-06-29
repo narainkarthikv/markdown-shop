@@ -49,8 +49,14 @@ const QuickActions = ({ onPreview, onCopy, onUse, copied, isSelected }) => {
               px: 1.5,
               py: 0.75,
             }}
-            aria-label={copied ? 'Copied to clipboard' : 'Copy template to clipboard'}>
-            {copied ? <CheckIcon fontSize='small' /> : <ContentCopyIcon fontSize='small' />}
+            aria-label={
+              copied ? 'Copied to clipboard' : 'Copy template to clipboard'
+            }>
+            {copied ? (
+              <CheckIcon fontSize='small' />
+            ) : (
+              <ContentCopyIcon fontSize='small' />
+            )}
           </Button>
         </Tooltip>
         <Tooltip title='Insert into editor' arrow>
@@ -59,7 +65,11 @@ const QuickActions = ({ onPreview, onCopy, onUse, copied, isSelected }) => {
             color='primary'
             sx={{ minWidth: 'auto', px: 1.5, py: 0.75 }}
             aria-label='Use template in editor'>
-            {isSelected ? <CheckCircleIcon fontSize='small' /> : <AddIcon fontSize='small' />}
+            {isSelected ? (
+              <CheckCircleIcon fontSize='small' />
+            ) : (
+              <AddIcon fontSize='small' />
+            )}
           </Button>
         </Tooltip>
       </ButtonGroup>

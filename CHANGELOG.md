@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.1] - 2026-06-29
+
+### Fixed
+
+- Resolved strict lint failures by removing unused imports in template/prompt card implementations and applying formatting fixes in shared quick actions/components.
+- Updated Playwright E2E specs to align with the current UI behavior and selectors (drawer navigation, theme toggle/store assertions, markdown editor targeting, and template action flows).
+- Stabilized `test:e2e` expectations around current non-persistent editor/username route behavior so the suite reflects actual app state handling.
+
 ## [1.1.0] - 2026-06-29
 
 ### Added
@@ -150,7 +158,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home page and core feature files repeatedly reorganized for clarity.
 - Theme and UI consistency refactors for long-term maintainability.
 
-[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/1618fbf...HEAD
+[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.1
 [1.0.3]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.3
 [1.0.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.2
 [1.0.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.1
