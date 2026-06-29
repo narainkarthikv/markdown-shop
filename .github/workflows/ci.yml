@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint and Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Build production bundle
+        run: npm run build
+
+  # Smoke tests: Quick validation on all develop pushes
+  e2e-smoke:
+    name: Playwright Smoke Tests (Chromium)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    needs: quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright smoke tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright smoke test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-smoke-report-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+            blob-report
+          if-no-files-found: ignore
+          retention-days: 7
+
+  # Full E2E tests: Comprehensive validation on PRs to main/develop and pushes to main
+  e2e-full:
+    name: Playwright Full E2E Tests (Chromium)
+    if: |
+      (github.event_name == 'pull_request' && 
+       (github.base_ref == 'main' || github.base_ref == 'develop')) ||
+      (github.event_name == 'push' && 
+       github.ref == 'refs/heads/main')
+    needs: quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright full E2E tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright full test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-full-report-${{ github.run_id }}
+          path: |
+            playwright-report
+            test-results
+            blob-report
+          if-no-files-found: ignore
+          retention-days: 14
+
