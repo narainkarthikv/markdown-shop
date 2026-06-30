@@ -80,7 +80,7 @@ Markdown Shop is a modern React 18 + Vite application for building and customizi
 
 # Design System & UI Guidelines
 
-Refer to `design-system.md` for detailed design tokens, color palette, typography, and component patterns. When implementing UI components, always reference the design system for consistency. 
+Refer to `design-system.md` for detailed design tokens, color palette, typography, and component patterns. When implementing UI components, always reference the design system for consistency.
 
 ---
 

@@ -9,21 +9,82 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-### Added
-
-- Shared `QuickActions` UI component to standardize action icons across Templates and Prompts.
+### Changed
 
 ### Fixed
+
+## [1.1.2] - 2026-06-30
+
+### Fixed
+
+- Corrected local Sora font asset paths from `/fonts/Sora/static/*` to `/static/*` in preload and `@font-face` declarations to resolve Vite build-time font warnings.
+
+## [1.1.1] - 2026-06-29
+
+### Fixed
+
+- Resolved strict lint failures by removing unused imports in template/prompt card implementations and applying formatting fixes in shared quick actions/components.
+- Updated Playwright E2E specs to align with the current UI behavior and selectors (drawer navigation, theme toggle/store assertions, markdown editor targeting, and template action flows).
+- Stabilized `test:e2e` expectations around current non-persistent editor/username route behavior so the suite reflects actual app state handling.
+
+## [1.1.0] - 2026-06-29
+
+### Added
+
+- Playwright end-to-end (E2E) testing infrastructure with comprehensive test coverage
+- 7 test suites covering navigation, theming, markdown editing, GitHub integration, components, templates, and export features
+- E2E test scripts: `npm run test:e2e`, `test:e2e:ui`, `test:e2e:debug`, `test:e2e:headed`
+- Playwright configuration for chromium browser with CI/CD integration
+- Test documentation and best practices guide (`tests/e2e/README.md`)
+- GitHub Actions CI workflow documentation (`CI_WORKFLOW.md`, `CI_FIXES.md`)
+
+### Fixed
+
+- **CI/CD Workflow**: Fixed GitHub Actions conditions for proper branch handling
+  - Changed PR branch condition from `github.ref_name` (wrong for PRs) to `github.base_ref` (correct target branch)
+  - Added missing `main` branch to push trigger (was only triggering on develop pushes)
+  - Separated smoke tests and full E2E tests to prevent duplicate runs
+  - Fixed condition evaluation for edge cases (e.g., PR to main now properly triggers full tests)
+  - Improved artifact naming with unique `github.run_id` identifiers
+  - Updated artifact paths to include `blob-report` for comprehensive test coverage
+
+## [1.0.3] - 2026-06-12
+
+### Added
+
+- Extracted `QuickActions` component (`src/components/ui/QuickActions.jsx`) and replaced duplicated action groups across template and prompt cards.
 
 ### Changed
 
-- Reworked action spacing and alignment for `TemplateCard` and prompt gallery cards; fixed cramped action icons and selection state handling.
+- Unified action UI for templates and prompts to use contained `ButtonGroup` with small icon buttons for Copy/Use and an IconButton for Preview.
 
 ### Fixed
 
-- Resolved a `ReferenceError` by forwarding `isSelected` into card headers.
+- Removed duplicated `TemplateActions` implementation and repaired JSX/prop issues introduced during refactor.
 
-## [1.0.3] - 2026-06-12
+### Added
+
+- Extracted `QuickActions` component (`src/components/ui/QuickActions.jsx`) and replaced duplicated action groups across template and prompt cards.
+
+### Changed
+
+- Unified action UI for templates and prompts to use contained `ButtonGroup` with small icon buttons for Copy/Use and an IconButton for Preview.
+
+### Fixed
+
+- Removed duplicated `TemplateActions` implementation and repaired JSX/prop issues introduced during refactor.
+
+## [1.0.2] - 2026-06-12
+
+### Fixed
+
+- Standardized quick-action icons (preview, copy, insert) across template and prompt cards to improve spacing, alignment and accessibility.
+
+### Changed
+
+- Extracted actions into a shared component (`src/components/ui/TemplateActions.jsx`) to reduce duplication and ensure consistent behavior.
+
+## [1.0.1] - 2026-05-23
 
 ### Added
 
@@ -103,7 +164,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home page and core feature files repeatedly reorganized for clarity.
 - Theme and UI consistency refactors for long-term maintainability.
 
-[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/1618fbf...HEAD
+[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.2
+[1.1.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.1
 [1.0.3]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.3
 [1.0.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.2
 [1.0.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.1

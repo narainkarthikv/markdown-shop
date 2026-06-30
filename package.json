@@ -1,7 +1,7 @@
 {
   "name": "markdown-shop",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.1.2",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -13,7 +13,11 @@
     "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md}\"",
     "analyze": "vite build --mode analyze",
     "clean": "rm -rf dist node_modules/.vite",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:headed": "playwright test --headed"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -33,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@playwright/test": "^1.61.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.6",
