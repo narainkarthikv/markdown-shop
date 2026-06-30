@@ -32,7 +32,9 @@ test.describe('Components Page', () => {
 
   test('selects and adds a component', async ({ page }) => {
     // Look for component buttons or cards to click
-    const componentButtons = page.locator('button').filter({ has: page.locator('text=/.*component|badge|icon.*/i') });
+    const componentButtons = page
+      .locator('button')
+      .filter({ has: page.locator('text=/.*component|badge|icon.*/i') });
 
     const firstComponent = componentButtons.first();
     if (await firstComponent.isVisible().catch(() => false)) {

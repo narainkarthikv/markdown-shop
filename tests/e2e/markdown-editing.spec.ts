@@ -52,9 +52,7 @@ test.describe('Markdown Editing', () => {
     await expect(markdownTextarea).toHaveValue('');
   });
 
-  test('resets markdown content after route navigation', async ({
-    page,
-  }) => {
+  test('resets markdown content after route navigation', async ({ page }) => {
     const testMarkdown = '# Persistent Content\n\nThis should persist.';
 
     const markdownTextarea = getMarkdownEditor(page);

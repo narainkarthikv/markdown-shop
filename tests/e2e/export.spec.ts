@@ -16,7 +16,10 @@ test.describe('Template actions', () => {
       .first();
     await expect(copyButton).toBeVisible();
     await copyButton.click();
-    await expect(copyButton).toHaveAttribute('aria-label', /copied to clipboard/i);
+    await expect(copyButton).toHaveAttribute(
+      'aria-label',
+      /copied to clipboard/i
+    );
   });
 
   test('uses a template in the markdown editor', async ({ page }) => {
@@ -36,9 +39,11 @@ test.describe('Template actions', () => {
       page.getByRole('button', { name: /preview template/i }).first()
     ).toBeVisible();
     await expect(
-      page.getByRole('button', {
-        name: /copy template to clipboard|copied to clipboard/i,
-      }).first()
+      page
+        .getByRole('button', {
+          name: /copy template to clipboard|copied to clipboard/i,
+        })
+        .first()
     ).toBeVisible();
     await expect(
       page.getByRole('button', { name: /use template in editor/i }).first()

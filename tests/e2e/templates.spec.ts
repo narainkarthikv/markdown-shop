@@ -17,7 +17,9 @@ test.describe('Templates Page', () => {
 
   test('selects a template', async ({ page }) => {
     // Look for template cards or buttons
-    const templateButtons = page.locator('button').filter({ has: page.locator('text=/.*template.*/i') });
+    const templateButtons = page
+      .locator('button')
+      .filter({ has: page.locator('text=/.*template.*/i') });
 
     const firstTemplate = templateButtons.first();
     if (await firstTemplate.isVisible().catch(() => false)) {
@@ -30,9 +32,16 @@ test.describe('Templates Page', () => {
 
   test('filters templates by category', async ({ page }) => {
     // Look for filter/category buttons
-    const categoryButtons = page.locator('button').filter({ has: page.locator('text=/.*all|basic|advanced.*/i') });
+    const categoryButtons = page
+      .locator('button')
+      .filter({ has: page.locator('text=/.*all|basic|advanced.*/i') });
 
-    if (await categoryButtons.nth(1).isVisible().catch(() => false)) {
+    if (
+      await categoryButtons
+        .nth(1)
+        .isVisible()
+        .catch(() => false)
+    ) {
       await categoryButtons.nth(1).click();
 
       // Verify templates are filtered
@@ -42,9 +51,16 @@ test.describe('Templates Page', () => {
 
   test('previews a template', async ({ page }) => {
     // Look for preview buttons or modal triggers
-    const previewButtons = page.locator('button').filter({ has: page.locator('text=/.*preview.*/i') });
+    const previewButtons = page
+      .locator('button')
+      .filter({ has: page.locator('text=/.*preview.*/i') });
 
-    if (await previewButtons.first().isVisible().catch(() => false)) {
+    if (
+      await previewButtons
+        .first()
+        .isVisible()
+        .catch(() => false)
+    ) {
       await previewButtons.first().click();
 
       // Verify preview modal/section appears

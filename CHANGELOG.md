@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.1.2] - 2026-06-30
+
+### Fixed
+
+- Corrected local Sora font asset paths from `/fonts/Sora/static/*` to `/static/*` in preload and `@font-face` declarations to resolve Vite build-time font warnings.
+
 ## [1.1.1] - 2026-06-29
 
 ### Fixed
@@ -158,7 +164,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home page and core feature files repeatedly reorganized for clarity.
 - Theme and UI consistency refactors for long-term maintainability.
 
-[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.2
 [1.1.1]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.1
 [1.0.3]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.3
 [1.0.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.0.2

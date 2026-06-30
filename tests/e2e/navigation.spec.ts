@@ -14,7 +14,10 @@ test.describe('Navigation', () => {
 
   test('navigates to shop page from home', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('link', { name: /start building/i }).first().click();
+    await page
+      .getByRole('link', { name: /start building/i })
+      .first()
+      .click();
     await expect(page).toHaveURL(/\/shop$/);
   });
 
@@ -26,13 +29,17 @@ test.describe('Navigation', () => {
     });
 
     await menuButton.click();
-    const componentLink = page.getByRole('link', { name: /github components/i });
+    const componentLink = page.getByRole('link', {
+      name: /github components/i,
+    });
     await expect(componentLink).toBeVisible();
     await componentLink.click();
     await expect(page).toHaveURL(/\/components$/);
 
     await menuButton.click();
-    const templateLink = page.getByRole('link', { name: /markdown templates/i });
+    const templateLink = page.getByRole('link', {
+      name: /markdown templates/i,
+    });
     await expect(templateLink).toBeVisible();
     await templateLink.click();
     await expect(page).toHaveURL(/\/templates$/);

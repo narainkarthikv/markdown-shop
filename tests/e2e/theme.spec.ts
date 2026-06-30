@@ -18,7 +18,9 @@ test.describe('Theme Toggle', () => {
   test('cycles theme preference and persists to localStorage', async ({
     page,
   }) => {
-    const themeToggle = page.locator('button[aria-label^="switch to "]').first();
+    const themeToggle = page
+      .locator('button[aria-label^="switch to "]')
+      .first();
     await expect(themeToggle).toBeVisible();
     const beforeLabel = await themeToggle.getAttribute('aria-label');
     await themeToggle.click();
@@ -31,7 +33,9 @@ test.describe('Theme Toggle', () => {
   });
 
   test('persists theme preference across page reload', async ({ page }) => {
-    const themeToggle = page.locator('button[aria-label^="switch to "]').first();
+    const themeToggle = page
+      .locator('button[aria-label^="switch to "]')
+      .first();
     await expect(themeToggle).toBeVisible();
     await themeToggle.click();
     const themeAfterToggle = await getStoredThemeMode(page);
