@@ -2,35 +2,25 @@ import { Box, Grid, Container } from '@mui/material';
 import GithubStats from './components/GithubStats';
 import GithubTrophies from './components/GithubTrophies';
 import GithubBadges from './components/GithubBadges';
-
 import GithubStreak from './components/GithubStreak';
-import { GithubActivityGraph } from './components/GithubActivityGraph';
-import ProfileViewsCounter from './components/ProfileViewsCounter';
-
+import GithubActivityGraph from './components/GithubActivityGraph';
 import GithubRepoPin from './components/GithubRepoPin';
 import GithubFollowers from './components/GithubFollowers';
 import GithubCommitGraph from './components/GithubCommitGraph';
+import GithubContributors from './components/GithubContributors';
+import GithubMetrics from './components/GithubMetrics';
+import GithubSnakeContribution from './components/GithubSnakeContribution';
+import GithubSettings from './components/GithubSettings';
+import { GithubDataProvider } from './GithubDataProvider';
 import ModernSection, { SectionGroup } from '@/components/ui/ModernSection';
 
-/**
- * Modern GitHub Section Layout
- *
- * Information Architecture:
- * 1. Core Stats - Most important metrics (Stats, Streak)
- * 2. Engagement Badges - Quick insights (Views, Badges, Followers)
- * 3. Visual Highlights - Eye-catching elements (Trophies)
- * 4. Activity Analysis - Contribution patterns (Activity Graph, Commit Graph)
- * 5. Project Context - Repository info (Repo Pin, Metrics)
- * 6. Collaboration - Team aspect (Contributors)
- * 7. Creative Visuals - Fun elements (Snake Animation)
- */
-const GithubSection = () => (
+const GithubComponents = () => (
   <Container maxWidth='xl' sx={{ py: 4 }}>
+    <GithubSettings />
     <SectionGroup spacing={8}>
-      {/* SECTION 1: Core Statistics */}
       <ModernSection
         title='Core Statistics'
-        description='Your most important GitHub metrics at a glance'
+        description='Profile totals and estimated language mix from GitHub API data.'
         variant='default'>
         <Grid container spacing={3}>
           <Grid item xs={12} lg={6}>
@@ -41,16 +31,11 @@ const GithubSection = () => (
           </Grid>
         </Grid>
       </ModernSection>
-
-      {/* SECTION 2: Engagement Badges */}
       <ModernSection
         title='Badges & Engagement'
-        description='Showcase your profile engagement and achievements'
+        description='Native profile and repository metrics. Profile views are not available from GitHub’s API.'
         variant='default'>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
-            <ProfileViewsCounter />
-          </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <GithubBadges />
           </Grid>
@@ -59,22 +44,18 @@ const GithubSection = () => (
           </Grid>
         </Grid>
       </ModernSection>
-
-      {/* SECTION 3: Achievements */}
       <ModernSection
         title='Achievements'
-        description='Display your GitHub trophies and milestones'
+        description='Profile and repository milestones derived from GitHub API data.'
         variant='default'>
         <GithubTrophies />
       </ModernSection>
-
-      {/* SECTION 4: Activity & Contributions */}
       <ModernSection
         title='Activity & Contributions'
-        description='Visualize your coding activity and contribution patterns'
+        description='Recent public events only; GitHub’s complete contribution calendar is not available through these public REST endpoints.'
         variant='default'
         collapsible
-        defaultExpanded={true}>
+        defaultExpanded>
         <Box sx={{ mb: 3 }}>
           <GithubActivityGraph />
         </Box>
@@ -83,7 +64,23 @@ const GithubSection = () => (
             <GithubCommitGraph />
           </Grid>
           <Grid item xs={12} md={6}>
+            <GithubSnakeContribution />
+          </Grid>
+        </Grid>
+      </ModernSection>
+      <ModernSection
+        title='Repository & Community'
+        description='Repository summaries and contributors from GitHub’s REST API.'
+        variant='default'>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
             <GithubRepoPin />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <GithubContributors />
+          </Grid>
+          <Grid item xs={12}>
+            <GithubMetrics />
           </Grid>
         </Grid>
       </ModernSection>
@@ -91,4 +88,9 @@ const GithubSection = () => (
   </Container>
 );
 
+const GithubSection = () => (
+  <GithubDataProvider>
+    <GithubComponents />
+  </GithubDataProvider>
+);
 export default GithubSection;

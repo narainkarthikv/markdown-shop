@@ -1,12 +1,4 @@
-import {
-  Box,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-  InputAdornment,
-  Button,
-} from '@mui/material';
+import { Box, Paper, Stack, Typography, Button } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import MarkdownEditor from './components/MarkdownEditor';
 import MarkdownPreview from './components/MarkdownPreview';
@@ -16,8 +8,7 @@ import useMarkdownStore from './store/markdownStore';
 import { useSectionPresets } from '@/hooks/useSectionPresets';
 
 const MarkdownLayout = () => {
-  const { markdown, setMarkdown, userName, setUserName, resetDraft } =
-    useMarkdownStore();
+  const { markdown, setMarkdown, resetDraft } = useMarkdownStore();
   const clearSections = useShopStore((state) => state.clearSections);
   useSectionPresets();
 
@@ -51,30 +42,9 @@ const MarkdownLayout = () => {
           spacing={2}
           alignItems={{ xs: 'stretch', md: 'center' }}
           justifyContent='space-between'>
-          <Box sx={{ flex: 1, minWidth: 0 }}>
-            <Typography variant='subtitle2' sx={{ mb: 0.5 }}>
-              GitHub username
-            </Typography>
-            <TextField
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder='octocat'
-              size='small'
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>@</InputAdornment>
-                ),
-              }}
-              helperText='Used to personalize GitHub components and embeds'
-            />
-          </Box>
-          <Typography
-            variant='body2'
-            color='text.secondary'
-            sx={{ maxWidth: 360 }}>
+          <Typography variant='body2' color='text.secondary' sx={{ flex: 1 }}>
             Drafts save automatically in this browser, including markdown,
-            username, icons, and selected sections.
+            icons, and selected sections.
           </Typography>
           <Button
             variant='outlined'

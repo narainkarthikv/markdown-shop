@@ -3,7 +3,14 @@
   command = "npm run build"
 
 [[redirects]]
+  from = "/api/github/:username/:component"
+  to = "/.netlify/functions/github-svg?username=:username&component=:component"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   force = true
+

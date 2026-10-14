@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.4.0] - 2026-10-14
+
+### Added
+
+- Added native GitHub profile and repository components backed by public GitHub API data, with optional personal access token support and explicit username update/refresh controls.
+- Added standalone, cacheable SVG endpoints for GitHub components, with Vercel and Netlify routing and usage documentation for Markdown, HTML, and scripts.
+- Added direct Components, Templates, and Prompts shortcuts beside the Markdown Editor heading while retaining sidebar navigation.
+
+### Changed
+
+- Moved GitHub username entry from the Markdown shop to the Components page. GitHub data is fetched only after the user submits the username with **Update components**.
+- Replaced third-party GitHub component embeds with native SVG snapshots and clarified the limits of public activity and profile data.
+
 ## [1.3.0] - 2026-07-22
 
 ### Added
