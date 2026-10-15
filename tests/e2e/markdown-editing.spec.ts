@@ -67,14 +67,9 @@ test.describe('Markdown Editing', () => {
 
     const markdownTextarea = getMarkdownEditor(page);
     await markdownTextarea.fill(testMarkdown);
-    await page
-      .getByPlaceholder(/octocat/i)
-      .first()
-      .fill('octocat');
 
     await page.getByRole('button', { name: /clear draft/i }).click();
 
     await expect(getMarkdownEditor(page)).toHaveValue('');
-    await expect(page.getByPlaceholder(/octocat/i).first()).toHaveValue('');
   });
 });

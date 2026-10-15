@@ -6,8 +6,17 @@ test.describe('Template actions', () => {
     await page.waitForLoadState('networkidle');
   });
 
-  test('copies template content to clipboard', async ({ page, context }) => {
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  test('copies template content to clipboard', async ({ page }) => {
+    await page.evaluate(() => {
+      Object.defineProperty(navigator, 'clipboard', {
+        configurable: true,
+        value: {
+          writeText: async (text) => {
+            window.__copiedText = text;
+          },
+        },
+      });
+    });
 
     const copyButton = page
       .getByRole('button', {
@@ -20,6 +29,9 @@ test.describe('Template actions', () => {
       'aria-label',
       /copied to clipboard/i
     );
+    await expect
+      .poll(() => page.evaluate(() => window.__copiedText))
+      .not.toBe('');
   });
 
   test('uses a template in the markdown editor', async ({ page }) => {

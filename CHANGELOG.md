@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.4.1] - 2026-10-15
+
+### Fixed
+
+- Updated Playwright E2E coverage to match the current GitHub settings and icon selection UI, verify draft clearing correctly, and test clipboard copies deterministically.
+
 ## [1.4.0] - 2026-10-14
 
 ### Added
