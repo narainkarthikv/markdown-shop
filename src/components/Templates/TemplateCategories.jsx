@@ -52,7 +52,7 @@ const TemplateCategories = ({
               fontSize: '0.875rem',
               height: 36,
               px: 0.5,
-              borderRadius: 2,
+              borderRadius: 'var(--ms-radius-xl)',
               bgcolor: active
                 ? 'primary.main'
                 : alpha(theme.palette.background.default, 0.6),

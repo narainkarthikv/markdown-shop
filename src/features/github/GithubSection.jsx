@@ -1,4 +1,5 @@
-import { Box, Grid, Container } from '@mui/material';
+import { useState } from 'react';
+import { Box } from '@mui/material';
 import GithubStats from './components/GithubStats';
 import GithubTrophies from './components/GithubTrophies';
 import GithubBadges from './components/GithubBadges';
@@ -11,86 +12,77 @@ import GithubContributors from './components/GithubContributors';
 import GithubMetrics from './components/GithubMetrics';
 import GithubSnakeContribution from './components/GithubSnakeContribution';
 import GithubSettings from './components/GithubSettings';
+import SvgBanners from '@/components/SvgBanners';
 import { GithubDataProvider } from './GithubDataProvider';
 import ModernSection, { SectionGroup } from '@/components/ui/ModernSection';
-
+import { GithubThemeContext } from './GithubThemeContext';
 const GithubComponents = () => (
-  <Container maxWidth='xl' sx={{ py: 4 }}>
+  <Box sx={{ py: { xs: 2, md: 3 }, minWidth: 0 }}>
     <GithubSettings />
-    <SectionGroup spacing={8}>
+    <SectionGroup spacing={4} sx={{ minWidth: 0 }}>
       <ModernSection
-        title='Core Statistics'
-        description='Profile totals and estimated language mix from GitHub API data.'
-        variant='default'>
-        <Grid container spacing={3}>
-          <Grid item xs={12} lg={6}>
-            <GithubStats />
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <GithubStreak />
-          </Grid>
-        </Grid>
-      </ModernSection>
-      <ModernSection
-        title='Badges & Engagement'
-        description='Native profile and repository metrics. Profile views are not available from GitHub’s API.'
-        variant='default'>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
-            <GithubBadges />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <GithubFollowers />
-          </Grid>
-        </Grid>
-      </ModernSection>
-      <ModernSection
-        title='Achievements'
-        description='Profile and repository milestones derived from GitHub API data.'
-        variant='default'>
-        <GithubTrophies />
+        title='Profile components'
+        description='Profile stats, achievements, and a custom header banner for your README.'
+        variant='compact'
+        sx={sectionStyle}>
+        <Box sx={responsiveGrid}>
+          <GithubStats />
+          <GithubStreak />
+          <GithubBadges />
+          <GithubFollowers />
+          <GithubTrophies />
+          <SvgBanners />
+        </Box>
       </ModernSection>
       <ModernSection
         title='Activity & Contributions'
         description='Recent public events only; GitHub’s complete contribution calendar is not available through these public REST endpoints.'
-        variant='default'
-        collapsible
-        defaultExpanded>
-        <Box sx={{ mb: 3 }}>
+        variant='compact'
+        sx={sectionStyle}>
+        <Box sx={responsiveGrid}>
           <GithubActivityGraph />
+          <GithubCommitGraph />
+          <GithubSnakeContribution />
         </Box>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <GithubCommitGraph />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <GithubSnakeContribution />
-          </Grid>
-        </Grid>
       </ModernSection>
       <ModernSection
         title='Repository & Community'
         description='Repository summaries and contributors from GitHub’s REST API.'
-        variant='default'>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <GithubRepoPin />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <GithubContributors />
-          </Grid>
-          <Grid item xs={12}>
-            <GithubMetrics />
-          </Grid>
-        </Grid>
+        variant='compact'
+        sx={sectionStyle}>
+        <Box sx={responsiveGrid}>
+          <GithubRepoPin />
+          <GithubContributors />
+          <GithubMetrics />
+        </Box>
       </ModernSection>
     </SectionGroup>
-  </Container>
+  </Box>
 );
 
-const GithubSection = () => (
-  <GithubDataProvider>
-    <GithubComponents />
-  </GithubDataProvider>
-);
+const responsiveGrid = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 380px), 1fr))',
+  gap: { xs: 1.5, sm: 2, xl: 2.5 },
+  minWidth: 0,
+  '& > *': { minWidth: 0 },
+};
+
+const sectionStyle = {
+  pt: { xs: 2, md: 2.5 },
+  borderTop: '1px solid',
+  borderColor: 'divider',
+};
+
+const GithubSection = () => {
+  const [flavor, setFlavor] = useState('cyberpunk');
+  const [size, setSize] = useState('medium');
+  return (
+    <GithubThemeContext.Provider value={{ flavor, setFlavor, size, setSize }}>
+      <GithubDataProvider>
+        <GithubComponents />
+      </GithubDataProvider>
+    </GithubThemeContext.Provider>
+  );
+};
 export default GithubSection;

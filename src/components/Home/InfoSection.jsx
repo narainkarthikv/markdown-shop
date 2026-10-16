@@ -53,7 +53,7 @@ const InfoSection = () => {
               sx={{
                 p: 3,
                 height: '100%',
-                borderRadius: 3,
+                borderRadius: 'var(--ms-radius-2xl)',
                 border: `1px solid ${theme.palette.divider}`,
                 bgcolor: theme.palette.background.paper,
               }}>

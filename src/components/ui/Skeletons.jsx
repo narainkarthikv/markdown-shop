@@ -8,7 +8,7 @@ export const CardSkeleton = ({ height = 200, hasActions = true }) => (
   <Box
     sx={{
       p: 3,
-      borderRadius: 2,
+      borderRadius: 'var(--ms-radius-xl)',
       bgcolor: 'background.paper',
       border: (theme) =>
         `1px solid ${theme.customTokens?.borderSubtle || theme.palette.divider}`,
@@ -18,7 +18,7 @@ export const CardSkeleton = ({ height = 200, hasActions = true }) => (
       variant='rectangular'
       width='100%'
       height={height}
-      sx={{ borderRadius: 1, mb: 2 }}
+      sx={{ borderRadius: 'var(--ms-radius-md)', mb: 2 }}
     />
     {hasActions && (
       <Stack direction='row' spacing={1} justifyContent='center'>
@@ -79,7 +79,7 @@ export const StatsSkeleton = () => (
       height={180}
       sx={{
         maxWidth: 400,
-        borderRadius: 2,
+        borderRadius: 'var(--ms-radius-xl)',
       }}
     />
     <Skeleton
@@ -88,7 +88,7 @@ export const StatsSkeleton = () => (
       height={180}
       sx={{
         maxWidth: 300,
-        borderRadius: 2,
+        borderRadius: 'var(--ms-radius-xl)',
       }}
     />
   </Stack>
@@ -107,7 +107,7 @@ export const ListSkeleton = ({ count = 5, hasAvatar = false }) => (
           alignItems: 'center',
           gap: 2,
           p: 2,
-          borderRadius: 1,
+          borderRadius: 'var(--ms-radius-md)',
           bgcolor: 'background.paper',
         }}>
         {hasAvatar && <Skeleton variant='circular' width={40} height={40} />}

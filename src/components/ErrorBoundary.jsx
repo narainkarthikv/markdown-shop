@@ -81,7 +81,7 @@ class ErrorBoundary extends React.Component {
               maxWidth: 600,
               width: '100%',
               textAlign: 'center',
-              borderRadius: 2,
+              borderRadius: 'var(--ms-radius-xl)',
             }}>
             <ErrorOutlineIcon
               color='error'
@@ -105,7 +105,7 @@ class ErrorBoundary extends React.Component {
                   my: 2,
                   p: 2,
                   bgcolor: 'grey.100',
-                  borderRadius: 1,
+                  borderRadius: 'var(--ms-radius-md)',
                   textAlign: 'left',
                   overflowX: 'auto',
                   maxHeight: 200,

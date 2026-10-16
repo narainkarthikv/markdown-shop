@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { ButtonGroup, Button, Tooltip, IconButton } from '@mui/material';
+import { ButtonGroup, Button, Tooltip } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
@@ -26,6 +26,7 @@ const DualActionButton = memo(
     size = 'medium',
     color = 'primary',
     fullWidth = false,
+    onInsert,
     ...props
   }) => {
     const { insertSection } = useMarkdownStore();
@@ -36,34 +37,58 @@ const DualActionButton = memo(
     };
 
     const handleInsert = () => {
-      insertSection(content);
+      if (onInsert) onInsert();
+      else insertSection(content);
     };
 
     // Icon-only variant (for tight spaces)
     if (variant === 'icon-only') {
       return (
-        <ButtonGroup size={size} sx={{ minWidth: 'auto' }}>
+        <ButtonGroup
+          size={size}
+          variant='contained'
+          sx={{
+            minWidth: 'auto',
+            gap: 0.75,
+            '& .MuiButtonGroup-grouped': {
+              borderRadius: 'var(--ms-radius-lg)',
+            },
+          }}>
           <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
-            <IconButton
+            <Button
               onClick={handleCopy}
               color={copied ? 'success' : color}
-              size={size}
+              aria-label={copied ? 'Copied to clipboard' : 'Copy to clipboard'}
+              sx={{
+                minWidth: 36,
+                width: 36,
+                height: 36,
+                p: 0,
+                borderRadius: 'var(--ms-radius-lg)',
+              }}
               {...props}>
               {copied ? (
                 <CheckIcon fontSize='small' />
               ) : (
                 <ContentCopyIcon fontSize='small' />
               )}
-            </IconButton>
+            </Button>
           </Tooltip>
           <Tooltip title='Insert into editor' arrow>
-            <IconButton
+            <Button
               onClick={handleInsert}
               color={color}
-              size={size}
+              aria-label='Insert into editor'
+              sx={{
+                minWidth: 36,
+                width: 36,
+                height: 36,
+                p: 0,
+                borderRadius: 'var(--ms-radius-lg)',
+              }}
               {...props}>
               <AddIcon fontSize='small' />
-            </IconButton>
+            </Button>
           </Tooltip>
         </ButtonGroup>
       );
@@ -77,7 +102,7 @@ const DualActionButton = memo(
             onClick={handleCopy}
             startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
             color={copied ? 'success' : color}
-            sx={{ flex: 1 }}
+            sx={{ flex: 1, borderRadius: 'var(--ms-radius-lg)' }}
             {...props}>
             {copied ? 'Copied' : label}
           </Button>
@@ -85,7 +110,11 @@ const DualActionButton = memo(
             <Button
               onClick={handleInsert}
               color={color}
-              sx={{ minWidth: 'auto', px: 2 }}
+              sx={{
+                minWidth: 'auto',
+                px: 2,
+                borderRadius: 'var(--ms-radius-lg)',
+              }}
               {...props}>
               <AddIcon />
             </Button>
@@ -101,7 +130,7 @@ const DualActionButton = memo(
           onClick={handleCopy}
           startIcon={copied ? <CheckIcon /> : <ContentCopyIcon />}
           color={copied ? 'success' : color}
-          sx={{ flex: 1 }}
+          sx={{ flex: 1, borderRadius: 'var(--ms-radius-lg)' }}
           {...props}>
           {copied ? 'Copied!' : label}
         </Button>
@@ -110,6 +139,7 @@ const DualActionButton = memo(
           startIcon={<AddIcon />}
           color={color}
           variant='outlined'
+          sx={{ borderRadius: 'var(--ms-radius-lg)' }}
           {...props}>
           Insert
         </Button>

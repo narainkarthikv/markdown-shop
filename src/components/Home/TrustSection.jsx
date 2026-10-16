@@ -66,7 +66,7 @@ const TrustSection = () => {
                 sx={{
                   p: 3,
                   height: '100%',
-                  borderRadius: 3,
+                  borderRadius: 'var(--ms-radius-2xl)',
                   border: `1px solid ${theme.palette.divider}`,
                   bgcolor: theme.palette.background.paper,
                 }}>
@@ -74,7 +74,7 @@ const TrustSection = () => {
                   sx={{
                     width: 36,
                     height: 36,
-                    borderRadius: 2,
+                    borderRadius: 'var(--ms-radius-xl)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.5.0] - 2026-10-16
+
+### Added
+
+- Added themed GitHub profile SVG components and a data-driven profile summary banner, with small, medium, and large preview sizes and SVG downloads.
+- Added reusable preview dialogs with descriptions, copy/insert actions, and size controls for generated SVGs.
+- Added a responsive README workspace with section navigation, editor/preview views, and draft controls.
+- Added a shared design token API for semantic colors, spacing, typography, radii, motion, layout, and controls, with matching CSS variables.
+
+### Changed
+
+- Reworked the home page into a responsive SaaS-style landing page with a README preview, feature overview, workflow, and focused calls to action.
+- Replaced the global collapsible navigation drawer with direct desktop links and a persistent mobile navigation row; refreshed the shared footer and aligned its repository links to `main`.
+- Updated GitHub component layouts and SVG presentation for responsive sizing, and kept Activity & Contributions expanded.
+- Limited initial tech stack icon rendering to the first 25 icons, with search-driven results for other icons.
+
 ## [1.4.1] - 2026-10-15
 
 ### Fixed

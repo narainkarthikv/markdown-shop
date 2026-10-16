@@ -26,6 +26,7 @@ const QuickActions = ({ onPreview, onCopy, onUse, copied, isSelected }) => {
             minWidth: 'auto',
             px: 1.5,
             py: 0.75,
+            borderRadius: 'var(--ms-radius-lg)',
           }}
           aria-label='Preview template'>
           <VisibilityIcon fontSize='small' />
@@ -37,6 +38,9 @@ const QuickActions = ({ onPreview, onCopy, onUse, copied, isSelected }) => {
         variant='contained'
         sx={{
           gap: 1,
+          '& .MuiButtonGroup-grouped': {
+            borderRadius: 'var(--ms-radius-lg)',
+          },
         }}>
         <Tooltip title={copied ? 'Copied!' : 'Copy to clipboard'} arrow>
           <Button
@@ -46,6 +50,7 @@ const QuickActions = ({ onPreview, onCopy, onUse, copied, isSelected }) => {
               minWidth: 'auto',
               px: 1.5,
               py: 0.75,
+              borderRadius: 'var(--ms-radius-lg)',
             }}
             aria-label={
               copied ? 'Copied to clipboard' : 'Copy template to clipboard'
@@ -61,7 +66,12 @@ const QuickActions = ({ onPreview, onCopy, onUse, copied, isSelected }) => {
           <Button
             onClick={onUse}
             color='primary'
-            sx={{ minWidth: 'auto', px: 1.5, py: 0.75 }}
+            sx={{
+              minWidth: 'auto',
+              px: 1.5,
+              py: 0.75,
+              borderRadius: 'var(--ms-radius-lg)',
+            }}
             aria-label='Use template in editor'>
             {isSelected ? (
               <CheckCircleIcon fontSize='small' />

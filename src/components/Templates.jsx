@@ -187,7 +187,11 @@ const Templates = () => {
                         e.stopPropagation();
                         handleUseTemplate(tpl.content, idx);
                       }}
-                      sx={{ minWidth: 110, fontWeight: 500, borderRadius: 2 }}>
+                      sx={{
+                        minWidth: 110,
+                        fontWeight: 500,
+                        borderRadius: 'var(--ms-radius-xl)',
+                      }}>
                       {selectedIdx === idx ? 'Selected' : 'Use Template'}
                     </Button>
                     <Tooltip
@@ -203,7 +207,7 @@ const Templates = () => {
                           }}
                           tabIndex={-1}
                           size='small'
-                          sx={{ borderRadius: 2 }}>
+                          sx={{ borderRadius: 'var(--ms-radius-xl)' }}>
                           <ContentCopyIcon />
                         </IconButton>
                       </span>
@@ -233,7 +237,7 @@ const Templates = () => {
                       background: theme.palette.background.paper,
                       color: theme.palette.text.primary,
                       p: 2,
-                      borderRadius: 2,
+                      borderRadius: 'var(--ms-radius-xl)',
                       overflowX: 'auto',
                       touchAction: 'pan-x',
                       overscrollBehavior: 'contain',

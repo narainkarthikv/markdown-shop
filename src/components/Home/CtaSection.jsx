@@ -21,7 +21,7 @@ const CtaSection = () => {
           elevation={0}
           sx={{
             p: { xs: 3, md: 5 },
-            borderRadius: 4,
+            borderRadius: 'var(--ms-radius-3xl)',
             border: `1px solid ${theme.palette.divider}`,
             background:
               theme.palette.mode === 'dark'
@@ -51,7 +51,7 @@ const CtaSection = () => {
                   to='/shop'
                   variant='contained'
                   color='primary'
-                  sx={{ px: 3.5, borderRadius: 3 }}>
+                  sx={{ px: 3.5, borderRadius: 'var(--ms-radius-2xl)' }}>
                   Open Builder
                 </Button>
                 <Button
@@ -59,7 +59,7 @@ const CtaSection = () => {
                   to='/templates'
                   variant='outlined'
                   color='primary'
-                  sx={{ px: 3.5, borderRadius: 3 }}>
+                  sx={{ px: 3.5, borderRadius: 'var(--ms-radius-2xl)' }}>
                   View Templates
                 </Button>
               </Stack>

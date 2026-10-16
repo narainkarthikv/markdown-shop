@@ -18,6 +18,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import DualActionButton from './ui/DualActionButton.jsx';
+import ComponentPreview from './ui/ComponentPreview';
 import { NoSearchResults } from './ui/EmptyState';
 import { IconGridSkeleton } from './ui/Skeletons';
 import ModernSection from './ui/ModernSection';
@@ -39,7 +40,7 @@ const IconItem = memo(({ icon, isSelected, onClick }) => {
         alignItems: 'center',
         justifyContent: 'center',
         p: 1.5,
-        borderRadius: 1.5,
+        borderRadius: 'var(--ms-radius-lg)',
         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
         bgcolor: isSelected
           ? theme.customTokens?.primaryMuted ||
@@ -143,9 +144,13 @@ const Icons = () => {
   const removeIcon = useMarkdownStore((state) => state.removeIcon);
   const iconNames = useMarkdownStore((state) => state.iconNames);
 
-  const filteredIcons = useMemo(
+  const matchingIcons = useMemo(
     () => loadAndFilter(iconList, searchTerm),
     [searchTerm]
+  );
+  const visibleIcons = useMemo(
+    () => (searchTerm.trim() ? matchingIcons : matchingIcons.slice(0, 25)),
+    [matchingIcons, searchTerm]
   );
 
   const handleIconClick = (icon) => {
@@ -188,17 +193,16 @@ const Icons = () => {
     <Paper
       elevation={0}
       sx={{
-        textAlign: 'center',
+        textAlign: 'left',
         mt: 0,
         p: 4,
         width: '100%',
         maxWidth: '100%',
-        minHeight: 500,
-        maxHeight: 800,
-        overflow: 'hidden',
+        minHeight: 0,
+        overflow: 'visible',
         display: 'flex',
         flexDirection: 'column',
-        borderRadius: 2,
+        borderRadius: 'var(--ms-radius-xl)',
         bgcolor: 'background.paper',
         border: (theme) =>
           `1px solid ${theme.customTokens?.borderSubtle || theme.palette.divider}`,
@@ -209,58 +213,55 @@ const Icons = () => {
         title='Tech Stack Icons'
         description={`Select icons to build your tech stack. ${iconNames.length} selected`}
         variant='compact'
-        sx={{ mb: 0 }}>
-        {/* Search Field */}
-        <TextField
-          variant='outlined'
-          placeholder='Search icons (e.g., react, python, docker)...'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          size='medium'
-          fullWidth
-          sx={{
-            mb: 3,
-            maxWidth: 500,
-            mx: 'auto',
-            '& .MuiOutlinedInput-root': {
-              borderRadius: 2,
-              bgcolor:
-                theme.customTokens?.surface || theme.palette.background.paper,
-            },
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position='start'>
-                <SearchIcon
-                  sx={{
-                    color:
-                      theme.customTokens?.textTertiary ||
-                      theme.palette.text.disabled,
-                  }}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: searchTerm && (
-              <InputAdornment position='end'>
-                <Chip
-                  label='Clear'
-                  size='small'
-                  onClick={handleClearSearch}
-                  sx={{ cursor: 'pointer' }}
-                />
-              </InputAdornment>
-            ),
-          }}
-          aria-label='Search tech stack icons'
-        />
-
+        sx={{ mb: 0, textAlign: 'left' }}
+        actions={
+          <TextField
+            variant='outlined'
+            placeholder='Search icons (e.g., react, python, docker)...'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            size='medium'
+            sx={{
+              width: { xs: '100%', sm: 410 },
+              '& .MuiOutlinedInput-root': {
+                borderRadius: 'var(--ms-radius-xl)',
+                bgcolor:
+                  theme.customTokens?.surface || theme.palette.background.paper,
+              },
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position='start'>
+                  <SearchIcon
+                    sx={{
+                      color:
+                        theme.customTokens?.textTertiary ||
+                        theme.palette.text.disabled,
+                    }}
+                  />
+                </InputAdornment>
+              ),
+              endAdornment: searchTerm && (
+                <InputAdornment position='end'>
+                  <Chip
+                    label='Clear'
+                    size='small'
+                    onClick={handleClearSearch}
+                    sx={{ cursor: 'pointer' }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+            aria-label='Search tech stack icons'
+          />
+        }>
         {/* Selected Icons Preview */}
         {iconNames.length > 0 && (
           <Box
             sx={{
               mb: 3,
               p: 2,
-              borderRadius: 2,
+              borderRadius: 'var(--ms-radius-xl)',
               bgcolor:
                 theme.customTokens?.surfaceHover ||
                 alpha(theme.palette.action.hover, 0.3),
@@ -280,15 +281,32 @@ const Icons = () => {
                   }}
                 />
               </Box>
-              <DualActionButton
-                content={skilliconsMarkdown}
-                onInsert={handleInsertIcons}
-                contentType='markdown'
-                size='small'
-                variant='default'
-                copyLabel='Copy Icons'
-                insertLabel='Insert'
-              />
+              <Stack direction='row' alignItems='center' spacing={0.75}>
+                <ComponentPreview
+                  title='Tech stack icons'
+                  description='A single compact icon strip generated from the technologies you selected. Add or remove icons in the grid before copying it into your README.'
+                  actionContent={skilliconsMarkdown}
+                  actionContentType='markdown'
+                  onInsert={handleInsertIcons}>
+                  <Box
+                    component='img'
+                    src={cachedSkilliconsSrc || skilliconsUrl}
+                    alt='Selected tech stack icons preview'
+                    sx={{
+                      maxWidth: '100%',
+                      maxHeight: 160,
+                      objectFit: 'contain',
+                    }}
+                  />
+                </ComponentPreview>
+                <DualActionButton
+                  content={skilliconsMarkdown}
+                  onInsert={handleInsertIcons}
+                  contentType='markdown'
+                  size='small'
+                  variant='icon-only'
+                />
+              </Stack>
             </Stack>
           </Box>
         )}
@@ -297,11 +315,11 @@ const Icons = () => {
         {isLoading && <IconGridSkeleton count={24} />}
 
         {/* Icon Grid */}
-        {!isLoading && filteredIcons.length > 0 && (
+        {!isLoading && visibleIcons.length > 0 && (
           <Box
             sx={{
-              flex: 1,
-              overflowY: 'auto',
+              flex: '0 0 auto',
+              overflowY: 'visible',
               overflowX: 'hidden',
               minHeight: 0,
               px: 1,
@@ -332,7 +350,7 @@ const Icons = () => {
               }}
               role='grid'
               aria-label='Icon selection grid'>
-              {filteredIcons.map((icon, index) => (
+              {visibleIcons.map((icon, index) => (
                 <IconItem
                   key={`${icon.name}-${index}`}
                   icon={icon}
@@ -345,7 +363,7 @@ const Icons = () => {
         )}
 
         {/* Empty States */}
-        {!isLoading && filteredIcons.length === 0 && searchTerm && (
+        {!isLoading && matchingIcons.length === 0 && searchTerm && (
           <NoSearchResults
             searchTerm={searchTerm}
             onClear={handleClearSearch}
@@ -355,7 +373,7 @@ const Icons = () => {
         {!isLoading &&
           iconNames.length === 0 &&
           !searchTerm &&
-          filteredIcons.length > 0 && (
+          visibleIcons.length > 0 && (
             <Box sx={{ py: 2 }}>
               <Typography
                 variant='body2'
@@ -364,7 +382,8 @@ const Icons = () => {
                     theme.customTokens?.textSecondary ||
                     theme.palette.text.secondary,
                 }}>
-                Click icons to add them to your tech stack
+                Showing the first 25 icons. Search to find more, or click an
+                icon to add it to your tech stack.
               </Typography>
             </Box>
           )}

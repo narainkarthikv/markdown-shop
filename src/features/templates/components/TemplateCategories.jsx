@@ -27,7 +27,7 @@ const TemplateCategories = ({
         color={selectedCategory === value ? 'primary' : 'default'}
         variant={selectedCategory === value ? 'filled' : 'outlined'}
         sx={{
-          borderRadius: 1,
+          borderRadius: 'var(--ms-radius-md)',
           '&:hover': {
             backgroundColor: (theme) =>
               selectedCategory === value

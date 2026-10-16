@@ -1,22 +1,42 @@
 import { useEffect, useMemo, useState } from 'react';
-import {
-  Alert,
-  Box,
-  Button,
-  CircularProgress,
-  Stack,
-  Typography,
-} from '@mui/material';
-import useMarkdownStore from '@/features/markdown/store/markdownStore';
+import { Alert, Box, CircularProgress, Stack, Typography } from '@mui/material';
 import CardContainer from '@/components/ui/CardContainer';
 import DualActionButton from '@/components/ui/DualActionButton.jsx';
+import ComponentPreview from '@/components/ui/ComponentPreview';
+import SvgDownloadButton from '@/components/ui/SvgDownloadButton';
 import useGithub from '../useGithub';
-import { buildGithubSvg } from '../utils/githubSvg';
+import { buildGithubSvg, githubSvgSizes } from '../utils/githubSvg';
+import { useGithubTheme } from '../GithubThemeContext';
+
+const descriptions = {
+  stats:
+    'A compact profile overview with repository, follower, following, and gist counts, plus a breakdown of the most common repository languages.',
+  streak:
+    'A snapshot of consecutive days represented in recent public GitHub events. It does not use GitHub’s private contribution calendar.',
+  trophies:
+    'A celebratory summary of public repositories, followers, earned stars, and forks.',
+  badges:
+    'A clean set of profile badges for public repositories, stars, forks, and open issues.',
+  followers:
+    'A focused follower count with the account’s following total alongside it.',
+  commits:
+    'A day-by-day view of commits visible in the recent public event feed.',
+  activity:
+    'A contribution-style activity grid based on recent public events, not GitHub’s full contribution calendar.',
+  snake:
+    'A compact activity grid that highlights days with visible public GitHub events.',
+  repo: 'A repository card showing its description, stars, forks, and open issues.',
+  contributors:
+    'A short list of contributors to the Markdown Shop repository and their visible contribution counts.',
+  metrics:
+    'A compact collection of account and repository metrics available through GitHub’s public API.',
+  views:
+    'An explanatory card for profile views. GitHub does not provide profile view totals through this public API.',
+};
 
 const GithubNativePanel = ({ kind, title }) => {
-  const { data, loading, error, notice, remaining, userName, githubRequest } =
-    useGithub();
-  const embedMarkdown = useMarkdownStore((state) => state.embedMarkdown);
+  const { data, loading, error, notice, userName, githubRequest } = useGithub();
+  const { flavor, size, setSize } = useGithubTheme();
   const [contributors, setContributors] = useState([]);
   const [contributorError, setContributorError] = useState('');
   const [contributorsLoading, setContributorsLoading] = useState(false);
@@ -48,12 +68,21 @@ const GithubNativePanel = ({ kind, title }) => {
   }, [kind, userName, githubRequest]);
 
   const svgMarkup = useMemo(
-    () => buildGithubSvg(kind, data, userName, contributors),
-    [kind, data, userName, contributors]
+    () => buildGithubSvg(kind, data, userName, contributors, flavor, size),
+    [kind, data, userName, contributors, flavor, size]
   );
+  const downloadFilename =
+    `${kind}-${userName || 'github-profile'}`.replace(/[^a-z0-9-]/gi, '-') +
+    '.svg';
   return (
     <CardContainer
-      sx={{ p: 2.5, height: '100%' }}
+      sx={{
+        p: 0,
+        height: '100%',
+        minWidth: 0,
+        overflow: 'hidden',
+        '&:hover': { transform: 'none' },
+      }}
       role='region'
       aria-label={title}>
       <Stack
@@ -61,14 +90,32 @@ const GithubNativePanel = ({ kind, title }) => {
         alignItems='center'
         justifyContent='space-between'
         spacing={1}
-        sx={{ mb: 1.5 }}>
-        <Typography variant='h6'>{title}</Typography>
-        <DualActionButton
-          content={svgMarkup}
-          contentType='markdown'
-          variant='compact'
-          size='small'
-        />
+        sx={{ mb: 1.5, minWidth: 0, flexWrap: 'wrap' }}>
+        <Typography variant='h6' sx={{ minWidth: 0 }}>
+          {title}
+        </Typography>
+        <Stack direction='row' alignItems='center' spacing={0.75}>
+          <ComponentPreview
+            title={title}
+            description={descriptions[kind] || 'A GitHub profile component.'}
+            downloadContent={svgMarkup}
+            downloadFilename={downloadFilename}
+            svgSize={size}
+            svgSizes={githubSvgSizes}
+            onSvgSizeChange={setSize}>
+            <Box
+              sx={{ lineHeight: 0 }}
+              dangerouslySetInnerHTML={{ __html: svgMarkup }}
+            />
+          </ComponentPreview>
+          <SvgDownloadButton content={svgMarkup} filename={downloadFilename} />
+          <DualActionButton
+            content={svgMarkup}
+            contentType='markdown'
+            variant='icon-only'
+            size='small'
+          />
+        </Stack>
       </Stack>
       {loading && (
         <Stack direction='row' spacing={1} alignItems='center' role='status'>
@@ -101,21 +148,22 @@ const GithubNativePanel = ({ kind, title }) => {
       )}
       {data && (
         <Box
-          sx={{ width: '100%', overflowX: 'auto', lineHeight: 0 }}
+          sx={{
+            width: '100%',
+            maxWidth: '100%',
+            minWidth: 0,
+            overflow: 'hidden',
+            lineHeight: 0,
+            '& > svg': {
+              display: 'block',
+              width: '100%',
+              maxWidth: '100%',
+              height: 'auto',
+            },
+          }}
           dangerouslySetInnerHTML={{ __html: svgMarkup }}
         />
       )}
-      {remaining !== null && (
-        <Typography variant='caption' display='block' sx={{ mt: 1 }}>
-          GitHub API requests remaining: {remaining}
-        </Typography>
-      )}
-      <Button
-        size='small'
-        onClick={() => embedMarkdown(svgMarkup)}
-        sx={{ mt: 1 }}>
-        Insert SVG snapshot
-      </Button>
     </CardContainer>
   );
 };

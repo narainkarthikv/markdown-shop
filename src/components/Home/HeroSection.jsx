@@ -132,7 +132,7 @@ const HeroSection = () => {
                       sx={{
                         px: 2,
                         py: 1,
-                        borderRadius: 2,
+                        borderRadius: 'var(--ms-radius-xl)',
                         border: `1px solid ${theme.palette.divider}`,
                         bgcolor: theme.palette.background.default,
                         minWidth: 118,
@@ -158,7 +158,7 @@ const HeroSection = () => {
                     variant='contained'
                     color='primary'
                     size='large'
-                    sx={{ px: 3.5, borderRadius: 2 }}>
+                    sx={{ px: 3.5, borderRadius: 'var(--ms-radius-xl)' }}>
                     Open Builder
                   </Button>
                   <Button
@@ -167,7 +167,7 @@ const HeroSection = () => {
                     variant='outlined'
                     color='primary'
                     size='large'
-                    sx={{ px: 3.5, borderRadius: 2 }}>
+                    sx={{ px: 3.5, borderRadius: 'var(--ms-radius-xl)' }}>
                     Browse Components
                   </Button>
                 </Stack>
@@ -183,7 +183,7 @@ const HeroSection = () => {
                   elevation={0}
                   sx={{
                     p: { xs: 2.5, md: 3 },
-                    borderRadius: 3,
+                    borderRadius: 'var(--ms-radius-2xl)',
                     border: `1px solid ${theme.palette.divider}`,
                     bgcolor: theme.palette.background.default,
                     boxShadow: theme.shadows[2],
@@ -216,7 +216,7 @@ const HeroSection = () => {
                           color='primary'
                           onClick={() => setSelectedUseCase(index)}
                           sx={{
-                            borderRadius: 2,
+                            borderRadius: 'var(--ms-radius-xl)',
                             justifyContent: 'center',
                             flex: 1,
                             minHeight: 44,
@@ -247,7 +247,7 @@ const HeroSection = () => {
                       sx={{
                         bgcolor: theme.palette.background.paper,
                         border: `1px solid ${theme.palette.divider}`,
-                        borderRadius: 2,
+                        borderRadius: 'var(--ms-radius-xl)',
                         p: 2,
                       }}>
                       <Typography

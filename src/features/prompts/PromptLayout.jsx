@@ -28,7 +28,7 @@ const PromptLayout = ({ children }) => {
             elevation={0}
             sx={{
               p: { xs: 2, md: 3 },
-              borderRadius: 2,
+              borderRadius: 'var(--ms-radius-xl)',
               bgcolor: 'background.paper',
               border: `1px solid ${theme.customTokens?.borderSubtle || theme.palette.divider}`,
             }}>

@@ -110,7 +110,12 @@ export const GithubDataProvider = ({ children }) => {
             controller.signal
           );
         }
-        const [repos, events] = await Promise.all([
+        // The profile is enough to build the summary banner. Publish it now so
+        // a failure in a secondary endpoint cannot leave the banner empty.
+        setData({ profile: profile.data, repos: [], events: [] });
+        setRemaining(profile.remaining);
+
+        const [reposResult, eventsResult] = await Promise.allSettled([
           requestPages(
             '/users/' +
               encodeURIComponent(cleanUserName) +
@@ -125,12 +130,24 @@ export const GithubDataProvider = ({ children }) => {
             3
           ),
         ]);
+        if (controller.signal.aborted) return;
+        const repos =
+          reposResult.status === 'fulfilled' ? reposResult.value : null;
+        const events =
+          eventsResult.status === 'fulfilled' ? eventsResult.value : null;
         setData({
           profile: profile.data,
-          repos: repos.data,
-          events: events.data,
+          repos: repos?.data || [],
+          events: events?.data || [],
         });
-        setRemaining(profile.remaining ?? repos.remaining ?? events.remaining);
+        setRemaining(
+          profile.remaining ?? repos?.remaining ?? events?.remaining ?? null
+        );
+        if (!repos || !events) {
+          setNotice(
+            'Profile loaded. Some repository or activity details could not be fetched.'
+          );
+        }
       } catch (err) {
         if (err.name !== 'AbortError' && !controller.signal.aborted) {
           setData(null);

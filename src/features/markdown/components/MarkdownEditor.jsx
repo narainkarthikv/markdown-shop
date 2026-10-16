@@ -70,7 +70,7 @@ const MarkdownEditor = ({ value, onChange }) => {
           fontFamily: 'monospace',
           fontSize: '14px',
           border: `1px solid ${theme.palette.divider}`,
-          borderRadius: '4px',
+          borderRadius: 'var(--ms-radius-xs)',
           resize: 'none',
           overflowY: 'auto',
           boxSizing: 'border-box',

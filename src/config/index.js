@@ -33,7 +33,6 @@ export const GITHUB_URLS = {
  */
 export const API_ENDPOINTS = {
   SKILLICONS: 'https://skillicons.dev/icons',
-  SVG_BANNERS: 'https://svg-banners.vercel.app',
 };
 
 /**

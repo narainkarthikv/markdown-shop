@@ -11,7 +11,7 @@ const SupportSection = () => {
         sx={{
           position: 'relative',
           overflow: 'hidden',
-          borderRadius: 4,
+          borderRadius: 'var(--ms-radius-3xl)',
           border: `1px solid ${theme.palette.divider}`,
           bgcolor: theme.palette.background.paper,
           px: { xs: 3, md: 5 },
@@ -65,7 +65,7 @@ const SupportSection = () => {
               href='https://github.com/narainkarthikv'
               target='_blank'
               rel='noreferrer'
-              sx={{ px: 3.5, borderRadius: 999 }}>
+              sx={{ px: 3.5, borderRadius: 'var(--ms-radius-full)' }}>
               Join the Community
             </Button>
             <Button
@@ -74,7 +74,7 @@ const SupportSection = () => {
               href='https://github.com/narainkarthikv/markdown-shop'
               target='_blank'
               rel='noreferrer'
-              sx={{ px: 3.5, borderRadius: 999 }}>
+              sx={{ px: 3.5, borderRadius: 'var(--ms-radius-full)' }}>
               Star on GitHub
             </Button>
           </Stack>

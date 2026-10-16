@@ -44,8 +44,8 @@ const ModernSection = ({
         mb: isCompact ? 4 : 6,
         ...(isBordered && {
           border: (theme) =>
-            `1px solid ${theme.customTokens?.border || theme.palette.divider}`,
-          borderRadius: 3,
+            `1px solid ${theme.designTokens.color.border.default}`,
+          borderRadius: 'var(--ms-radius-2xl)',
           p: 3,
           bgcolor: 'background.paper',
           boxShadow: (theme) => theme.shadows[1],
@@ -60,6 +60,7 @@ const ModernSection = ({
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'space-between',
+          flexWrap: { xs: 'wrap', sm: 'nowrap' },
           gap: 2,
         }}>
         <Box sx={{ flex: 1 }}>
@@ -70,8 +71,7 @@ const ModernSection = ({
               sx={{
                 fontWeight: 600,
                 mb: description ? 1 : 0,
-                color: (theme) =>
-                  theme.customTokens?.textPrimary || theme.palette.text.primary,
+                color: (theme) => theme.designTokens.color.text.primary,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 1,
@@ -98,9 +98,7 @@ const ModernSection = ({
             <Typography
               variant='body2'
               sx={{
-                color: (theme) =>
-                  theme.customTokens?.textSecondary ||
-                  theme.palette.text.secondary,
+                color: (theme) => theme.designTokens.color.text.secondary,
                 maxWidth: 600,
                 lineHeight: 1.6,
               }}>
@@ -109,7 +107,11 @@ const ModernSection = ({
           )}
         </Box>
 
-        {actions && <Box>{actions}</Box>}
+        {actions && (
+          <Box sx={{ width: { xs: '100%', sm: 'auto' }, flexShrink: 0 }}>
+            {actions}
+          </Box>
+        )}
       </Box>
 
       {/* Divider for non-bordered variants */}

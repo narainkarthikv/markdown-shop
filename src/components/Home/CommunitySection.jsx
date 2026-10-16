@@ -18,7 +18,7 @@ const CommunitySection = () => {
         <Box
           sx={{
             p: { xs: 4, md: 5 },
-            borderRadius: 4,
+            borderRadius: 'var(--ms-radius-3xl)',
             border: `1px solid ${theme.palette.divider}`,
             bgcolor: theme.palette.background.paper,
             textAlign: 'center',

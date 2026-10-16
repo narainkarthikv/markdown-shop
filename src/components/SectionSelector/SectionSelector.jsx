@@ -53,7 +53,7 @@ const SectionSelector = () => {
           bgcolor: 'action.hover',
           border: '1px solid',
           borderColor: 'divider',
-          borderRadius: 1,
+          borderRadius: 'var(--ms-radius-md)',
         }}>
         <Box
           sx={{
