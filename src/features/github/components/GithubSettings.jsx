@@ -282,6 +282,11 @@ const GithubSettings = () => {
               )}
             </Stack>
           )}
+          {userName && (
+            <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
+              Showing components for @{userName}
+            </Typography>
+          )}
         </Box>
       </Box>
       <Accordion

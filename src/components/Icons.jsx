@@ -148,10 +148,17 @@ const Icons = () => {
     () => loadAndFilter(iconList, searchTerm),
     [searchTerm]
   );
-  const visibleIcons = useMemo(
-    () => (searchTerm.trim() ? matchingIcons : matchingIcons.slice(0, 25)),
-    [matchingIcons, searchTerm]
-  );
+  const visibleIcons = useMemo(() => {
+    if (searchTerm.trim()) return matchingIcons;
+    // Keep the commonly used React icon available in the initial selection
+    // without making users search through the full catalog.
+    const reactIcon = matchingIcons.find(
+      (icon) => icon.name.toLowerCase() === 'react'
+    );
+    return reactIcon
+      ? [...matchingIcons.slice(0, 24), reactIcon]
+      : matchingIcons.slice(0, 25);
+  }, [matchingIcons, searchTerm]);
 
   const handleIconClick = (icon) => {
     const iconName = icon.name.toLowerCase();

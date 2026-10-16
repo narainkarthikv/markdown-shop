@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.5.1] - 2026-10-16
+
+### Fixed
+
+- Kept the React icon available in the initial tech stack selection and displayed the active GitHub profile username after loading components.
+- Updated the GitHub integration test to verify the username is sent to the GitHub API.
+
 ## [1.5.0] - 2026-10-16
 
 ### Added
@@ -231,7 +238,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home page and core feature files repeatedly reorganized for clarity.
 - Theme and UI consistency refactors for long-term maintainability.
 
-[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/narainkarthikv/markdown-shop/compare/v1.5.0...v1.5.1
+[1.5.0]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.5.0
 [1.3.0]: https://github.com/narainkarthikv/markdown-shop/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/narainkarthikv/markdown-shop/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.2

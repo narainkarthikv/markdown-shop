@@ -17,18 +17,20 @@ test.describe('GitHub Username Integration', () => {
   });
 
   test('persists GitHub username after route navigation', async ({ page }) => {
-    const testUsername = 'narainkarthikv';
+    const testUsername = 'api-test-user';
+    const requestedUrls: string[] = [];
 
     const usernameInput = getUsernameInput(page);
     await expect(usernameInput).toBeVisible();
     await usernameInput.fill(testUsername);
-    await page.route('https://api.github.com/**', (route) =>
-      route.fulfill({ json: [] })
-    );
+    await page.route('https://api.github.com/**', (route) => {
+      requestedUrls.push(route.request().url());
+      return route.fulfill({ json: [] });
+    });
     await page.getByRole('button', { name: /update components/i }).click();
-    await expect(
-      page.getByText(`Showing components for @${testUsername}`)
-    ).toBeVisible();
+    await expect
+      .poll(() => requestedUrls)
+      .toContain(`https://api.github.com/users/${testUsername}`);
     await page.goto('/components');
     await expect(getUsernameInput(page)).toHaveValue(testUsername);
     await page.goto('/shop');
