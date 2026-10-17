@@ -24,12 +24,10 @@ const descriptions = {
   activity:
     'A contribution-style activity grid based on recent public events, not GitHub’s full contribution calendar.',
   snake:
-    'A compact activity grid that highlights days with visible public GitHub events.',
-  repo: 'A repository card showing its description, stars, forks, and open issues.',
+    'A breakdown of recent public GitHub events by type, such as pushes, pull requests, and issues.',
+  repo: 'An overview of owned public repositories, with aggregate totals and top repositories.',
   contributors:
     'A short list of contributors to the Markdown Shop repository and their visible contribution counts.',
-  metrics:
-    'A compact collection of account and repository metrics available through GitHub’s public API.',
   views:
     'An explanatory card for profile views. GitHub does not provide profile view totals through this public API.',
 };

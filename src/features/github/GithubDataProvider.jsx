@@ -37,7 +37,7 @@ const request = async (path, token, signal) => {
     remaining: response.headers.get('x-ratelimit-remaining'),
   };
 };
-const requestPages = async (path, token, signal, maxPages = 10) => {
+const requestPages = async (path, token, signal, maxPages = Infinity) => {
   const items = [];
   let remaining = null;
   for (let page = 1; page <= maxPages; page += 1) {
@@ -119,7 +119,7 @@ export const GithubDataProvider = ({ children }) => {
           requestPages(
             '/users/' +
               encodeURIComponent(cleanUserName) +
-              '/repos?sort=updated',
+              '/repos?type=owner&sort=updated',
             requestToken,
             controller.signal
           ),

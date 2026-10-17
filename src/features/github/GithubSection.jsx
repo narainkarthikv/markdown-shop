@@ -9,7 +9,6 @@ import GithubRepoPin from './components/GithubRepoPin';
 import GithubFollowers from './components/GithubFollowers';
 import GithubCommitGraph from './components/GithubCommitGraph';
 import GithubContributors from './components/GithubContributors';
-import GithubMetrics from './components/GithubMetrics';
 import GithubSnakeContribution from './components/GithubSnakeContribution';
 import GithubSettings from './components/GithubSettings';
 import SvgBanners from '@/components/SvgBanners';
@@ -53,7 +52,6 @@ const GithubComponents = () => (
         <Box sx={responsiveGrid}>
           <GithubRepoPin />
           <GithubContributors />
-          <GithubMetrics />
         </Box>
       </ModernSection>
     </SectionGroup>
