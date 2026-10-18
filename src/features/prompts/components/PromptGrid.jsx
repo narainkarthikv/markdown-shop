@@ -128,7 +128,7 @@ const PromptGrid = () => {
                   px: 3,
                   py: 1.5,
                   border: 'none',
-                  borderRadius: 2,
+                  borderRadius: 'var(--ms-radius-xl)',
                   bgcolor: 'primary.main',
                   color: 'primary.contrastText',
                   fontWeight: 600,

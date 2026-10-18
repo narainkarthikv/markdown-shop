@@ -4,8 +4,11 @@ import {
   lightTokens,
   darkTokens,
   typography as designTypography,
+  spacing as spacingTokens,
   borderRadius,
   animation,
+  zIndex,
+  createDesignTokens,
 } from './tokens';
 
 /**
@@ -16,42 +19,42 @@ const baseTypography = {
   fontFamily: designTypography.fontFamily.sans,
   h1: {
     fontWeight: designTypography.fontWeight.bold,
-    fontSize: '2.75rem',
+    fontSize: designTypography.fontSize.h1,
     lineHeight: 1.12,
     letterSpacing: designTypography.letterSpacing.tight,
   },
   h2: {
     fontWeight: designTypography.fontWeight.semibold,
-    fontSize: '2.125rem',
+    fontSize: designTypography.fontSize.h2,
     lineHeight: 1.18,
     letterSpacing: designTypography.letterSpacing.tight,
   },
   h3: {
     fontWeight: designTypography.fontWeight.semibold,
-    fontSize: '1.75rem',
+    fontSize: designTypography.fontSize.h3,
     lineHeight: 1.25,
   },
   h4: {
     fontWeight: designTypography.fontWeight.semibold,
-    fontSize: '1.5rem',
+    fontSize: designTypography.fontSize.h4,
     lineHeight: 1.3,
   },
   h5: {
     fontWeight: designTypography.fontWeight.medium,
-    fontSize: '1.25rem',
+    fontSize: designTypography.fontSize.h5,
     lineHeight: 1.35,
   },
   h6: {
     fontWeight: designTypography.fontWeight.medium,
-    fontSize: '1rem',
+    fontSize: designTypography.fontSize.h6,
     lineHeight: 1.4,
   },
   body1: {
-    fontSize: '1rem',
+    fontSize: designTypography.fontSize.base,
     lineHeight: 1.6,
   },
   body2: {
-    fontSize: '0.875rem',
+    fontSize: designTypography.fontSize.bodySmall,
     lineHeight: 1.5,
   },
   button: {
@@ -88,18 +91,104 @@ const buildShadows = (tokens) => [
   tokens.shadow.xl,
 ];
 
+// Keep MUI's familiar 8px spacing factor while resolving common steps through
+// the shared 4px CSS token scale. Unsupported fractional steps preserve their
+// existing computed pixel values for compatibility.
+const tokenizedMuiSpacing = (factor = 1) => {
+  if (typeof factor !== 'number' || !Number.isFinite(factor)) return factor;
+  if (factor === 0) return 'var(--ms-space-0)';
+
+  const step = factor * 2;
+  if (
+    Number.isInteger(step) &&
+    Object.prototype.hasOwnProperty.call(spacingTokens, step)
+  ) {
+    return `var(--ms-space-${step})`;
+  }
+
+  return `${factor * 8}px`;
+};
+
+const buildCssVariables = (tokens) => ({
+  '--ms-color-background': tokens.background,
+  '--ms-color-background-subtle': tokens.backgroundSecondary,
+  '--ms-color-surface': tokens.surface,
+  '--ms-color-surface-inset': tokens.surfaceElevated,
+  '--ms-color-surface-hover': tokens.surfaceHover,
+  '--ms-color-text-primary': tokens.textPrimary,
+  '--ms-color-text-secondary': tokens.textSecondary,
+  '--ms-color-text-muted': tokens.textTertiary,
+  '--ms-color-text-inverse': tokens.textInverse,
+  '--ms-color-border': tokens.border,
+  '--ms-color-border-subtle': tokens.borderSubtle,
+  '--ms-color-border-strong': tokens.borderStrong,
+  '--ms-color-focus': tokens.borderFocus,
+  '--ms-color-primary': tokens.primary,
+  '--ms-color-primary-hover': tokens.primaryHover,
+  '--ms-color-primary-active': tokens.primaryActive,
+  '--ms-color-primary-subtle': tokens.primarySubtle,
+  '--ms-color-success': tokens.success,
+  '--ms-color-success-surface': tokens.successBg,
+  '--ms-color-warning': tokens.warning,
+  '--ms-color-warning-surface': tokens.warningBg,
+  '--ms-color-error': tokens.error,
+  '--ms-color-error-surface': tokens.errorBg,
+  '--ms-color-info': tokens.info,
+  '--ms-color-info-surface': tokens.infoBg,
+  '--ms-focus-ring-width': '2px',
+  '--ms-focus-ring-offset': '2px',
+  '--ms-font-sans': designTypography.fontFamily.sans,
+  '--ms-font-mono': designTypography.fontFamily.mono,
+  '--ms-radius-none': borderRadius.none,
+  '--ms-radius-xs': borderRadius.xs,
+  '--ms-radius-sm': borderRadius.sm,
+  '--ms-radius-md': borderRadius.md,
+  '--ms-radius-lg': borderRadius.lg,
+  '--ms-radius-xl': borderRadius.xl,
+  '--ms-radius-feature': borderRadius.feature,
+  '--ms-radius-2xl': borderRadius['2xl'],
+  '--ms-radius-3xl': borderRadius['3xl'],
+  '--ms-radius-full': borderRadius.full,
+  '--ms-duration-fast': animation.duration.fast,
+  '--ms-duration-base': animation.duration.base,
+  '--ms-duration-slow': animation.duration.slow,
+  '--ms-easing-standard': animation.easing.default,
+  '--ms-elevation-sm': tokens.shadow.sm,
+  '--ms-elevation-md': tokens.shadow.md,
+  '--ms-elevation-lg': tokens.shadow.lg,
+  '--ms-control-target-min': '44px',
+  '--ms-control-icon-size': '36px',
+  '--ms-control-field-height': '40px',
+  '--ms-layout-content-max-width': '1440px',
+  '--ms-layout-reading-max-width': '72ch',
+  '--ms-layout-sidebar-width': '290px',
+  '--ms-z-dropdown': zIndex.dropdown,
+  '--ms-z-sticky': zIndex.sticky,
+  '--ms-z-modal': zIndex.modal,
+  '--ms-z-popover': zIndex.popover,
+  '--ms-z-tooltip': zIndex.tooltip,
+  '--ms-z-toast': zIndex.toast,
+  ...Object.fromEntries(
+    Object.entries(spacingTokens).map(([step, value]) => [
+      `--ms-space-${step}`,
+      value,
+    ])
+  ),
+});
+
 /**
  * Common component overrides with enhanced modern styling
  */
 const getComponentOverrides = (mode, tokens) => ({
   MuiCssBaseline: {
     styleOverrides: {
+      ':root': buildCssVariables(tokens),
       body: {
         scrollbarWidth: 'thin',
         scrollbarColor: `${tokens.border} ${tokens.background}`,
         '&::-webkit-scrollbar': {
-          width: '8px',
-          height: '8px',
+          width: spacingTokens[2],
+          height: spacingTokens[2],
         },
         '&::-webkit-scrollbar-track': {
           background: tokens.background,
@@ -118,7 +207,7 @@ const getComponentOverrides = (mode, tokens) => ({
     styleOverrides: {
       root: {
         borderRadius: borderRadius.sm,
-        padding: '8px 20px',
+        padding: `${spacingTokens[2]} ${spacingTokens[5]}`,
         fontSize: '0.9rem',
         fontWeight: designTypography.fontWeight.semibold,
         textTransform: 'none',
@@ -398,7 +487,7 @@ const lightTheme = {
   typography: baseTypography,
   palette: buildPalette(lightTokens, 'light'),
   shape: {
-    borderRadius: 8,
+    borderRadius: Number.parseFloat(borderRadius.md),
   },
   shadows: buildShadows(lightTokens),
 };
@@ -410,7 +499,7 @@ const darkTheme = {
   typography: baseTypography,
   palette: buildPalette(darkTokens, 'dark'),
   shape: {
-    borderRadius: 8,
+    borderRadius: Number.parseFloat(borderRadius.md),
   },
   shadows: buildShadows(darkTokens),
 };
@@ -427,6 +516,7 @@ export const getTheme = (mode = THEME_OPTIONS.DEFAULT) => {
 
   return createTheme({
     ...themeConfig,
+    spacing: tokenizedMuiSpacing,
     transitions: {
       duration: {
         shortest: parseInt(animation.duration.fast, 10),
@@ -445,6 +535,7 @@ export const getTheme = (mode = THEME_OPTIONS.DEFAULT) => {
       },
     },
     components: getComponentOverrides(mode, tokens),
+    designTokens: createDesignTokens(tokens),
     customTokens: tokens,
   });
 };

@@ -35,8 +35,8 @@ const MarkdownPreview = ({ markdown }) => {
           overflowX: 'auto',
           maxWidth: '100%',
           padding: '12px',
-          borderRadius: 8,
-          backgroundColor: 'rgba(0, 0, 0, 0.04)',
+          borderRadius: 'var(--ms-radius-md)',
+          backgroundColor: 'var(--ms-color-background-subtle)',
         },
         '& code': {
           wordBreak: 'break-word',

@@ -24,22 +24,20 @@ test.describe('Navigation', () => {
   test('navigates between pages using navbar', async ({ page }) => {
     await page.goto('/shop');
 
-    const menuButton = page.getByRole('button', {
-      name: /open navigation menu/i,
-    });
-
-    await menuButton.click();
-    const componentLink = page.getByRole('link', {
-      name: /github components/i,
-    });
+    const componentLink = page
+      .getByRole('navigation', { name: 'Main navigation' })
+      .getByRole('link', {
+        name: 'Components',
+      });
     await expect(componentLink).toBeVisible();
     await componentLink.click();
     await expect(page).toHaveURL(/\/components$/);
 
-    await menuButton.click();
-    const templateLink = page.getByRole('link', {
-      name: /markdown templates/i,
-    });
+    const templateLink = page
+      .getByRole('navigation', { name: 'Main navigation' })
+      .getByRole('link', {
+        name: 'Templates',
+      });
     await expect(templateLink).toBeVisible();
     await templateLink.click();
     await expect(page).toHaveURL(/\/templates$/);

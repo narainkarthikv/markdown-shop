@@ -1,6 +1,5 @@
 import { Container, Box } from '@mui/material';
 import PropTypes from 'prop-types';
-import SvgBanners from '../SvgBanners';
 import ComponentsGrid from './ComponentsGrid';
 
 const ComponentsLayout = ({ children }) => (
@@ -13,12 +12,23 @@ const ComponentsLayout = ({ children }) => (
     <Container
       maxWidth='xl'
       sx={{
-        py: { xs: 2, md: 3 },
-        px: { xs: 2, md: 3 },
+        py: { xs: 1, sm: 2, lg: 3 },
+        px: { xs: 1.5, sm: 3, lg: 4 },
       }}>
-      <SvgBanners />
-      <ComponentsGrid />
-      {children}
+      <Box sx={{ maxWidth: 1520, mx: 'auto', minWidth: 0 }}>{children}</Box>
+      <Box
+        component='section'
+        aria-label='Tech stack icon selector'
+        sx={{
+          maxWidth: 1520,
+          mx: 'auto',
+          mt: { xs: 2, md: 4 },
+          display: 'flex',
+          flexDirection: 'column',
+          minWidth: 0,
+        }}>
+        <ComponentsGrid />
+      </Box>
     </Container>
   </Box>
 );

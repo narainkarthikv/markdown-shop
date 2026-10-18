@@ -67,7 +67,7 @@ const FeatureCard = ({ feature }) => {
         sx={{
           p: 3,
           height: '100%',
-          borderRadius: 3,
+          borderRadius: 'var(--ms-radius-2xl)',
           border: `1px solid ${theme.palette.divider}`,
           bgcolor: theme.palette.background.paper,
         }}>
@@ -76,7 +76,7 @@ const FeatureCard = ({ feature }) => {
             sx={{
               width: 44,
               height: 44,
-              borderRadius: 2,
+              borderRadius: 'var(--ms-radius-xl)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -127,7 +127,7 @@ const FeaturesSection = () => {
         sx={{
           p: { xs: 2, md: 3 },
           mb: 3,
-          borderRadius: 3,
+          borderRadius: 'var(--ms-radius-2xl)',
           border: `1px solid ${theme.palette.divider}`,
           bgcolor: theme.palette.background.paper,
         }}>
@@ -147,7 +147,7 @@ const FeaturesSection = () => {
                   onClick={() => setActiveFeature(feature)}
                   sx={{
                     justifyContent: 'flex-start',
-                    borderRadius: 2,
+                    borderRadius: 'var(--ms-radius-xl)',
                     minHeight: 44,
                   }}>
                   {feature.icon}. {feature.title}
@@ -169,7 +169,7 @@ const FeaturesSection = () => {
               sx={{
                 color: theme.palette.text.secondary,
                 p: 2,
-                borderRadius: 2,
+                borderRadius: 'var(--ms-radius-xl)',
                 border: `1px solid ${theme.palette.divider}`,
                 bgcolor: theme.palette.background.default,
               }}>

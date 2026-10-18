@@ -5,11 +5,64 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-10-17
+
+### Added
+
+- Added contributor avatars with staggered motion to the Contributors SVG preview.
+
+### Changed
+
+- Modernized GitHub profile SVG components, including repository summaries for all owned public repositories, excluding forks.
+- Refined activity, follower, badge, milestone, stats, and profile banner layouts, and removed the redundant GitHub Metrics component.
+
 ## [Unreleased]
 
 ### Added
 
 ### Changed
+
+## [1.5.1] - 2026-10-16
+
+### Fixed
+
+- Kept the React icon available in the initial tech stack selection and displayed the active GitHub profile username after loading components.
+- Updated the GitHub integration test to verify the username is sent to the GitHub API.
+
+## [1.5.0] - 2026-10-16
+
+### Added
+
+- Added themed GitHub profile SVG components and a data-driven profile summary banner, with small, medium, and large preview sizes and SVG downloads.
+- Added reusable preview dialogs with descriptions, copy/insert actions, and size controls for generated SVGs.
+- Added a responsive README workspace with section navigation, editor/preview views, and draft controls.
+- Added a shared design token API for semantic colors, spacing, typography, radii, motion, layout, and controls, with matching CSS variables.
+
+### Changed
+
+- Reworked the home page into a responsive SaaS-style landing page with a README preview, feature overview, workflow, and focused calls to action.
+- Replaced the global collapsible navigation drawer with direct desktop links and a persistent mobile navigation row; refreshed the shared footer and aligned its repository links to `main`.
+- Updated GitHub component layouts and SVG presentation for responsive sizing, and kept Activity & Contributions expanded.
+- Limited initial tech stack icon rendering to the first 25 icons, with search-driven results for other icons.
+
+## [1.4.1] - 2026-10-15
+
+### Fixed
+
+- Updated Playwright E2E coverage to match the current GitHub settings and icon selection UI, verify draft clearing correctly, and test clipboard copies deterministically.
+
+## [1.4.0] - 2026-10-14
+
+### Added
+
+- Added native GitHub profile and repository components backed by public GitHub API data, with optional personal access token support and explicit username update/refresh controls.
+- Added standalone, cacheable SVG endpoints for GitHub components, with Vercel and Netlify routing and usage documentation for Markdown, HTML, and scripts.
+- Added direct Components, Templates, and Prompts shortcuts beside the Markdown Editor heading while retaining sidebar navigation.
+
+### Changed
+
+- Moved GitHub username entry from the Markdown shop to the Components page. GitHub data is fetched only after the user submits the username with **Update components**.
+- Replaced third-party GitHub component embeds with native SVG snapshots and clarified the limits of public activity and profile data.
 
 ## [1.3.0] - 2026-07-22
 
@@ -196,7 +249,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home page and core feature files repeatedly reorganized for clarity.
 - Theme and UI consistency refactors for long-term maintainability.
 
-[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/narainkarthikv/markdown-shop/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/narainkarthikv/markdown-shop/compare/v1.5.0...v1.5.1
+[1.5.0]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.5.0
 [1.3.0]: https://github.com/narainkarthikv/markdown-shop/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/narainkarthikv/markdown-shop/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/narainkarthikv/markdown-shop/releases/tag/v1.1.2

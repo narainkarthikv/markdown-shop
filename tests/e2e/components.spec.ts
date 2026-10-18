@@ -31,17 +31,11 @@ test.describe('Components Page', () => {
   });
 
   test('selects and adds a component', async ({ page }) => {
-    // Look for component buttons or cards to click
-    const componentButtons = page
-      .locator('button')
-      .filter({ has: page.locator('text=/.*component|badge|icon.*/i') });
-
-    const firstComponent = componentButtons.first();
-    if (await firstComponent.isVisible().catch(() => false)) {
-      await firstComponent.click();
-
-      // Verify component was added (check for success message or visual feedback)
-      await page.waitForTimeout(300);
-    }
+    const reactIcon = page.getByRole('button', { name: 'Add React icon' });
+    await expect(reactIcon).toBeVisible();
+    await reactIcon.click();
+    await expect(
+      page.getByRole('button', { name: 'Remove React icon' })
+    ).toHaveAttribute('aria-pressed', 'true');
   });
 });

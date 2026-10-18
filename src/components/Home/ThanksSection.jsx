@@ -24,7 +24,7 @@ const ThanksSection = () => {
         <Paper
           elevation={0}
           sx={{
-            borderRadius: 4,
+            borderRadius: 'var(--ms-radius-3xl)',
             border: `1px solid ${theme.palette.divider}`,
             bgcolor: theme.palette.background.paper,
             p: { xs: 3, md: 4 },
@@ -60,7 +60,7 @@ const ThanksSection = () => {
                   key={item.name}
                   sx={{
                     p: 2,
-                    borderRadius: 3,
+                    borderRadius: 'var(--ms-radius-2xl)',
                     border: `1px solid ${theme.palette.divider}`,
                     display: 'flex',
                     flexDirection: { xs: 'column', sm: 'row' },
@@ -95,7 +95,7 @@ const ThanksSection = () => {
         <Paper
           elevation={0}
           sx={{
-            borderRadius: 4,
+            borderRadius: 'var(--ms-radius-3xl)',
             border: `1px solid ${theme.palette.divider}`,
             p: { xs: 3, md: 4 },
             background:
@@ -138,7 +138,7 @@ const ThanksSection = () => {
               rel='noreferrer'
               variant='outlined'
               color='primary'
-              sx={{ px: 3, borderRadius: 3 }}>
+              sx={{ px: 3, borderRadius: 'var(--ms-radius-2xl)' }}>
               Buy us a coffee
             </Button>
             <Button
@@ -148,7 +148,7 @@ const ThanksSection = () => {
               rel='noreferrer'
               variant='contained'
               color='primary'
-              sx={{ px: 3, borderRadius: 3 }}>
+              sx={{ px: 3, borderRadius: 'var(--ms-radius-2xl)' }}>
               Support on Buy Me a Coffee
             </Button>
           </Stack>

@@ -1,6 +1,6 @@
 /**
- * Design Tokens - Wisdom Fox semantic system
- * Synced with design-system.md for light/dark parity and accessibility.
+ * Design Tokens - Wisdom Fox semantic system.
+ * Keep values here mode-aware and expose them through the theme and CSS vars.
  */
 
 // Semantic colors
@@ -169,6 +169,13 @@ export const typography = {
     '3xl': '1.875rem', // 30px
     '4xl': '2.25rem', // 36px
     '5xl': '2.5rem', // 40px
+    h1: '2.75rem',
+    h2: '2.125rem',
+    h3: '1.75rem',
+    h4: '1.5rem',
+    h5: '1.25rem',
+    h6: '1rem',
+    bodySmall: '0.875rem',
   },
 
   // Font weights
@@ -196,7 +203,7 @@ export const typography = {
 };
 
 /**
- * Spacing Scale (8px base)
+ * Spacing Scale (4px base)
  */
 export const spacing = {
   0: '0',
@@ -219,11 +226,14 @@ export const spacing = {
  */
 export const borderRadius = {
   none: '0',
+  xs: '0.25rem', // 4px
   sm: '0.375rem', // 6px
   md: '0.5rem', // 8px
   lg: '0.75rem', // 12px
   xl: '1rem', // 16px
+  feature: '1.25rem', // 20px, for larger panel surfaces
   '2xl': '1.5rem', // 24px
+  '3xl': '2rem', // 32px
   full: '9999px',
 };
 
@@ -257,3 +267,70 @@ export const zIndex = {
   tooltip: 1400,
   toast: 1500,
 };
+
+/**
+ * Public grouped token API. `customTokens` stays available as a legacy alias;
+ * new UI should read these semantic groups or the matching `--ms-*` variables.
+ */
+export const createDesignTokens = (colors) => ({
+  color: {
+    background: {
+      canvas: colors.background,
+      subtle: colors.backgroundSecondary,
+      overlay: colors.surfaceOverlay,
+    },
+    surface: {
+      base: colors.surface,
+      inset: colors.surfaceElevated,
+      hover: colors.surfaceHover,
+      active: colors.surfaceActive,
+    },
+    text: {
+      primary: colors.textPrimary,
+      secondary: colors.textSecondary,
+      muted: colors.textTertiary,
+      inverse: colors.textInverse,
+    },
+    border: {
+      default: colors.border,
+      subtle: colors.borderSubtle,
+      strong: colors.borderStrong,
+      focus: colors.borderFocus,
+    },
+    action: {
+      primary: colors.primary,
+      hover: colors.primaryHover,
+      active: colors.primaryActive,
+      subtle: colors.primarySubtle,
+      disabled: colors.interactiveDisabled,
+    },
+    status: {
+      success: colors.success,
+      successSurface: colors.successBg,
+      warning: colors.warning,
+      warningSurface: colors.warningBg,
+      error: colors.error,
+      errorSurface: colors.errorBg,
+      info: colors.info,
+      infoSurface: colors.infoBg,
+    },
+  },
+  typography,
+  spacing,
+  radius: { ...borderRadius, muiBase: '8px' },
+  shadow: colors.shadow,
+  motion: animation,
+  zIndex,
+  layout: {
+    contentMaxWidth: '1440px',
+    readingMaxWidth: '72ch',
+    sidebarWidth: '290px',
+  },
+  control: {
+    minimumTarget: '44px',
+    iconButton: '36px',
+    fieldHeight: '40px',
+    focusRingWidth: '2px',
+    focusRingOffset: '2px',
+  },
+});

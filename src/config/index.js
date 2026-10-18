@@ -32,9 +32,7 @@ export const GITHUB_URLS = {
  * API Endpoints
  */
 export const API_ENDPOINTS = {
-  GITHUB_STATS: 'https://github-readme-stats.vercel.app',
   SKILLICONS: 'https://skillicons.dev/icons',
-  SVG_BANNERS: 'https://svg-banners.vercel.app',
 };
 
 /**

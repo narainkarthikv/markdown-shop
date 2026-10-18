@@ -112,7 +112,7 @@ const TemplatePreview = React.memo(({ content, expanded = false }) => {
         background: alpha(theme.palette.background.default, 0.6),
         color: theme.palette.text.primary,
         p: 2,
-        borderRadius: 1.5,
+        borderRadius: 'var(--ms-radius-lg)',
         overflowX: 'auto',
         overflowY: 'auto',
         fontSize: '0.85rem',
@@ -130,7 +130,7 @@ const TemplatePreview = React.memo(({ content, expanded = false }) => {
         },
         '&::-webkit-scrollbar-thumb': {
           bgcolor: alpha(theme.palette.text.secondary, 0.3),
-          borderRadius: 3,
+          borderRadius: 'var(--ms-radius-2xl)',
         },
       }}
       role='textbox'
@@ -214,7 +214,7 @@ const TemplateCard = ({
               ? theme.palette.primary.main
               : theme.customTokens?.borderSubtle || theme.palette.divider
           }`,
-          borderRadius: 2,
+          borderRadius: 'var(--ms-radius-xl)',
           position: 'relative',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           overflow: 'hidden',
@@ -254,7 +254,7 @@ const TemplateCard = ({
               zIndex: 2,
               bgcolor: 'success.main',
               color: 'success.contrastText',
-              borderRadius: 1,
+              borderRadius: 'var(--ms-radius-md)',
               p: 0.5,
               display: 'flex',
               alignItems: 'center',
@@ -337,7 +337,7 @@ const TemplateCard = ({
         scroll='paper'
         PaperProps={{
           sx: {
-            borderRadius: 2,
+            borderRadius: 'var(--ms-radius-xl)',
             position: 'fixed',
             maxHeight: '85vh',
             display: 'flex',
@@ -404,7 +404,7 @@ const TemplateCard = ({
             variant='outlined'
             sx={{
               p: 3,
-              borderRadius: 2,
+              borderRadius: 'var(--ms-radius-xl)',
               bgcolor: alpha(theme.palette.background.default, 0.6),
               border: `1px solid ${theme.customTokens?.borderSubtle || theme.palette.divider}`,
               maxHeight: 450,
@@ -414,7 +414,7 @@ const TemplateCard = ({
               },
               '&::-webkit-scrollbar-thumb': {
                 bgcolor: alpha(theme.palette.text.secondary, 0.3),
-                borderRadius: 4,
+                borderRadius: 'var(--ms-radius-3xl)',
               },
             }}>
             <Box

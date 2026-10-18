@@ -1,7 +1,11 @@
 import React from 'react';
-import { Paper, Typography } from '@mui/material';
+import { Button, Paper, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import WidgetsOutlined from '@mui/icons-material/WidgetsOutlined';
+import DescriptionOutlined from '@mui/icons-material/DescriptionOutlined';
+import LightbulbOutlined from '@mui/icons-material/LightbulbOutlined';
 
 const MarkdownEditor = ({ value, onChange }) => {
   const theme = useTheme();
@@ -20,9 +24,40 @@ const MarkdownEditor = ({ value, onChange }) => {
         position: 'relative',
         bgcolor: theme.palette.background.default,
       }}>
-      <Typography variant='h6' sx={{ mb: 1, flexShrink: 0 }}>
-        Markdown Editor
-      </Typography>
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        alignItems={{ xs: 'stretch', sm: 'center' }}
+        justifyContent='space-between'
+        spacing={1}
+        sx={{ mb: 1, flexShrink: 0 }}>
+        <Typography variant='h6'>Markdown Editor</Typography>
+        <Stack direction='row' spacing={0.75} flexWrap='wrap' useFlexGap>
+          <Button
+            component={Link}
+            to='/components'
+            size='small'
+            variant='outlined'
+            startIcon={<WidgetsOutlined />}>
+            Components
+          </Button>
+          <Button
+            component={Link}
+            to='/templates'
+            size='small'
+            variant='outlined'
+            startIcon={<DescriptionOutlined />}>
+            Templates
+          </Button>
+          <Button
+            component={Link}
+            to='/prompts'
+            size='small'
+            variant='outlined'
+            startIcon={<LightbulbOutlined />}>
+            Prompts
+          </Button>
+        </Stack>
+      </Stack>
       <textarea
         value={value}
         onChange={onChange}
@@ -35,7 +70,7 @@ const MarkdownEditor = ({ value, onChange }) => {
           fontFamily: 'monospace',
           fontSize: '14px',
           border: `1px solid ${theme.palette.divider}`,
-          borderRadius: '4px',
+          borderRadius: 'var(--ms-radius-xs)',
           resize: 'none',
           overflowY: 'auto',
           boxSizing: 'border-box',

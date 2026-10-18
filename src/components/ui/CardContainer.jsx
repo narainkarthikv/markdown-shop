@@ -12,20 +12,21 @@ const CardContainer = ({ children, sx = {}, ...props }) => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        borderRadius: 2,
+        borderRadius: 'var(--ms-radius-xl)',
         overflow: 'hidden',
         border: `1px solid ${theme.palette.divider}`,
         backgroundImage: 'none',
         bgcolor: theme.palette.background.paper,
-        transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s',
+        transition:
+          'transform var(--ms-duration-base), box-shadow var(--ms-duration-base), border-color var(--ms-duration-base)',
         '&:hover': {
           transform: 'translateY(-4px)',
           boxShadow: theme.shadows[3],
-          borderColor: `${theme.palette.primary.main}40`,
+          borderColor: theme.palette.primary.light,
         },
         '&:focus-visible': {
-          outline: `3px solid ${theme.palette.primary.main}33`,
-          outlineOffset: '2px',
+          outline: 'var(--ms-focus-ring-width) solid var(--ms-color-focus)',
+          outlineOffset: 'var(--ms-focus-ring-offset)',
         },
         ...sx,
       }}

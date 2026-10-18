@@ -42,7 +42,7 @@ const Step = ({ title, description, index, delay }) => {
           elevation={0}
           sx={{
             p: 3,
-            borderRadius: 3,
+            borderRadius: 'var(--ms-radius-2xl)',
             border: `1px solid ${theme.palette.divider}`,
             bgcolor: theme.palette.background.paper,
             height: '100%',

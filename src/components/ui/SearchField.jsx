@@ -11,7 +11,7 @@ const SearchField = ({ value, onChange, placeholder, sx = {}, ...props }) => (
     sx={{
       mb: 3,
       '& .MuiOutlinedInput-root': {
-        borderRadius: 2,
+        borderRadius: 'var(--ms-radius-xl)',
       },
       ...sx,
     }}

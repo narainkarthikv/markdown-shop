@@ -267,3 +267,58 @@ Made with ❤️ by the Wisdom Fox community
 Let's build the best README builder together! 🚀
 
 ---
+
+## GitHub API stats and privacy
+
+GitHub profile components fetch data directly from `https://api.github.com` in your browser. Public profile and repository data works without a personal access token. An optional fine-grained PAT raises the API rate limit and can read repositories the token is permitted to access. Requests use the `Authorization` header; the token is never placed in a URL or exported Markdown, and Markdown Shop does not proxy requests through a server.
+
+By default, a PAT stays in memory for the current browser session. Select **Remember on this device** to explicitly save it in localStorage. You can remove a configured token in GitHub data settings. A browser-only app cannot protect a token from browser extensions or anyone with access to the device. Do not use a token on a shared or untrusted device.
+
+To create one, open GitHub **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**. Choose a recognizable name, expiration, minimum repository access, and only the permissions needed. Public data does not require a token; private repository data requires appropriate read access. Read GitHub’s [Managing your personal access tokens guide](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+Stats and exports are snapshots. Repository language mix counts the primary language label of each accessible repository; it does not measure code volume. Activity and streak displays are derived from GitHub’s limited public events feed and are not the complete contribution calendar. The REST API does not provide the third-party trophy rankings or profile view counts, so the app shows profile milestones and omits view counting. Exported README Markdown is viewed elsewhere and cannot access a PAT stored in this browser; it contains static values and public GitHub links only.
+
+`.env.example` contains only the public API base URL. Never add a PAT to a `VITE_*` variable: Vite bundles those values into client code.
+
+The separate SVG banner feature is outside GitHub API stats and remains a standalone banner embed. Its generated asset is not used by the GitHub stats components.
+
+## Calling GitHub SVG endpoints
+
+The generated SVGs are also available as public, cacheable endpoints after deploying Markdown Shop on Vercel or Netlify. Use one endpoint per component:
+
+```text
+https://<your-markdown-shop-host>/api/github/<username>/<component>.svg
+```
+
+For example, use `https://<your-markdown-shop-host>/api/github/octocat/stats.svg` in Markdown as:
+
+```markdown
+![Octocat GitHub stats](https://<your-markdown-shop-host>/api/github/octocat/stats.svg)
+```
+
+Each component has its own URL, so you can request just the SVG you need:
+
+```text
+/api/github/<username>/stats.svg
+/api/github/<username>/streak.svg
+/api/github/<username>/trophies.svg
+/api/github/<username>/badges.svg
+/api/github/<username>/followers.svg
+/api/github/<username>/commits.svg
+/api/github/<username>/activity.svg
+/api/github/<username>/snake.svg
+/api/github/<username>/repo.svg
+/api/github/<username>/contributors.svg
+/api/github/<username>/metrics.svg
+/api/github/<username>/views.svg
+```
+
+For example, fetch the raw SVG from a script with `curl`:
+
+```sh
+curl "https://<your-markdown-shop-host>/api/github/octocat/stats.svg" -o github-stats.svg
+```
+
+You can also use the URL in an HTML image tag or any setup that accepts an SVG URL. Contributors default to the `markdown-shop` repository; select another repository with `?repo=<repository-name>`.
+
+These endpoints fetch public data without a PAT and cache the SVG briefly. They do not accept or forward a PAT. Use the in-browser components for private data; their token is sent directly from the browser to GitHub. The SVG endpoint is a read-only GET API; rate limits from GitHub can still apply.

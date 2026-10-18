@@ -7,12 +7,12 @@ const ComponentsGrid = () => (
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      mb: 3,
+      mb: 0,
     }}>
     <Box
       sx={{
         width: '100%',
-        maxWidth: 1200,
+        minWidth: 0,
       }}>
       <Icons />
     </Box>

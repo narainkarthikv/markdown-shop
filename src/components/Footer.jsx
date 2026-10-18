@@ -1,18 +1,20 @@
 import React from 'react';
-import { Box, Grid, Link as MuiLink, Stack, Typography } from '@mui/material';
+import { DataObjectRounded } from '@mui/icons-material';
+import { Box, Stack, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const footerLinks = [
+const repoUrl = 'https://github.com/narainkarthikv/markdown-shop';
+
+const footerGroups = [
   {
     title: 'Project',
     links: [
-      { label: 'Open app', to: '/shop', internal: true },
-      { label: 'Markdown Templates', to: '/templates', internal: true },
-      { label: 'Prompt Gallery', to: '/prompts', internal: true },
-      { label: 'Components', to: '/components', internal: true },
+      { label: 'Open builder', to: '/shop', kind: 'internal' },
+      { label: 'GitHub repository', href: repoUrl, kind: 'external' },
       {
-        label: 'GitHub repo',
-        href: 'https://github.com/narainkarthikv/markdown-shop',
+        label: 'Issues & roadmap',
+        href: `${repoUrl}/issues`,
+        kind: 'external',
       },
     ],
   },
@@ -21,129 +23,182 @@ const footerLinks = [
     links: [
       {
         label: 'Contributing',
-        href: 'https://github.com/narainkarthikv/markdown-shop/blob/develop/CONTRIBUTING.md',
+        href: `${repoUrl}/blob/main/CONTRIBUTING.md`,
+        kind: 'external',
       },
       {
         label: 'Code of conduct',
-        href: 'https://github.com/narainkarthikv/markdown-shop/blob/develop/CODE_OF_CONDUCT.md',
+        href: `${repoUrl}/blob/main/CODE_OF_CONDUCT.md`,
+        kind: 'external',
       },
       {
-        label: 'Issues & roadmap',
-        href: 'https://github.com/narainkarthikv/markdown-shop/issues',
-      },
-      {
-        label: 'Wisdom Fox',
-        href: 'https://github.com/narainkarthikv',
+        label: 'Security policy',
+        href: `${repoUrl}/blob/main/SECURITY.md`,
+        kind: 'external',
       },
     ],
   },
   {
-    title: 'Legal',
+    title: 'Legal & docs',
     links: [
       {
         label: 'MIT License',
-        href: 'https://github.com/narainkarthikv/markdown-shop/blob/develop/LICENSE',
-      },
-      {
-        label: 'Security policy',
-        href: 'https://github.com/narainkarthikv/markdown-shop/security/policy',
-      },
-      {
-        label: 'Release notes',
-        href: 'https://github.com/narainkarthikv/markdown-shop/releases',
+        href: `${repoUrl}/blob/main/LICENSE`,
+        kind: 'external',
       },
       {
         label: 'Documentation',
-        href: 'https://github.com/narainkarthikv/markdown-shop#readme',
+        href: `${repoUrl}/blob/main/README.md`,
+        kind: 'external',
       },
+      { label: 'Release notes', href: `${repoUrl}/releases`, kind: 'external' },
     ],
   },
 ];
 
+function FooterLink({ item }) {
+  const sharedSx = {
+    width: 'fit-content',
+    color: 'inherit',
+    fontSize: '0.875rem',
+    textDecoration: 'none',
+    transition: 'color var(--ms-duration-fast) var(--ms-easing-standard)',
+    '&:hover': { color: '#fff' },
+    '&:focus-visible': { outline: '2px solid #93c5fd', outlineOffset: 3 },
+  };
+
+  if (item.kind === 'internal') {
+    return (
+      <Box component={Link} to={item.to} sx={sharedSx}>
+        {item.label}
+      </Box>
+    );
+  }
+
+  return (
+    <Box
+      component='a'
+      href={item.href}
+      target='_blank'
+      rel='noopener noreferrer'
+      sx={sharedSx}>
+      {item.label}
+    </Box>
+  );
+}
+
+function FooterSection({ title, items }) {
+  return (
+    <Box>
+      <Typography
+        component='h2'
+        variant='overline'
+        sx={{ color: '#cbd5e1', fontWeight: 700, letterSpacing: '.12em' }}>
+        {title}
+      </Typography>
+      <Stack
+        component='ul'
+        spacing={1}
+        sx={{ mt: 1.25, p: 0, m: 0, listStyle: 'none' }}>
+        {items.map((item) => (
+          <Box component='li' key={item.label} sx={{ display: 'flex' }}>
+            <FooterLink item={item} />
+          </Box>
+        ))}
+      </Stack>
+    </Box>
+  );
+}
+
 const Footer = React.memo(() => (
   <Box
     component='footer'
-    sx={(theme) => ({
-      borderTop: `1px solid ${theme.palette.divider}`,
-      bgcolor: theme.palette.background.paper,
-      color: theme.palette.text.secondary,
-      mt: { xs: 6, md: 8 },
-    })}>
-    <Box
-      sx={{
-        maxWidth: 1200,
-        mx: 'auto',
-        px: { xs: 2, md: 3 },
-        py: { xs: 5, md: 7 },
-      }}>
-      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent='space-between'>
-        <Grid item xs={12} md={4}>
-          <Typography
-            variant='h6'
-            sx={{ fontWeight: 700, color: 'text.primary' }}>
-            Markdown Shop
-          </Typography>
-          <Typography variant='body2' sx={{ mt: 2, color: 'text.secondary' }}>
-            A fast README builder for open-source maintainers and makers. Curate
-            templates, badges, icons, and stats in one clean workflow.
-          </Typography>
-          <Typography variant='caption' sx={{ display: 'block', mt: 2.5 }}>
-            Built by the Wisdom Fox community.
-          </Typography>
-        </Grid>
-        {footerLinks.map((group) => (
-          <Grid item xs={6} sm={4} md={2} key={group.title}>
-            <Typography
-              variant='overline'
-              sx={{ letterSpacing: '0.2em', color: 'text.secondary' }}>
-              {group.title}
-            </Typography>
-            <Stack spacing={1.25} sx={{ mt: 1.5 }}>
-              {group.links.map((link) =>
-                link.internal ? (
-                  <MuiLink
-                    key={link.label}
-                    component={Link}
-                    to={link.to}
-                    underline='hover'
-                    color='inherit'>
-                    {link.label}
-                  </MuiLink>
-                ) : (
-                  <MuiLink
-                    key={link.label}
-                    href={link.href}
-                    underline='hover'
-                    color='inherit'
-                    target='_blank'
-                    rel='noreferrer'>
-                    {link.label}
-                  </MuiLink>
-                )
-              )}
-            </Stack>
-          </Grid>
-        ))}
-      </Grid>
+    sx={{
+      bgcolor: (theme) =>
+        theme.palette.mode === 'dark' ? '#020617' : '#0f172a',
+      color: '#94a3b8',
+      py: { xs: 4, md: 5 },
+      px: { xs: 2, md: 3 },
+    }}>
+    <Box sx={{ maxWidth: 1200, mx: 'auto' }}>
       <Box
         sx={{
-          borderTop: '1px solid',
-          borderColor: 'divider',
-          mt: { xs: 4, md: 5 },
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(2, minmax(0, 1fr))',
+            sm: 'repeat(3, minmax(0, 1fr))',
+            lg: 'minmax(280px, .9fr) minmax(0, 1.5fr)',
+          },
+          gap: { xs: 3, md: 5 },
+          alignItems: 'start',
         }}>
-        <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          spacing={1.5}
-          justifyContent='space-between'
-          alignItems={{ sm: 'center' }}
-          sx={{ pt: { xs: 3, md: 3.5 } }}>
-          <Typography variant='caption'>
-            © 2026 Markdown Shop. Crafted with care for open source.
+        <Box sx={{ gridColumn: { xs: '1 / -1', lg: 'auto' }, maxWidth: 360 }}>
+          <Stack direction='row' alignItems='center' spacing={1.25}>
+            <Box
+              sx={{
+                width: 36,
+                height: 36,
+                display: 'grid',
+                placeItems: 'center',
+                borderRadius: 'var(--ms-radius-lg)',
+                bgcolor: '#1d4ed8',
+                color: '#fff',
+              }}>
+              <DataObjectRounded fontSize='small' />
+            </Box>
+            <Typography variant='h6' sx={{ color: '#fff', fontWeight: 750 }}>
+              Markdown Shop
+            </Typography>
+          </Stack>
+          <Typography
+            variant='body2'
+            sx={{ mt: 1.5, color: '#94a3b8', lineHeight: 1.65 }}>
+            A practical workspace for clearer GitHub READMEs and profile pages.
           </Typography>
-          <Typography variant='caption'>
-            Have feedback? Open an issue or drop a PR.
-          </Typography>
-        </Stack>
+          <Stack spacing={0.6} sx={{ mt: 1.5 }}>
+            {[
+              'No account required',
+              'Markdown you can take anywhere',
+              'Free and open source',
+            ].map((point) => (
+              <Typography
+                key={point}
+                variant='caption'
+                sx={{ color: '#cbd5e1' }}>
+                <Box component='span' sx={{ mr: 1, color: '#60a5fa' }}>
+                  ✓
+                </Box>
+                {point}
+              </Typography>
+            ))}
+          </Stack>
+        </Box>
+
+        <Box
+          component='nav'
+          aria-label='Footer'
+          sx={{
+            gridColumn: { xs: '1 / -1', sm: '1 / -1', lg: 'auto' },
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: { xs: 1.5, sm: 3 },
+          }}>
+          {footerGroups.map((group) => (
+            <FooterSection
+              key={group.title}
+              title={group.title}
+              items={group.links}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={{ borderTop: '1px solid #334155', mt: { xs: 3, md: 4 }, pt: 2 }}>
+        <Typography
+          variant='caption'
+          sx={{ display: 'block', textAlign: 'center', color: '#94a3b8' }}>
+          © 2026 Markdown Shop · Made with care for the open-source community
+        </Typography>
       </Box>
     </Box>
   </Box>

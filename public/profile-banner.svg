@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Markdown Shop — Make your README your own</title>
+  <desc id="description">A custom dark profile banner with colorful code inspired shapes and a Markdown Shop title.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101827"/>
+      <stop offset=".55" stop-color="#15172b"/>
+      <stop offset="1" stop-color="#102b32"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="64" y1="64" x2="152" y2="152" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#63E6BE"/>
+      <stop offset="1" stop-color="#7C8CFF"/>
+    </linearGradient>
+    <linearGradient id="line" x1="64" y1="0" x2="1110" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#63E6BE"/>
+      <stop offset=".52" stop-color="#8D7BFF"/>
+      <stop offset="1" stop-color="#FF9F7A"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" stroke="#B7D8E8" stroke-opacity=".055"/>
+    </pattern>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="matrix(245 0 0 160 1092 56)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#36D9C0" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#36D9C0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="300" rx="28" fill="url(#background)"/>
+  <rect width="1200" height="300" rx="28" fill="url(#grid)"/>
+  <rect width="1200" height="300" rx="28" fill="url(#halo)"/>
+  <rect x="1" y="1" width="1198" height="298" rx="27" stroke="#A6C2D2" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M48 2H1152" stroke="url(#line)" stroke-width="3" stroke-linecap="round"/>
+  <rect x="64" y="68" width="88" height="88" rx="24" fill="url(#mark)"/>
+  <path d="m103 91-18 21 18 21M113 133l18-21-18-21" stroke="#0D1824" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="184" y="98" fill="#A5B5C9" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="3">GITHUB PROFILE STUDIO</text>
+  <text x="180" y="157" fill="#F4F7FB" font-family="Inter,Arial,sans-serif" font-size="48" font-weight="750" letter-spacing="-1.5">Markdown Shop</text>
+  <text x="184" y="198" fill="#B7C5D4" font-family="Inter,Arial,sans-serif" font-size="20">Make your README your own.</text>
+  <g opacity=".92">
+    <rect x="810" y="82" width="318" height="138" rx="18" fill="#0B1220" fill-opacity=".68" stroke="#A6C2D2" stroke-opacity=".18"/>
+    <circle cx="836" cy="105" r="5" fill="#FF7A90"/>
+    <circle cx="854" cy="105" r="5" fill="#FFD166"/>
+    <circle cx="872" cy="105" r="5" fill="#63E6BE"/>
+    <path d="M840 139 824 151l16 12M867 139l16 12-16 12" stroke="#63E6BE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m853 168 12-34" stroke="#B29BFF" stroke-width="4" stroke-linecap="round"/>
+    <rect x="895" y="139" width="126" height="8" rx="4" fill="#D5E1EF" fill-opacity=".76"/>
+    <rect x="895" y="158" width="190" height="8" rx="4" fill="#8D7BFF" fill-opacity=".8"/>
+    <rect x="895" y="177" width="154" height="8" rx="4" fill="#63E6BE" fill-opacity=".74"/>
+  </g>
+  <text x="64" y="264" fill="#8193A8" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="600" letter-spacing="2">DESIGN · PERSONALIZE · SHARE</text>
+  <circle cx="1137" cy="252" r="4" fill="#63E6BE"/>
+  <circle cx="1153" cy="252" r="4" fill="#8D7BFF"/>
+  <circle cx="1169" cy="252" r="4" fill="#FF9F7A"/>
+</svg>
