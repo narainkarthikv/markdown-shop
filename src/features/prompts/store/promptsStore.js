@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import promptsData from '@/assets/data/prompts.json';
+import { filterCatalogItems, getCatalogCategories } from '@/utils/catalog';
 
 const usePromptsStore = create((set, get) => ({
   prompts: promptsData,
@@ -13,23 +14,15 @@ const usePromptsStore = create((set, get) => ({
   setCopiedIdx: (idx) => set({ copiedIdx: idx }),
   getFilteredPrompts: () => {
     const { prompts, search, selectedCategory } = get();
-    return prompts.filter((prompt) => {
-      const normalizedSearch = search.toLowerCase();
-      const matchesSearch =
-        prompt.label.toLowerCase().includes(normalizedSearch) ||
-        prompt.description.toLowerCase().includes(normalizedSearch) ||
-        prompt.content.toLowerCase().includes(normalizedSearch);
-      const matchesCategory =
-        selectedCategory === 'all' || prompt.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+    return filterCatalogItems(prompts, {
+      search,
+      selectedCategory,
+      searchFields: ['label', 'description', 'content'],
     });
   },
   getCategories: () => {
     const { prompts } = get();
-    const categories = [
-      'all',
-      ...new Set(prompts.map((prompt) => prompt.category)),
-    ];
+    const categories = ['all', ...getCatalogCategories(prompts)];
     return categories.map((category) => ({
       value: category,
       label: category === 'all' ? 'All' : category,

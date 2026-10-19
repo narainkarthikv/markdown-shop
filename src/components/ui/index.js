@@ -5,7 +5,6 @@
 
 // Core UI Components
 export { default as DualActionButton } from './DualActionButton';
-export { default as Toast } from './Toast';
 export {
   default as EmptyState,
   NoSearchResults,
@@ -33,4 +32,3 @@ export {
 // Existing Components
 export { default as CardContainer } from './CardContainer';
 export { default as SearchField } from './SearchField';
-export { default as Section } from './Section';

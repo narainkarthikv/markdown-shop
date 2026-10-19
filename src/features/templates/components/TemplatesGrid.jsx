@@ -17,9 +17,9 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import SearchIcon from '@mui/icons-material/Search';
 import TemplateCard from './TemplateCard';
 import TemplateCategories from './TemplateCategories';
-import SearchField from '../ui/SearchField';
-import { NoSearchResults } from '../ui/EmptyState';
-import { useTemplates } from '../../hooks/useTemplates';
+import SearchField from '@/components/ui/SearchField';
+import { NoSearchResults } from '@/components/ui/EmptyState';
+import { useTemplates } from '@/hooks/useTemplates';
 
 /**
  * TemplatesGrid - Modern 2026+ Design

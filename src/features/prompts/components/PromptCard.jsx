@@ -170,7 +170,7 @@ const PromptCard = ({
   const isListView = viewMode === 'list';
 
   const handleCopy = async () => {
-    await copyToClipboard(prompt.content, { contentType: 'text/plain' });
+    await copyToClipboard(prompt.content, 'text');
     onCopy(prompt.content, index);
   };
 

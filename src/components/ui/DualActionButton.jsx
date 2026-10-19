@@ -33,7 +33,7 @@ const DualActionButton = memo(
     const { copied, copyToClipboard } = useClipboard();
 
     const handleCopy = () => {
-      copyToClipboard(content, { contentType });
+      copyToClipboard(content, contentType);
     };
 
     const handleInsert = () => {

@@ -10,12 +10,11 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   pageTransitionVariants,
   pageTransition,
-} from '@components/Home/animations';
+} from '@/animations/pageTransitions';
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Helmet } from 'react-helmet-async';
 import { ROUTES } from '@config/index';
-import { ErrorBoundary } from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -126,140 +125,121 @@ AppLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const PageTransition = memo(({ pageKey, children }) => (
+  <motion.div
+    key={pageKey}
+    initial='initial'
+    animate='in'
+    exit='out'
+    variants={pageTransitionVariants}
+    transition={pageTransition}>
+    {children}
+  </motion.div>
+));
+
+PageTransition.displayName = 'PageTransition';
+
+PageTransition.propTypes = {
+  pageKey: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 /**
  * Main App component with routing and page transitions
  */
 const App = () => {
   return (
-    <ErrorBoundary>
-      <Router>
-        <AnimatePresence mode='wait'>
-          <Suspense
-            fallback={
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  minHeight: '100vh',
-                }}>
-                <div>Loading...</div>
-              </Box>
-            }>
-            <Routes>
-              <Route
-                path={ROUTES.HOME}
-                element={
-                  <motion.div
-                    key='home'
-                    initial='initial'
-                    animate='in'
-                    exit='out'
-                    variants={pageTransitionVariants}
-                    transition={pageTransition}>
-                    <AppLayout>
-                      <Home />
-                    </AppLayout>
-                  </motion.div>
-                }
-              />
-              <Route
-                path={ROUTES.COMPONENTS}
-                element={
-                  <motion.div
-                    key='components'
-                    initial='initial'
-                    animate='in'
-                    exit='out'
-                    variants={pageTransitionVariants}
-                    transition={pageTransition}>
-                    <AppLayout>
-                      <Components />
-                    </AppLayout>
-                  </motion.div>
-                }
-              />
-              <Route
-                path={ROUTES.SHOP}
-                element={
-                  <motion.div
-                    key='output'
-                    initial='initial'
-                    animate='in'
-                    exit='out'
-                    variants={pageTransitionVariants}
-                    transition={pageTransition}>
-                    <AppLayout>
-                      <Output />
-                    </AppLayout>
-                  </motion.div>
-                }
-              />
-              <Route
-                path={ROUTES.TEMPLATES}
-                element={
-                  <motion.div
-                    key='templates'
-                    initial='initial'
-                    animate='in'
-                    exit='out'
-                    variants={pageTransitionVariants}
-                    transition={pageTransition}>
-                    <AppLayout>
-                      <TemplatesPage />
-                    </AppLayout>
-                  </motion.div>
-                }
-              />
-              <Route
-                path={ROUTES.PROMPTS}
-                element={
-                  <motion.div
-                    key='prompts'
-                    initial='initial'
-                    animate='in'
-                    exit='out'
-                    variants={pageTransitionVariants}
-                    transition={pageTransition}>
-                    <AppLayout>
-                      <PromptsPage />
-                    </AppLayout>
-                  </motion.div>
-                }
-              />
-              <Route
-                path={ROUTES.NOT_FOUND}
-                element={
-                  <motion.div
-                    key='404'
-                    initial='initial'
-                    animate='in'
-                    exit='out'
-                    variants={pageTransitionVariants}
-                    transition={pageTransition}>
-                    <AppLayout>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          minHeight: '60vh',
-                          textAlign: 'center',
-                          p: 3,
-                        }}>
-                        <h1>404 - Page Not Found</h1>
-                        <p>The page you are looking for does not exist.</p>
-                      </Box>
-                    </AppLayout>
-                  </motion.div>
-                }
-              />
-            </Routes>
-          </Suspense>
-        </AnimatePresence>
-      </Router>
-    </ErrorBoundary>
+    <Router>
+      <AnimatePresence mode='wait'>
+        <Suspense
+          fallback={
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '100vh',
+              }}>
+              <div>Loading...</div>
+            </Box>
+          }>
+          <Routes>
+            <Route
+              path={ROUTES.HOME}
+              element={
+                <PageTransition pageKey='home'>
+                  <AppLayout>
+                    <Home />
+                  </AppLayout>
+                </PageTransition>
+              }
+            />
+            <Route
+              path={ROUTES.COMPONENTS}
+              element={
+                <PageTransition pageKey='components'>
+                  <AppLayout>
+                    <Components />
+                  </AppLayout>
+                </PageTransition>
+              }
+            />
+            <Route
+              path={ROUTES.SHOP}
+              element={
+                <PageTransition pageKey='output'>
+                  <AppLayout>
+                    <Output />
+                  </AppLayout>
+                </PageTransition>
+              }
+            />
+            <Route
+              path={ROUTES.TEMPLATES}
+              element={
+                <PageTransition pageKey='templates'>
+                  <AppLayout>
+                    <TemplatesPage />
+                  </AppLayout>
+                </PageTransition>
+              }
+            />
+            <Route
+              path={ROUTES.PROMPTS}
+              element={
+                <PageTransition pageKey='prompts'>
+                  <AppLayout>
+                    <PromptsPage />
+                  </AppLayout>
+                </PageTransition>
+              }
+            />
+            <Route
+              path={ROUTES.NOT_FOUND}
+              element={
+                <PageTransition pageKey='404'>
+                  <AppLayout>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        minHeight: '60vh',
+                        textAlign: 'center',
+                        p: 3,
+                      }}>
+                      <h1>404 - Page Not Found</h1>
+                      <p>The page you are looking for does not exist.</p>
+                    </Box>
+                  </AppLayout>
+                </PageTransition>
+              }
+            />
+          </Routes>
+        </Suspense>
+      </AnimatePresence>
+    </Router>
   );
 };
 
