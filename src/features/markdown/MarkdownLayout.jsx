@@ -20,7 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import MarkdownEditor from './components/MarkdownEditor';
 import MarkdownPreview from './components/MarkdownPreview';
-import { SectionSelector } from '@/components/SectionSelector';
+import SectionSelector from './components/SectionSelector/SectionSelector';
 import { useShopStore } from '@/store/useShopStore';
 import useMarkdownStore from './store/markdownStore';
 import { useSectionPresets } from '@/hooks/useSectionPresets';

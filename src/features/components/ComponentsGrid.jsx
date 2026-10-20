@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import Icons from '../Icons';
+import Icons from './Icons';
 
 const ComponentsGrid = () => (
   <Box

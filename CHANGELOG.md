@@ -22,6 +22,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+### Fixed
+
+## [1.6.1] - 2026-10-19
+
+### Changed
+
+- Consolidated catalog actions and utilities, moved components into feature-based folders, and removed duplicate and unused modules.
+- Expanded formatting checks to cover project configuration, scripts, API handlers, Netlify functions, and tests.
+
+### Fixed
+
+- Corrected clipboard content handling in shared action buttons.
+
 ## [1.5.1] - 2026-10-16
 
 ### Fixed

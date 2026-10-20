@@ -6,7 +6,15 @@
  */
 export const loadAndFilter = (data, searchTerm) => {
   if (!Array.isArray(data)) return [];
-  if (!searchTerm) return data;
-  const term = searchTerm.toLowerCase();
-  return data.filter((item) => item.name.toLowerCase().includes(term));
+  const term =
+    typeof searchTerm === 'string' ? searchTerm.trim().toLowerCase() : '';
+  if (!term) return data;
+
+  return data.filter((item) =>
+    String(item?.name ?? '')
+      .toLowerCase()
+      .includes(term)
+  );
 };
+
+export default loadAndFilter;

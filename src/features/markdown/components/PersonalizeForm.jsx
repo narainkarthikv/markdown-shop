@@ -8,7 +8,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import useMarkdownStore from '../store/markdownStore';
-import { THEME_OPTIONS } from '@/utils/config/constants';
+import { MARKDOWN_THEME_OPTIONS as THEME_OPTIONS } from '@/config/index';
 
 const themeOptions = Object.entries(THEME_OPTIONS).map(([key, value]) => ({
   value: value,

@@ -1,7 +1,7 @@
 import { Box, Container, Paper, useTheme } from '@mui/material';
 import PropTypes from 'prop-types';
 import ModernSection from '@/components/ui/ModernSection';
-import TemplatesGrid from '@/components/Templates/TemplatesGrid';
+import TemplatesGrid from './components/TemplatesGrid';
 
 /**
  * TemplatesLayout - Modern 2026+ Design

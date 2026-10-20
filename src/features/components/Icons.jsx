@@ -1,9 +1,10 @@
 import { memo, useMemo, useState } from 'react';
-import { useShopStore } from '@/context/store/useShopStore';
-import iconList from '../assets/data/iconsList.json';
-import { loadAndFilter } from '../utils/loadAndFilter';
+import { useShopStore } from '@/store/useShopStore';
+import iconList from '@/assets/data/iconsList.json';
+import { loadAndFilter } from '@/utils/index';
 import useMarkdownStore from '@/features/markdown/store/markdownStore';
 import useCachedImage from '@/hooks/useCachedImage';
+import { API_ENDPOINTS } from '@/config/index';
 import {
   TextField,
   Typography,
@@ -17,11 +18,11 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import DualActionButton from './ui/DualActionButton.jsx';
-import ComponentPreview from './ui/ComponentPreview';
-import { NoSearchResults } from './ui/EmptyState';
-import { IconGridSkeleton } from './ui/Skeletons';
-import ModernSection from './ui/ModernSection';
+import DualActionButton from '@/components/ui/DualActionButton';
+import ComponentPreview from '@/components/ui/ComponentPreview';
+import { NoSearchResults } from '@/components/ui/EmptyState';
+import { IconGridSkeleton } from '@/components/ui/Skeletons';
+import ModernSection from '@/components/ui/ModernSection';
 
 /**
  * IconItem - Individual icon with modern hover states
@@ -173,7 +174,7 @@ const Icons = () => {
 
   const skilliconsUrl =
     iconNames.length > 0
-      ? `https://skillicons.dev/icons?i=${iconNames.join(',')}`
+      ? `${API_ENDPOINTS.SKILLICONS}?i=${iconNames.join(',')}`
       : '';
 
   const cachedSkilliconsSrc = useCachedImage(skilliconsUrl, {

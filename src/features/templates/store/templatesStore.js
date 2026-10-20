@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import templatesData from '@/assets/data/templates.json';
+import { filterCatalogItems, getCatalogCategories } from '@/utils/catalog';
 
 const useTemplatesStore = create((set, get) => ({
   templates: templatesData,
@@ -13,18 +14,15 @@ const useTemplatesStore = create((set, get) => ({
   setCopiedIdx: (idx) => set({ copiedIdx: idx }),
   getFilteredTemplates: () => {
     const { templates, search, selectedCategory } = get();
-    return templates.filter((template) => {
-      const matchesSearch =
-        template.label.toLowerCase().includes(search.toLowerCase()) ||
-        template.description.toLowerCase().includes(search.toLowerCase());
-      const matchesCategory =
-        selectedCategory === 'all' || template.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+    return filterCatalogItems(templates, {
+      search,
+      selectedCategory,
+      searchFields: ['label', 'description'],
     });
   },
   getCategories: () => {
     const { templates } = get();
-    const categories = ['all', ...new Set(templates.map((t) => t.category))];
+    const categories = ['all', ...getCatalogCategories(templates)];
     return categories.map((category) => ({
       value: category,
       label: category.charAt(0).toUpperCase() + category.slice(1),

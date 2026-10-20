@@ -1,6 +1,6 @@
 import React from 'react';
 import GithubSection from '@/features/github/GithubSection';
-import ComponentsLayout from '@/components/Components/ComponentsLayout';
+import ComponentsLayout from '@/features/components/ComponentsLayout';
 
 const Components = () => (
   <ComponentsLayout>
